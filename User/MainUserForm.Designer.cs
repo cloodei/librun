@@ -33,199 +33,198 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserForm));
-            dgvBooks = new DataGridView();
-            btnHome = new Button();
-            btnQuanLySach = new Button();
-            lblTitle = new Label();
-            panel1 = new Panel();
-            btnSignOut = new Button();
-            pictureBox1 = new PictureBox();
-            panelContent = new Panel();
-            panelContentHeader = new Panel();
-            lblContentHeader = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvBooks).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelContent.SuspendLayout();
-            panelContentHeader.SuspendLayout();
-            SuspendLayout();
+            this.dgvBooks = new System.Windows.Forms.DataGridView();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnQuanLySach = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSignOut = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.panelContentHeader = new System.Windows.Forms.Panel();
+            this.lblContentHeader = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelContent.SuspendLayout();
+            this.panelContentHeader.SuspendLayout();
+            this.SuspendLayout();
             // 
             // dgvBooks
             // 
-            dgvBooks.AllowUserToAddRows = false;
-            dgvBooks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 249, 250);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.FromArgb(73, 80, 87);
-            dataGridViewCellStyle1.Padding = new Padding(15, 5, 15, 5);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvBooks.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvBooks.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvBooks.Dock = DockStyle.Fill;
-            dgvBooks.Location = new Point(0, 60);
-            dgvBooks.Name = "dgvBooks";
-            dgvBooks.ReadOnly = true;
-            dgvBooks.RowHeadersVisible = false;
-            dgvBooks.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(33, 37, 41);
-            dataGridViewCellStyle3.Padding = new Padding(15, 5, 15, 5);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(224, 242, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(33, 37, 41);
-            dgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            dgvBooks.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBooks.Size = new Size(808, 501);
-            dgvBooks.TabIndex = 2;
-            dgvBooks.CellMouseEnter += dgvBooks_CellMouseEnter;
-            dgvBooks.CellMouseLeave += dgvBooks_CellMouseLeave;
+            this.dgvBooks.AllowUserToAddRows = false;
+            this.dgvBooks.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvBooks.ColumnHeadersHeight = 29;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBooks.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBooks.Location = new System.Drawing.Point(0, 52);
+            this.dgvBooks.Name = "dgvBooks";
+            this.dgvBooks.ReadOnly = true;
+            this.dgvBooks.RowHeadersVisible = false;
+            this.dgvBooks.RowHeadersWidth = 51;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.dgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBooks.Size = new System.Drawing.Size(693, 434);
+            this.dgvBooks.TabIndex = 2;
             // 
             // btnHome
             // 
-            btnHome.BackColor = Color.FromArgb(41, 128, 185);
-            btnHome.FlatAppearance.BorderSize = 0;
-            btnHome.FlatStyle = FlatStyle.Flat;
-            btnHome.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnHome.ForeColor = Color.White;
-            btnHome.Location = new Point(3, 169);
-            btnHome.Name = "btnHome";
-            btnHome.Size = new Size(194, 46);
-            btnHome.TabIndex = 3;
-            btnHome.Text = "Giá sách";
-            btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnHome.ForeColor = System.Drawing.Color.White;
+            this.btnHome.Location = new System.Drawing.Point(3, 146);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(166, 40);
+            this.btnHome.TabIndex = 3;
+            this.btnHome.Text = "Giá sách";
+            this.btnHome.UseVisualStyleBackColor = false;
             // 
             // btnQuanLySach
             // 
-            btnQuanLySach.BackColor = Color.FromArgb(41, 128, 185);
-            btnQuanLySach.FlatAppearance.BorderSize = 0;
-            btnQuanLySach.FlatStyle = FlatStyle.Flat;
-            btnQuanLySach.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnQuanLySach.ForeColor = Color.White;
-            btnQuanLySach.Location = new Point(3, 225);
-            btnQuanLySach.Name = "btnQuanLySach";
-            btnQuanLySach.Size = new Size(194, 46);
-            btnQuanLySach.TabIndex = 4;
-            btnQuanLySach.Text = "Sách Của Tôi";
-            btnQuanLySach.UseVisualStyleBackColor = false;
-            btnQuanLySach.Click += btnQuanLySach_Click;
+            this.btnQuanLySach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnQuanLySach.FlatAppearance.BorderSize = 0;
+            this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
+            this.btnQuanLySach.Location = new System.Drawing.Point(3, 195);
+            this.btnQuanLySach.Name = "btnQuanLySach";
+            this.btnQuanLySach.Size = new System.Drawing.Size(166, 40);
+            this.btnQuanLySach.TabIndex = 4;
+            this.btnQuanLySach.Text = "Sách Của Tôi";
+            this.btnQuanLySach.UseVisualStyleBackColor = false;
+            this.btnQuanLySach.Click += new System.EventHandler(this.btnQuanLySach_Click_1);
             // 
             // lblTitle
             // 
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            lblTitle.ForeColor = SystemColors.Control;
-            lblTitle.Location = new Point(37, 107);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(131, 37);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "Thư Viện";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblTitle.Location = new System.Drawing.Point(21, 93);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(131, 37);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Thư Viện";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(52, 73, 94);
-            panel1.Controls.Add(btnSignOut);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(lblTitle);
-            panel1.Controls.Add(btnHome);
-            panel1.Controls.Add(btnQuanLySach);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 561);
-            panel1.TabIndex = 4;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel1.Controls.Add(this.btnSignOut);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.lblTitle);
+            this.panel1.Controls.Add(this.btnHome);
+            this.panel1.Controls.Add(this.btnQuanLySach);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(171, 486);
+            this.panel1.TabIndex = 4;
             // 
             // btnSignOut
             // 
-            btnSignOut.BackColor = Color.FromArgb(41, 128, 185);
-            btnSignOut.FlatAppearance.BorderSize = 0;
-            btnSignOut.FlatStyle = FlatStyle.Flat;
-            btnSignOut.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnSignOut.ForeColor = Color.White;
-            btnSignOut.Location = new Point(3, 503);
-            btnSignOut.Name = "btnSignOut";
-            btnSignOut.Size = new Size(194, 46);
-            btnSignOut.TabIndex = 10;
-            btnSignOut.Text = "Đăng xuất";
-            btnSignOut.UseVisualStyleBackColor = false;
-            btnSignOut.Click += btnSignOut_Click;
+            this.btnSignOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnSignOut.FlatAppearance.BorderSize = 0;
+            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSignOut.ForeColor = System.Drawing.Color.White;
+            this.btnSignOut.Location = new System.Drawing.Point(3, 436);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Size = new System.Drawing.Size(166, 40);
+            this.btnSignOut.TabIndex = 10;
+            this.btnSignOut.Text = "Đăng xuất";
+            this.btnSignOut.UseVisualStyleBackColor = false;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(191, 92);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(164, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // panelContent
             // 
-            panelContent.Controls.Add(dgvBooks);
-            panelContent.Controls.Add(panelContentHeader);
-            panelContent.Dock = DockStyle.Fill;
-            panelContent.Location = new Point(200, 0);
-            panelContent.Name = "panelContent";
-            panelContent.Size = new Size(808, 561);
-            panelContent.TabIndex = 7;
+            this.panelContent.Controls.Add(this.dgvBooks);
+            this.panelContent.Controls.Add(this.panelContentHeader);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(171, 0);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(693, 486);
+            this.panelContent.TabIndex = 7;
             // 
             // panelContentHeader
             // 
-            panelContentHeader.BackColor = Color.FromArgb(41, 128, 185);
-            panelContentHeader.Controls.Add(lblContentHeader);
-            panelContentHeader.Dock = DockStyle.Top;
-            panelContentHeader.Location = new Point(0, 0);
-            panelContentHeader.Name = "panelContentHeader";
-            panelContentHeader.Size = new Size(808, 60);
-            panelContentHeader.TabIndex = 0;
+            this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelContentHeader.Controls.Add(this.lblContentHeader);
+            this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelContentHeader.Name = "panelContentHeader";
+            this.panelContentHeader.Size = new System.Drawing.Size(693, 52);
+            this.panelContentHeader.TabIndex = 0;
             // 
             // lblContentHeader
             // 
-            lblContentHeader.AutoSize = true;
-            lblContentHeader.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblContentHeader.ForeColor = Color.White;
-            lblContentHeader.Location = new Point(15, 15);
-            lblContentHeader.Name = "lblContentHeader";
-            lblContentHeader.Size = new Size(105, 30);
-            lblContentHeader.TabIndex = 0;
-            lblContentHeader.Text = "Kho sách";
+            this.lblContentHeader.AutoSize = true;
+            this.lblContentHeader.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblContentHeader.ForeColor = System.Drawing.Color.White;
+            this.lblContentHeader.Location = new System.Drawing.Point(13, 13);
+            this.lblContentHeader.Name = "lblContentHeader";
+            this.lblContentHeader.Size = new System.Drawing.Size(105, 30);
+            this.lblContentHeader.TabIndex = 0;
+            this.lblContentHeader.Text = "Kho sách";
             // 
             // MainUserForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 561);
-            Controls.Add(panelContent);
-            Controls.Add(panel1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            MinimumSize = new Size(1024, 548);
-            Name = "MainUserForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Liberate";
-            FormClosed += MainUserForm_FormClosed;
-            ((System.ComponentModel.ISupportInitialize)dgvBooks).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panelContent.ResumeLayout(false);
-            panelContentHeader.ResumeLayout(false);
-            panelContentHeader.PerformLayout();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(864, 486);
+            this.Controls.Add(this.panelContent);
+            this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(880, 480);
+            this.Name = "MainUserForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Liberate";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelContent.ResumeLayout(false);
+            this.panelContentHeader.ResumeLayout(false);
+            this.panelContentHeader.PerformLayout();
+            this.ResumeLayout(false);
+
         }
         internal Button btnSignOut;
     }

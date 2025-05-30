@@ -17,19 +17,6 @@ namespace Library
             SetActiveButton(btnQuanLySach);
         }
 
-        private void dgvBooks_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                dgvBooks.Cursor = Cursors.Hand;
-            }
-        }
-
-        private void dgvBooks_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            dgvBooks.Cursor = Cursors.Default;
-        }
-
         private void SetActiveButton(Button activeButton)
         {
             foreach (Control control in panel1.Controls)
@@ -43,13 +30,6 @@ namespace Library
             {
                 activeButton.BackColor = PrimaryColor;
             }
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            var mainUserForm = new MainUserForm();
-            mainUserForm.Show();
-            this.Close();
         }
 
         private void LoadBooks()
@@ -116,6 +96,13 @@ namespace Library
             }
         }
 
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            var mainForm = new MainUserForm();
+            mainForm.Show();
+            this.Close();
+        }
+
         private void btnSignOut_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -125,11 +112,6 @@ namespace Library
                 f.Show();
                 this.Close();
             }
-        }
-
-        private void UserBooks_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
     }
 }
