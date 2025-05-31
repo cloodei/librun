@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminBorrowDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>adminBorrowDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Books\Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +125,17 @@
     <EmbeddedResource Include="User\UserBooks.resx">
       <DependentUpon>UserBooks.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="adminBorrowDataSet.xsc">
+      <DependentUpon>adminBorrowDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="adminBorrowDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>adminBorrowDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="adminBorrowDataSet.xss">
+      <DependentUpon>adminBorrowDataSet.xsd</DependentUpon>
+    </None>
     <None Include="assets\1-11-512.webp" />
     <None Include="assets\stuff.webp" />
     <None Include="Properties\Settings.settings">

@@ -24,22 +24,16 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowRequests));
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerDetails = new System.Windows.Forms.SplitContainer();
             this.dgvBorrowedBooks = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblBookId = new System.Windows.Forms.Label();
-            this.txtBookId = new System.Windows.Forms.TextBox();
-            this.lblUserId = new System.Windows.Forms.Label();
-            this.txtUserId = new System.Windows.Forms.TextBox();
+            this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adminBorrowDataSet = new librun.adminBorrowDataSet();
             this.lblBorrowDate = new System.Windows.Forms.Label();
             this.dtpBorrowDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
@@ -50,12 +44,21 @@ namespace Library
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
+            this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
+            this.ten_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
             this.splitContainerDetails.Panel1.SuspendLayout();
             this.splitContainerDetails.Panel2.SuspendLayout();
             this.splitContainerDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowedBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).BeginInit();
             this.panelContentHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -85,14 +88,8 @@ namespace Library
             // splitContainerDetails.Panel2
             // 
             this.splitContainerDetails.Panel2.BackColor = System.Drawing.Color.Khaki;
-            this.splitContainerDetails.Panel2.Controls.Add(this.lblBookId);
-            this.splitContainerDetails.Panel2.Controls.Add(this.txtBookId);
-            this.splitContainerDetails.Panel2.Controls.Add(this.lblUserId);
-            this.splitContainerDetails.Panel2.Controls.Add(this.txtUserId);
             this.splitContainerDetails.Panel2.Controls.Add(this.lblBorrowDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.dtpBorrowDate);
-            this.splitContainerDetails.Panel2.Controls.Add(this.lblDueDate);
-            this.splitContainerDetails.Panel2.Controls.Add(this.dtpDueDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.btnUpdate);
             this.splitContainerDetails.Size = new System.Drawing.Size(837, 509);
             this.splitContainerDetails.SplitterDistance = 347;
@@ -100,13 +97,18 @@ namespace Library
             // 
             // dgvBorrowedBooks
             // 
+            this.dgvBorrowedBooks.AllowUserToAddRows = false;
+            this.dgvBorrowedBooks.AllowUserToDeleteRows = false;
+            this.dgvBorrowedBooks.AutoGenerateColumns = false;
             this.dgvBorrowedBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBorrowedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBorrowedBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
+            this.ten_user,
+            this.user_id,
+            this.ten_sach,
+            this.book_id,
+            this.ngaymuonDataGridViewTextBoxColumn});
+            this.dgvBorrowedBooks.DataSource = this.bORROWBindingSource;
             this.dgvBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBorrowedBooks.Location = new System.Drawing.Point(0, 0);
             this.dgvBorrowedBooks.MultiSelect = false;
@@ -115,108 +117,43 @@ namespace Library
             this.dgvBorrowedBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBorrowedBooks.Size = new System.Drawing.Size(837, 347);
             this.dgvBorrowedBooks.TabIndex = 0;
+            this.dgvBorrowedBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowedBooks_CellClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // bORROWBindingSource
             // 
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.bORROWBindingSource.DataMember = "BORROW";
+            this.bORROWBindingSource.DataSource = this.adminBorrowDataSetBindingSource;
             // 
-            // dataGridViewTextBoxColumn2
+            // adminBorrowDataSetBindingSource
             // 
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.adminBorrowDataSetBindingSource.DataSource = this.adminBorrowDataSet;
+            this.adminBorrowDataSetBindingSource.Position = 0;
             // 
-            // dataGridViewTextBoxColumn3
+            // adminBorrowDataSet
             // 
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // lblBookId
-            // 
-            this.lblBookId.AutoSize = true;
-            this.lblBookId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblBookId.Location = new System.Drawing.Point(10, 15);
-            this.lblBookId.Name = "lblBookId";
-            this.lblBookId.Size = new System.Drawing.Size(66, 18);
-            this.lblBookId.TabIndex = 1;
-            this.lblBookId.Text = "Book ID:";
-            // 
-            // txtBookId
-            // 
-            this.txtBookId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBookId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.txtBookId.Location = new System.Drawing.Point(112, 15);
-            this.txtBookId.Name = "txtBookId";
-            this.txtBookId.Size = new System.Drawing.Size(563, 24);
-            this.txtBookId.TabIndex = 2;
-            // 
-            // lblUserId
-            // 
-            this.lblUserId.AutoSize = true;
-            this.lblUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblUserId.Location = new System.Drawing.Point(10, 45);
-            this.lblUserId.Name = "lblUserId";
-            this.lblUserId.Size = new System.Drawing.Size(62, 18);
-            this.lblUserId.TabIndex = 3;
-            this.lblUserId.Text = "User ID:";
-            // 
-            // txtUserId
-            // 
-            this.txtUserId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.txtUserId.Location = new System.Drawing.Point(112, 45);
-            this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(563, 24);
-            this.txtUserId.TabIndex = 4;
+            this.adminBorrowDataSet.DataSetName = "adminBorrowDataSet";
+            this.adminBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblBorrowDate
             // 
             this.lblBorrowDate.AutoSize = true;
-            this.lblBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblBorrowDate.Location = new System.Drawing.Point(10, 75);
+            this.lblBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblBorrowDate.Location = new System.Drawing.Point(9, 25);
             this.lblBorrowDate.Name = "lblBorrowDate";
-            this.lblBorrowDate.Size = new System.Drawing.Size(96, 18);
+            this.lblBorrowDate.Size = new System.Drawing.Size(113, 24);
             this.lblBorrowDate.TabIndex = 5;
-            this.lblBorrowDate.Text = "Borrow Date:";
+            this.lblBorrowDate.Text = "Ngày mượn:";
             // 
             // dtpBorrowDate
             // 
             this.dtpBorrowDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.dtpBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.dtpBorrowDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBorrowDate.Location = new System.Drawing.Point(112, 75);
+            this.dtpBorrowDate.Location = new System.Drawing.Point(127, 24);
             this.dtpBorrowDate.Name = "dtpBorrowDate";
-            this.dtpBorrowDate.Size = new System.Drawing.Size(563, 24);
+            this.dtpBorrowDate.Size = new System.Drawing.Size(561, 29);
             this.dtpBorrowDate.TabIndex = 6;
-            // 
-            // lblDueDate
-            // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.lblDueDate.Location = new System.Drawing.Point(10, 105);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(74, 18);
-            this.lblDueDate.TabIndex = 7;
-            this.lblDueDate.Text = "Due Date:";
-            // 
-            // dtpDueDate
-            // 
-            this.dtpDueDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.dtpDueDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDueDate.Location = new System.Drawing.Point(112, 105);
-            this.dtpDueDate.Name = "dtpDueDate";
-            this.dtpDueDate.Size = new System.Drawing.Size(563, 24);
-            this.dtpDueDate.TabIndex = 8;
             // 
             // btnUpdate
             // 
@@ -225,12 +162,13 @@ namespace Library
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(695, 42);
+            this.btnUpdate.Location = new System.Drawing.Point(694, 12);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(130, 50);
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // panelContentHeader
             // 
@@ -282,7 +220,7 @@ namespace Library
             this.btnSignOut.TabIndex = 9;
             this.btnSignOut.Text = "Đăng xuất";
             this.btnSignOut.UseVisualStyleBackColor = false;
-            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click_1);
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // lblTitle
             // 
@@ -350,6 +288,40 @@ namespace Library
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 
+            // bORROWTableAdapter
+            // 
+            this.bORROWTableAdapter.ClearBeforeFill = true;
+            // 
+            // ten_user
+            // 
+            this.ten_user.DataPropertyName = "ten_user";
+            this.ten_user.HeaderText = "Tên người dùng";
+            this.ten_user.Name = "ten_user";
+            // 
+            // user_id
+            // 
+            this.user_id.DataPropertyName = "user_id";
+            this.user_id.HeaderText = "user_id";
+            this.user_id.Name = "user_id";
+            // 
+            // ten_sach
+            // 
+            this.ten_sach.DataPropertyName = "ten_sach";
+            this.ten_sach.HeaderText = "Tên sách";
+            this.ten_sach.Name = "ten_sach";
+            // 
+            // book_id
+            // 
+            this.book_id.DataPropertyName = "book_id";
+            this.book_id.HeaderText = "book_id";
+            this.book_id.Name = "book_id";
+            // 
+            // ngaymuonDataGridViewTextBoxColumn
+            // 
+            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
+            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
+            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            // 
             // BorrowRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,6 +334,7 @@ namespace Library
             this.Name = "BorrowRequests";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.Load += new System.EventHandler(this.BorrowRequests_Load);
             this.panelContent.ResumeLayout(false);
             this.splitContainerDetails.Panel1.ResumeLayout(false);
             this.splitContainerDetails.Panel2.ResumeLayout(false);
@@ -369,6 +342,9 @@ namespace Library
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).EndInit();
             this.splitContainerDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowedBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).EndInit();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -389,18 +365,17 @@ namespace Library
         internal Button btnQuanLyNguoiDung;
         private SplitContainer splitContainerDetails;
         private DataGridView dgvBorrowedBooks;
-        private Label lblBookId;
-        private TextBox txtBookId;
-        private Label lblUserId;
-        private TextBox txtUserId;
         private Label lblBorrowDate;
         private DateTimePicker dtpBorrowDate;
-        private Label lblDueDate;
-        private DateTimePicker dtpDueDate;
         private Button btnUpdate;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private librun.adminBorrowDataSet adminBorrowDataSet;
+        private BindingSource adminBorrowDataSetBindingSource;
+        private BindingSource bORROWBindingSource;
+        private librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter bORROWTableAdapter;
+        private DataGridViewTextBoxColumn ten_user;
+        private DataGridViewTextBoxColumn user_id;
+        private DataGridViewTextBoxColumn ten_sach;
+        private DataGridViewTextBoxColumn book_id;
+        private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
     }
 }
