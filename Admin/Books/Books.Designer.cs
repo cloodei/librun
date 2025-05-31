@@ -47,7 +47,7 @@ namespace Library
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(171, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(693, 486);
+            this.panelContent.Size = new System.Drawing.Size(837, 561);
             this.panelContent.TabIndex = 9;
             // 
             // panelContentHeader
@@ -57,7 +57,7 @@ namespace Library
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
             this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(693, 52);
+            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
             // 
             // lblContentHeader
@@ -83,7 +83,7 @@ namespace Library
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 486);
+            this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 8;
             // 
             // btnSignOut
@@ -94,7 +94,7 @@ namespace Library
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(2, 423);
+            this.btnSignOut.Location = new System.Drawing.Point(2, 498);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(166, 51);
             this.btnSignOut.TabIndex = 9;
@@ -172,11 +172,11 @@ namespace Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 486);
+            this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(880, 480);
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "Books";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";

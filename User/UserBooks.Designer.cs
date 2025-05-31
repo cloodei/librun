@@ -33,9 +33,9 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
             this.dgvBooks = new System.Windows.Forms.DataGridView();
             this.btnHome = new System.Windows.Forms.Button();
@@ -58,38 +58,38 @@ namespace Library
             // 
             this.dgvBooks.AllowUserToAddRows = false;
             this.dgvBooks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBooks.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBooks.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBooks.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBooks.Location = new System.Drawing.Point(0, 52);
             this.dgvBooks.Name = "dgvBooks";
             this.dgvBooks.ReadOnly = true;
             this.dgvBooks.RowHeadersVisible = false;
             this.dgvBooks.RowHeadersWidth = 51;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.dgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.dgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBooks.Size = new System.Drawing.Size(693, 434);
+            this.dgvBooks.Size = new System.Drawing.Size(837, 509);
             this.dgvBooks.TabIndex = 2;
             // 
             // btnHome
@@ -144,7 +144,7 @@ namespace Library
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 486);
+            this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 4;
             // 
             // btnSignOut
@@ -155,7 +155,7 @@ namespace Library
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(3, 436);
+            this.btnSignOut.Location = new System.Drawing.Point(3, 511);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(166, 40);
             this.btnSignOut.TabIndex = 11;
@@ -180,7 +180,7 @@ namespace Library
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(171, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(693, 486);
+            this.panelContent.Size = new System.Drawing.Size(837, 561);
             this.panelContent.TabIndex = 7;
             // 
             // panelContentHeader
@@ -190,7 +190,7 @@ namespace Library
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
             this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(693, 52);
+            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
             // 
             // lblContentHeader
@@ -208,11 +208,11 @@ namespace Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 486);
+            this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(880, 480);
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "UserBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
