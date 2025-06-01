@@ -6,7 +6,6 @@ namespace Library
     partial class UserBooks
     {
         private System.ComponentModel.IContainer components = null;
-        internal System.Windows.Forms.DataGridView dgvBooks;
         internal System.Windows.Forms.Button btnHome;
         internal System.Windows.Forms.Button btnQuanLySach;
         private System.Windows.Forms.Label lblTitle;
@@ -33,11 +32,8 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -45,52 +41,35 @@ namespace Library
             this.btnSignOut = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvUsersBooks = new System.Windows.Forms.DataGridView();
+            this.tieu_de = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_tac_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.the_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngay_xuat_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noi_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBorrowedBooksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBorrowedBooks = new librun.userBorrowedBooks();
+            this.btnReturnBooks = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
+            this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsersBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooksBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooks)).BeginInit();
             this.panelContentHeader.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dgvBooks
-            // 
-            this.dgvBooks.AllowUserToAddRows = false;
-            this.dgvBooks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(80)))), ((int)(((byte)(87)))));
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBooks.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBooks.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvBooks.Location = new System.Drawing.Point(0, 52);
-            this.dgvBooks.Name = "dgvBooks";
-            this.dgvBooks.ReadOnly = true;
-            this.dgvBooks.RowHeadersVisible = false;
-            this.dgvBooks.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(15, 5, 15, 5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.dgvBooks.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBooks.Size = new System.Drawing.Size(837, 509);
-            this.dgvBooks.TabIndex = 2;
             // 
             // btnHome
             // 
@@ -175,13 +154,147 @@ namespace Library
             // 
             // panelContent
             // 
-            this.panelContent.Controls.Add(this.dgvBooks);
+            this.panelContent.Controls.Add(this.splitContainer1);
             this.panelContent.Controls.Add(this.panelContentHeader);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(171, 0);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(837, 561);
             this.panelContent.TabIndex = 7;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 52);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dgvUsersBooks);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.splitContainer1.Panel2.Controls.Add(this.btnReturnBooks);
+            this.splitContainer1.Size = new System.Drawing.Size(837, 509);
+            this.splitContainer1.SplitterDistance = 439;
+            this.splitContainer1.TabIndex = 1;
+            // 
+            // dgvUsersBooks
+            // 
+            this.dgvUsersBooks.AllowUserToAddRows = false;
+            this.dgvUsersBooks.AllowUserToDeleteRows = false;
+            this.dgvUsersBooks.AutoGenerateColumns = false;
+            this.dgvUsersBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsersBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tieu_de,
+            this.ten_tac_gia,
+            this.the_loai,
+            this.ngay_xuat_ban,
+            this.ngaymuonDataGridViewTextBoxColumn,
+            this.id,
+            this.noi_dung});
+            this.dgvUsersBooks.DataSource = this.bORROWBindingSource;
+            this.dgvUsersBooks.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvUsersBooks.Location = new System.Drawing.Point(0, 0);
+            this.dgvUsersBooks.Name = "dgvUsersBooks";
+            this.dgvUsersBooks.ReadOnly = true;
+            this.dgvUsersBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsersBooks.Size = new System.Drawing.Size(837, 439);
+            this.dgvUsersBooks.TabIndex = 0;
+            this.dgvUsersBooks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersBooks_CellContentDoubleClick);
+            this.dgvUsersBooks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersBooks_CellContentDoubleClick);
+            this.dgvUsersBooks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvUsersBooks_KeyDown);
+            // 
+            // tieu_de
+            // 
+            this.tieu_de.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tieu_de.DataPropertyName = "tieu_de";
+            this.tieu_de.HeaderText = "Tiêu đề sách";
+            this.tieu_de.Name = "tieu_de";
+            this.tieu_de.ReadOnly = true;
+            // 
+            // ten_tac_gia
+            // 
+            this.ten_tac_gia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ten_tac_gia.DataPropertyName = "ten_tac_gia";
+            this.ten_tac_gia.HeaderText = "Tên tác giả";
+            this.ten_tac_gia.Name = "ten_tac_gia";
+            this.ten_tac_gia.ReadOnly = true;
+            // 
+            // the_loai
+            // 
+            this.the_loai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.the_loai.DataPropertyName = "the_loai";
+            this.the_loai.HeaderText = "Thể loại";
+            this.the_loai.Name = "the_loai";
+            this.the_loai.ReadOnly = true;
+            // 
+            // ngay_xuat_ban
+            // 
+            this.ngay_xuat_ban.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngay_xuat_ban.DataPropertyName = "ngay_xuat_ban";
+            this.ngay_xuat_ban.HeaderText = "Ngày xuất bản";
+            this.ngay_xuat_ban.Name = "ngay_xuat_ban";
+            this.ngay_xuat_ban.ReadOnly = true;
+            // 
+            // ngaymuonDataGridViewTextBoxColumn
+            // 
+            this.ngaymuonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
+            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
+            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // noi_dung
+            // 
+            this.noi_dung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noi_dung.DataPropertyName = "noi_dung";
+            this.noi_dung.HeaderText = "noi_dung";
+            this.noi_dung.Name = "noi_dung";
+            this.noi_dung.ReadOnly = true;
+            this.noi_dung.Visible = false;
+            // 
+            // bORROWBindingSource
+            // 
+            this.bORROWBindingSource.DataMember = "BORROW";
+            this.bORROWBindingSource.DataSource = this.userBorrowedBooksBindingSource;
+            // 
+            // userBorrowedBooksBindingSource
+            // 
+            this.userBorrowedBooksBindingSource.DataSource = this.userBorrowedBooks;
+            this.userBorrowedBooksBindingSource.Position = 0;
+            // 
+            // userBorrowedBooks
+            // 
+            this.userBorrowedBooks.DataSetName = "userBorrowedBooks";
+            this.userBorrowedBooks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnReturnBooks
+            // 
+            this.btnReturnBooks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturnBooks.BackColor = System.Drawing.Color.Orange;
+            this.btnReturnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturnBooks.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnReturnBooks.ForeColor = System.Drawing.Color.White;
+            this.btnReturnBooks.Location = new System.Drawing.Point(300, 14);
+            this.btnReturnBooks.Name = "btnReturnBooks";
+            this.btnReturnBooks.Size = new System.Drawing.Size(251, 40);
+            this.btnReturnBooks.TabIndex = 0;
+            this.btnReturnBooks.Text = "Trả sách";
+            this.btnReturnBooks.UseVisualStyleBackColor = false;
+            this.btnReturnBooks.Click += new System.EventHandler(this.btnReturnBooks_Click);
             // 
             // panelContentHeader
             // 
@@ -204,6 +317,10 @@ namespace Library
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Sách đã mượn";
             // 
+            // bORROWTableAdapter
+            // 
+            this.bORROWTableAdapter.ClearBeforeFill = true;
+            // 
             // UserBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,16 +333,40 @@ namespace Library
             this.Name = "UserBooks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            this.Load += new System.EventHandler(this.UserBooks_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContent.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsersBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooksBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooks)).EndInit();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
         internal Button btnSignOut;
+        private SplitContainer splitContainer1;
+        private DataGridView dgvUsersBooks;
+        private BindingSource userBorrowedBooksBindingSource;
+        private librun.userBorrowedBooks userBorrowedBooks;
+        private Button btnReturnBooks;
+        private DataGridViewTextBoxColumn useridDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn bookidDataGridViewTextBoxColumn;
+        private BindingSource bORROWBindingSource;
+        private librun.userBorrowedBooksTableAdapters.BORROWTableAdapter bORROWTableAdapter;
+        private DataGridViewTextBoxColumn tieu_de;
+        private DataGridViewTextBoxColumn ten_tac_gia;
+        private DataGridViewTextBoxColumn the_loai;
+        private DataGridViewTextBoxColumn ngay_xuat_ban;
+        private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn noi_dung;
     }
 }

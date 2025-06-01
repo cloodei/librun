@@ -25,6 +25,8 @@ namespace Library
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowRequests));
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerDetails = new System.Windows.Forms.SplitContainer();
@@ -101,6 +103,14 @@ namespace Library
             this.dgvBorrowedBooks.AllowUserToDeleteRows = false;
             this.dgvBorrowedBooks.AutoGenerateColumns = false;
             this.dgvBorrowedBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBorrowedBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBorrowedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBorrowedBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ten_user,
@@ -109,6 +119,14 @@ namespace Library
             this.book_id,
             this.ngaymuonDataGridViewTextBoxColumn});
             this.dgvBorrowedBooks.DataSource = this.bORROWBindingSource;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBorrowedBooks.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBorrowedBooks.Location = new System.Drawing.Point(0, 0);
             this.dgvBorrowedBooks.MultiSelect = false;
@@ -297,30 +315,37 @@ namespace Library
             this.ten_user.DataPropertyName = "ten_user";
             this.ten_user.HeaderText = "Tên người dùng";
             this.ten_user.Name = "ten_user";
+            this.ten_user.ReadOnly = true;
             // 
             // user_id
             // 
             this.user_id.DataPropertyName = "user_id";
             this.user_id.HeaderText = "user_id";
             this.user_id.Name = "user_id";
+            this.user_id.ReadOnly = true;
+            this.user_id.Visible = false;
             // 
             // ten_sach
             // 
             this.ten_sach.DataPropertyName = "ten_sach";
             this.ten_sach.HeaderText = "Tên sách";
             this.ten_sach.Name = "ten_sach";
+            this.ten_sach.ReadOnly = true;
             // 
             // book_id
             // 
             this.book_id.DataPropertyName = "book_id";
             this.book_id.HeaderText = "book_id";
             this.book_id.Name = "book_id";
+            this.book_id.ReadOnly = true;
+            this.book_id.Visible = false;
             // 
             // ngaymuonDataGridViewTextBoxColumn
             // 
             this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
             this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
             this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // BorrowRequests
             // 

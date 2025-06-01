@@ -1,5 +1,6 @@
-﻿using System;
-using System.Data;
+﻿using librun.adminBorrowDataSetTableAdapters;
+using librun.User;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,8 +14,6 @@ namespace Library
         public UserBooks()
         {
             InitializeComponent();
-            LoadBooks();
-            SetActiveButton(btnQuanLySach);
         }
 
         private void SetActiveButton(Button activeButton)
@@ -32,70 +31,6 @@ namespace Library
             }
         }
 
-        private void LoadBooks()
-        {
-            var books = new[]
-            {
-                new {
-                    Cover = (Image)null,
-                    Title = "The Great Gatsby",
-                    Author = "F. Scott Fitzgerald",
-                    Published = new DateTime(1925, 4, 10),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "To Kill a Mockingbird",
-                    Author = "Harper Lee",
-                    Published = new DateTime(1960, 7, 11),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "1984",
-                    Author = "George Orwell",
-                    Published = new DateTime(1949, 6, 8),
-                    Status = "Borrowed",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "Pride and Prejudice",
-                    Author = "Jane Austen",
-                    Published = new DateTime(1813, 1, 28),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "The Hobbit",
-                    Author = "J.R.R. Tolkien",
-                    Published = new DateTime(1937, 9, 21),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-            };
-
-            dgvBooks.DataSource = books;
-
-            if (dgvBooks.Columns.Count > 0)
-            {
-                dgvBooks.Columns["Published"].DefaultCellStyle.Format = "d MMM yyyy";
-                dgvBooks.Columns["Status"].DefaultCellStyle.ForeColor = Color.Green;
-                dgvBooks.Columns["Status"].DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                dgvBooks.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.ForeColor = PrimaryColor;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Underline);
-                dgvBooks.Columns["Cover"].Width = 80;
-                dgvBooks.Columns["Status"].Width = 100;
-                dgvBooks.Columns["Actions"].Width = 120;
-                dgvBooks.Columns["Published"].Width = 120;
-            }
-        }
-
         private void btnHome_Click(object sender, EventArgs e)
         {
             var mainForm = new MainUserForm();
@@ -108,9 +43,57 @@ namespace Library
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                global.SignOut();
+
                 var f = new SignInForm();
                 f.Show();
                 this.Close();
+            }
+        }
+
+        private void UserBooks_Load(object sender, EventArgs e)
+        {
+            SetActiveButton(btnQuanLySach);
+            bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
+        }
+
+        private void btnReturnBooks_Click(object sender, EventArgs e)
+        {
+            var n = dgvUsersBooks.SelectedRows.Count;
+            if (n == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một sách để trả.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var confirm = MessageBox.Show("Bạn có muốn trả " + n + " sách đã mượn?", "Xác nhận trả sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                for (int i = 0; i < n; ++i)
+                {
+                    long bookId = Convert.ToInt64(dgvUsersBooks.SelectedRows[i].Cells["id"].Value);
+                    bORROWTableAdapter.Delete(global.user_id, bookId);
+                }
+                bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
+                MessageBox.Show("Đã trả sách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dgvUsersBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                var readForm = new ReadBookForm(dgvUsersBooks.Rows[e.RowIndex].Cells["tieu_de"].Value.ToString(), dgvUsersBooks.Rows[e.RowIndex].Cells["noi_dung"].Value.ToString());
+                readForm.ShowDialog();
+            }
+        }
+
+        private void dgvUsersBooks_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.A)
+            {
+                dgvUsersBooks.SelectAll();
+                e.Handled = true;
             }
         }
     }

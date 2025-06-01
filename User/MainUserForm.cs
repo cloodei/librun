@@ -108,6 +108,8 @@ namespace Library
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                global.SignOut();
+
                 var f = new SignInForm();
                 f.Show();
                 this.Close();

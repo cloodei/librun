@@ -27,94 +27,100 @@ namespace Library
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignInForm));
-            lblUsername = new Label();
-            lblPassword = new Label();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
-            btnSignIn = new Button();
-            btnSwitchToSignUp = new Button();
-            SuspendLayout();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnSignIn = new System.Windows.Forms.Button();
+            this.btnSwitchToSignUp = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // lblUsername
             // 
-            lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(58, 30);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(32, 15);
-            lblUsername.TabIndex = 0;
-            lblUsername.Text = "Tên: ";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(50, 26);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(32, 13);
+            this.lblUsername.TabIndex = 0;
+            this.lblUsername.Text = "Tên: ";
             // 
             // lblPassword
             // 
-            lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(27, 70);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(63, 15);
-            lblPassword.TabIndex = 2;
-            lblPassword.Text = "Mật khẩu: ";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(23, 61);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(58, 13);
+            this.lblPassword.TabIndex = 2;
+            this.lblPassword.Text = "Mật khẩu: ";
             // 
             // txtUsername
             // 
-            txtUsername.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtUsername.Location = new Point(110, 27);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(223, 23);
-            txtUsername.TabIndex = 1;
+            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUsername.Location = new System.Drawing.Point(94, 23);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(192, 20);
+            this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            txtPassword.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtPassword.Location = new Point(110, 67);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(223, 23);
-            txtPassword.TabIndex = 3;
+            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Location = new System.Drawing.Point(94, 58);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(192, 20);
+            this.txtPassword.TabIndex = 3;
             // 
             // btnSignIn
             // 
-            btnSignIn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnSignIn.Location = new Point(110, 110);
-            btnSignIn.Name = "btnSignIn";
-            btnSignIn.Size = new Size(223, 30);
-            btnSignIn.TabIndex = 4;
-            btnSignIn.Text = "Đăng nhập";
-            btnSignIn.UseVisualStyleBackColor = true;
-            btnSignIn.Click += btnSignIn_Click;
+            this.btnSignIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSignIn.Location = new System.Drawing.Point(94, 95);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(191, 26);
+            this.btnSignIn.TabIndex = 4;
+            this.btnSignIn.Text = "Đăng nhập";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
             // 
             // btnSwitchToSignUp
             // 
-            btnSwitchToSignUp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnSwitchToSignUp.Location = new Point(110, 207);
-            btnSwitchToSignUp.Name = "btnSwitchToSignUp";
-            btnSwitchToSignUp.Padding = new Padding(4, 0, 1, 0);
-            btnSwitchToSignUp.Size = new Size(182, 30);
-            btnSwitchToSignUp.TabIndex = 5;
-            btnSwitchToSignUp.Text = "Chuyển sang đăng kí";
-            btnSwitchToSignUp.UseVisualStyleBackColor = true;
-            btnSwitchToSignUp.Click += btnSwitchToSignUp_Click;
+            this.btnSwitchToSignUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSwitchToSignUp.Location = new System.Drawing.Point(94, 179);
+            this.btnSwitchToSignUp.Name = "btnSwitchToSignUp";
+            this.btnSwitchToSignUp.Padding = new System.Windows.Forms.Padding(3, 0, 1, 0);
+            this.btnSwitchToSignUp.Size = new System.Drawing.Size(156, 26);
+            this.btnSwitchToSignUp.TabIndex = 5;
+            this.btnSwitchToSignUp.Text = "Chuyển sang đăng ký";
+            this.btnSwitchToSignUp.UseVisualStyleBackColor = true;
+            this.btnSwitchToSignUp.Click += new System.EventHandler(this.btnSwitchToSignUp_Click);
             // 
             // SignInForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
-            ClientSize = new Size(393, 249);
-            Controls.Add(btnSwitchToSignUp);
-            Controls.Add(btnSignIn);
-            Controls.Add(txtPassword);
-            Controls.Add(lblPassword);
-            Controls.Add(txtUsername);
-            Controls.Add(lblUsername);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximizeBox = false;
-            MaximumSize = new Size(800, 600);
-            MinimumSize = new Size(384, 288);
-            Name = "SignInForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "lib dn";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(337, 216);
+            this.Controls.Add(this.btnSwitchToSignUp);
+            this.Controls.Add(this.btnSignIn);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.lblUsername);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(688, 525);
+            this.MinimumSize = new System.Drawing.Size(331, 255);
+            this.Name = "SignInForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.SignInForm_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
         #endregion
     }
