@@ -212,6 +212,7 @@ namespace Library
             this.dgvBooks.Size = new System.Drawing.Size(985, 484);
             this.dgvBooks.TabIndex = 4;
             this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChonSach);
+            this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
             // 
             // idDataGridViewTextBoxColumn
             // 

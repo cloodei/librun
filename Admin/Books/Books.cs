@@ -12,7 +12,7 @@ namespace Library
     {
         private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
-        public string ketnoi = "Data Source=.;Initial Catalog=lib;Integrated Security=True;Trust Server Certificate=True";
+        public string ketnoi = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=lib;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         public SqlConnection connection;
         public Books()
         {

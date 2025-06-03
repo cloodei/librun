@@ -889,14 +889,13 @@ namespace librun.userBooksDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ngay_xuat_ban", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ngay_xuat_ban", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[BOOKS] ([tieu_de], [ten_tac_gia], [noi_dung], [the_loai], [ngay_xuat_ban]) VALUES (@tieu_de, @ten_tac_gia, @noi_dung, @the_loai, @ngay_xuat_ban);
-SELECT id, tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban FROM BOOKS WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO BORROW\r\n                  (user_id, book_id, ngay_muon)\r\nVALUES (@use" +
+                "r_id,@book_id,@ngay_muon); \r\nSELECT id, tieu_de, ten_tac_gia, noi_dung, the_loai" +
+                ", ngay_xuat_ban FROM BOOKS WHERE (id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tieu_de", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tieu_de", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ten_tac_gia", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ten_tac_gia", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@noi_dung", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "noi_dung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@the_loai", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "the_loai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ngay_xuat_ban", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ngay_xuat_ban", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@user_id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "user_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@book_id", global::System.Data.SqlDbType.BigInt, 8, global::System.Data.ParameterDirection.Input, 0, 0, "book_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ngay_muon", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "ngay_muon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[BOOKS] SET [tieu_de] = @tieu_de, [ten_tac_gia] = @ten_tac_gia, [noi_dung] = @noi_dung, [the_loai] = @the_loai, [ngay_xuat_ban] = @ngay_xuat_ban WHERE (([id] = @Original_id) AND ([tieu_de] = @Original_tieu_de) AND ([ten_tac_gia] = @Original_ten_tac_gia) AND ([the_loai] = @Original_the_loai) AND ([ngay_xuat_ban] = @Original_ngay_xuat_ban));
@@ -1031,32 +1030,15 @@ SELECT id, tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban FROM BOOKS WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string tieu_de, string ten_tac_gia, string noi_dung, string the_loai, System.DateTime ngay_xuat_ban) {
-            if ((tieu_de == null)) {
-                throw new global::System.ArgumentNullException("tieu_de");
+        public virtual int Insert(long user_id, long book_id, string ngay_muon) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((long)(user_id));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((long)(book_id));
+            if ((ngay_muon == null)) {
+                throw new global::System.ArgumentNullException("ngay_muon");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(tieu_de));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ngay_muon));
             }
-            if ((ten_tac_gia == null)) {
-                throw new global::System.ArgumentNullException("ten_tac_gia");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(ten_tac_gia));
-            }
-            if ((noi_dung == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(noi_dung));
-            }
-            if ((the_loai == null)) {
-                throw new global::System.ArgumentNullException("the_loai");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(the_loai));
-            }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(ngay_xuat_ban));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

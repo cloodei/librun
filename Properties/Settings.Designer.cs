@@ -33,5 +33,16 @@ namespace librun.Properties {
                 return ((string)(this["libConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=lib;Integrated Security=True;E" +
+            "ncrypt=False;TrustServerCertificate=True")]
+        public string mainConnectionString {
+            get {
+                return ((string)(this["mainConnectionString"]));
+            }
+        }
     }
 }

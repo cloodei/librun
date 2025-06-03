@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -52,11 +53,39 @@ namespace Library
             }
         }
 
+        SqlDataAdapter da;
+        DataTable dt = new DataTable();
+        void handleBooks()
+        {
+            da.Fill(dt);
+
+            for (int i = 0; i < dgvBooks.RowCount; ++i)
+            {
+                for (int j = 0; j < dt.Rows.Count; ++j)
+                {
+                    if (dgvBooks.Rows[i].Cells[0].Value.ToString() == dt.Rows[j][0].ToString())
+                    {
+                        dgvBooks.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
+                        break;
+                    }
+                }
+            }
+        }
+
         private void MainUserForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'userBooksDataSet.BOOKS' table. You can move, or remove it, as needed.
             this.bOOKSTableAdapter2.Fill(this.userBooksDataSet.BOOKS);
             dgvBooks.ClearSelection();
+
+            da = new SqlDataAdapter(
+                "SELECT book_id " +
+                "FROM BORROW " +
+                "WHERE user_id = " + global.user_id,
+                librun.Properties.Settings.Default.mainConnectionString
+            );
+
+            handleBooks();
         }
 
         int so_sach_da_chon = 0;
@@ -65,6 +94,11 @@ namespace Library
             if (e.RowIndex >= 0) // Đảm bảo không phải click vào header
             {
                 var row = dgvBooks.Rows[e.RowIndex];
+
+                if (row.DefaultCellStyle.BackColor == Color.LightGray)
+                {
+                    return;
+                }
 
                 // Kiểm tra xem hàng đang có màu đánh dấu hay không
                 if (row.DefaultCellStyle.BackColor == Color.LightBlue)
@@ -101,9 +135,18 @@ namespace Library
         private void button1_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show($"Bạn đã chọn {so_sach_da_chon} quyển sách. Bạn có chắc chắn muốn mượn những sách này không?", "Xác nhận mượn sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
-        }
+            for (int i = 0; i<dgvBooks.RowCount; i++)
+            {
+                if (dgvBooks.Rows[i].DefaultCellStyle.BackColor == Color.LightBlue)
+                {
+                    bOOKSTableAdapter2.Insert(global.user_id, Convert.ToInt64(dgvBooks.Rows[i].Cells[0].Value), DateTime.Now.ToString());
+                    dgvBooks.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
 
+            handleBooks();
+        }
+         
         private void NhanEnter(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -114,6 +157,11 @@ namespace Library
                 // Gọi hàm tìm kiếm
                 TimSach(sender, EventArgs.Empty);
             }
+        }
+
+        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //pass
         }
     }
 }
