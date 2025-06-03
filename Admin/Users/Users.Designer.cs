@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Library
@@ -26,6 +26,27 @@ namespace Library
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.panelContent = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgv_quan_ly_nguoi_dung = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txt_email = new System.Windows.Forms.TextBox();
+            this.txt_ten = new System.Windows.Forms.TextBox();
+            this.lbl_email = new System.Windows.Forms.Label();
+            this.lbl_ten = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.cbb_trang_thai = new System.Windows.Forms.ComboBox();
+            this.txt_mat_khau = new System.Windows.Forms.TextBox();
+            this.lbl_trang_thai = new System.Windows.Forms.Label();
+            this.lbl_mat_khau = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_xoa = new System.Windows.Forms.Button();
+            this.btn_sua = new System.Windows.Forms.Button();
+            this.btn_them = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txt_tim_kiem = new System.Windows.Forms.TextBox();
+            this.lbl_tim_kiem = new System.Windows.Forms.Label();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,6 +57,17 @@ namespace Library
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
             this.panelContent.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_quan_ly_nguoi_dung)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panelContentHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -43,12 +75,240 @@ namespace Library
             // 
             // panelContent
             // 
+            this.panelContent.Controls.Add(this.panel2);
             this.panelContent.Controls.Add(this.panelContentHeader);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(171, 0);
+            this.panelContent.Location = new System.Drawing.Point(228, 0);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(837, 561);
+            this.panelContent.Size = new System.Drawing.Size(1113, 690);
             this.panelContent.TabIndex = 9;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.splitContainer1);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1113, 626);
+            this.panel2.TabIndex = 1;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 81);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dgv_quan_ly_nguoi_dung);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Size = new System.Drawing.Size(1113, 545);
+            this.splitContainer1.SplitterDistance = 270;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // dgv_quan_ly_nguoi_dung
+            // 
+            this.dgv_quan_ly_nguoi_dung.AllowUserToAddRows = false;
+            this.dgv_quan_ly_nguoi_dung.AllowUserToDeleteRows = false;
+            this.dgv_quan_ly_nguoi_dung.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_quan_ly_nguoi_dung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_quan_ly_nguoi_dung.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_quan_ly_nguoi_dung.Location = new System.Drawing.Point(0, 0);
+            this.dgv_quan_ly_nguoi_dung.Name = "dgv_quan_ly_nguoi_dung";
+            this.dgv_quan_ly_nguoi_dung.ReadOnly = true;
+            this.dgv_quan_ly_nguoi_dung.RowHeadersWidth = 51;
+            this.dgv_quan_ly_nguoi_dung.RowTemplate.Height = 24;
+            this.dgv_quan_ly_nguoi_dung.Size = new System.Drawing.Size(1113, 270);
+            this.dgv_quan_ly_nguoi_dung.TabIndex = 0;
+            this.dgv_quan_ly_nguoi_dung.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_quan_ly_nguoi_dung_CellClick);
+            this.dgv_quan_ly_nguoi_dung.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_quan_ly_nguoi_dung_CellDoubleClick);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.69843F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.30157F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
+            this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel6, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1113, 271);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txt_email);
+            this.panel3.Controls.Add(this.txt_ten);
+            this.panel3.Controls.Add(this.lbl_email);
+            this.panel3.Controls.Add(this.lbl_ten);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(403, 265);
+            this.panel3.TabIndex = 0;
+            // 
+            // txt_email
+            // 
+            this.txt_email.Location = new System.Drawing.Point(110, 107);
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(272, 22);
+            this.txt_email.TabIndex = 3;
+            // 
+            // txt_ten
+            // 
+            this.txt_ten.Location = new System.Drawing.Point(110, 42);
+            this.txt_ten.Name = "txt_ten";
+            this.txt_ten.Size = new System.Drawing.Size(272, 22);
+            this.txt_ten.TabIndex = 2;
+            // 
+            // lbl_email
+            // 
+            this.lbl_email.AutoSize = true;
+            this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_email.Location = new System.Drawing.Point(26, 105);
+            this.lbl_email.Name = "lbl_email";
+            this.lbl_email.Size = new System.Drawing.Size(59, 22);
+            this.lbl_email.TabIndex = 1;
+            this.lbl_email.Text = "Email:";
+            // 
+            // lbl_ten
+            // 
+            this.lbl_ten.AutoSize = true;
+            this.lbl_ten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ten.Location = new System.Drawing.Point(38, 42);
+            this.lbl_ten.Name = "lbl_ten";
+            this.lbl_ten.Size = new System.Drawing.Size(47, 22);
+            this.lbl_ten.TabIndex = 0;
+            this.lbl_ten.Text = "Tên:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.cbb_trang_thai);
+            this.panel5.Controls.Add(this.txt_mat_khau);
+            this.panel5.Controls.Add(this.lbl_trang_thai);
+            this.panel5.Controls.Add(this.lbl_mat_khau);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(412, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(407, 265);
+            this.panel5.TabIndex = 1;
+            // 
+            // cbb_trang_thai
+            // 
+            this.cbb_trang_thai.FormattingEnabled = true;
+            this.cbb_trang_thai.Location = new System.Drawing.Point(121, 103);
+            this.cbb_trang_thai.Name = "cbb_trang_thai";
+            this.cbb_trang_thai.Size = new System.Drawing.Size(272, 24);
+            this.cbb_trang_thai.TabIndex = 5;
+            // 
+            // txt_mat_khau
+            // 
+            this.txt_mat_khau.Location = new System.Drawing.Point(121, 44);
+            this.txt_mat_khau.Name = "txt_mat_khau";
+            this.txt_mat_khau.Size = new System.Drawing.Size(272, 22);
+            this.txt_mat_khau.TabIndex = 4;
+            // 
+            // lbl_trang_thai
+            // 
+            this.lbl_trang_thai.AutoSize = true;
+            this.lbl_trang_thai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_trang_thai.Location = new System.Drawing.Point(18, 107);
+            this.lbl_trang_thai.Name = "lbl_trang_thai";
+            this.lbl_trang_thai.Size = new System.Drawing.Size(97, 22);
+            this.lbl_trang_thai.TabIndex = 1;
+            this.lbl_trang_thai.Text = "Trạng thái:";
+            // 
+            // lbl_mat_khau
+            // 
+            this.lbl_mat_khau.AutoSize = true;
+            this.lbl_mat_khau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_mat_khau.Location = new System.Drawing.Point(27, 42);
+            this.lbl_mat_khau.Name = "lbl_mat_khau";
+            this.lbl_mat_khau.Size = new System.Drawing.Size(88, 22);
+            this.lbl_mat_khau.TabIndex = 0;
+            this.lbl_mat_khau.Text = "Mật khẩu:";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btn_xoa);
+            this.panel6.Controls.Add(this.btn_sua);
+            this.panel6.Controls.Add(this.btn_them);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(825, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(285, 265);
+            this.panel6.TabIndex = 2;
+            // 
+            // btn_xoa
+            // 
+            this.btn_xoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoa.Location = new System.Drawing.Point(80, 135);
+            this.btn_xoa.Name = "btn_xoa";
+            this.btn_xoa.Size = new System.Drawing.Size(127, 42);
+            this.btn_xoa.TabIndex = 2;
+            this.btn_xoa.Text = "Xóa";
+            this.btn_xoa.UseVisualStyleBackColor = true;
+            // 
+            // btn_sua
+            // 
+            this.btn_sua.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sua.Location = new System.Drawing.Point(80, 74);
+            this.btn_sua.Name = "btn_sua";
+            this.btn_sua.Size = new System.Drawing.Size(127, 42);
+            this.btn_sua.TabIndex = 1;
+            this.btn_sua.Text = "Sửa";
+            this.btn_sua.UseVisualStyleBackColor = true;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
+            // 
+            // btn_them
+            // 
+            this.btn_them.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_them.Location = new System.Drawing.Point(80, 13);
+            this.btn_them.Name = "btn_them";
+            this.btn_them.Size = new System.Drawing.Size(127, 42);
+            this.btn_them.TabIndex = 0;
+            this.btn_them.Text = "Thêm";
+            this.btn_them.UseVisualStyleBackColor = true;
+            this.btn_them.Click += new System.EventHandler(this.btn_them_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txt_tim_kiem);
+            this.panel4.Controls.Add(this.lbl_tim_kiem);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1113, 81);
+            this.panel4.TabIndex = 1;
+            // 
+            // txt_tim_kiem
+            // 
+            this.txt_tim_kiem.Location = new System.Drawing.Point(371, 26);
+            this.txt_tim_kiem.Name = "txt_tim_kiem";
+            this.txt_tim_kiem.Size = new System.Drawing.Size(455, 22);
+            this.txt_tim_kiem.TabIndex = 4;
+            this.txt_tim_kiem.TextChanged += new System.EventHandler(this.txt_tim_kiem_TextChanged);
+            // 
+            // lbl_tim_kiem
+            // 
+            this.lbl_tim_kiem.AutoSize = true;
+            this.lbl_tim_kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tim_kiem.Location = new System.Drawing.Point(251, 24);
+            this.lbl_tim_kiem.Name = "lbl_tim_kiem";
+            this.lbl_tim_kiem.Size = new System.Drawing.Size(87, 22);
+            this.lbl_tim_kiem.TabIndex = 4;
+            this.lbl_tim_kiem.Text = "Tìm kiếm:";
             // 
             // panelContentHeader
             // 
@@ -56,8 +316,9 @@ namespace Library
             this.panelContentHeader.Controls.Add(this.lblContentHeader);
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelContentHeader.Margin = new System.Windows.Forms.Padding(4);
             this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
+            this.panelContentHeader.Size = new System.Drawing.Size(1113, 64);
             this.panelContentHeader.TabIndex = 0;
             // 
             // lblContentHeader
@@ -65,9 +326,10 @@ namespace Library
             this.lblContentHeader.AutoSize = true;
             this.lblContentHeader.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblContentHeader.ForeColor = System.Drawing.Color.White;
-            this.lblContentHeader.Location = new System.Drawing.Point(13, 13);
+            this.lblContentHeader.Location = new System.Drawing.Point(17, 16);
+            this.lblContentHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblContentHeader.Name = "lblContentHeader";
-            this.lblContentHeader.Size = new System.Drawing.Size(220, 30);
+            this.lblContentHeader.Size = new System.Drawing.Size(270, 37);
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Quản lý người dùng";
             // 
@@ -82,8 +344,9 @@ namespace Library
             this.panel1.Controls.Add(this.btnQuanLyNguoiDung);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 561);
+            this.panel1.Size = new System.Drawing.Size(228, 690);
             this.panel1.TabIndex = 8;
             // 
             // btnSignOut
@@ -94,9 +357,10 @@ namespace Library
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(2, 498);
+            this.btnSignOut.Location = new System.Drawing.Point(3, 613);
+            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(166, 51);
+            this.btnSignOut.Size = new System.Drawing.Size(221, 63);
             this.btnSignOut.TabIndex = 9;
             this.btnSignOut.Text = "Đăng xuất";
             this.btnSignOut.UseVisualStyleBackColor = false;
@@ -107,9 +371,10 @@ namespace Library
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Location = new System.Drawing.Point(34, 93);
+            this.lblTitle.Location = new System.Drawing.Point(45, 114);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(102, 37);
+            this.lblTitle.Size = new System.Drawing.Size(127, 46);
             this.lblTitle.TabIndex = 8;
             this.lblTitle.Text = "Admin";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -121,9 +386,10 @@ namespace Library
             this.btnYeuCauMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnYeuCauMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnYeuCauMuonSach.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(2, 149);
+            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(3, 183);
+            this.btnYeuCauMuonSach.Margin = new System.Windows.Forms.Padding(4);
             this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
-            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
+            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(221, 63);
             this.btnYeuCauMuonSach.TabIndex = 7;
             this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn/trả sách";
             this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
@@ -132,9 +398,10 @@ namespace Library
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(4, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(219, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -146,9 +413,10 @@ namespace Library
             this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLySach.Location = new System.Drawing.Point(2, 206);
+            this.btnQuanLySach.Location = new System.Drawing.Point(3, 254);
+            this.btnQuanLySach.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuanLySach.Name = "btnQuanLySach";
-            this.btnQuanLySach.Size = new System.Drawing.Size(166, 51);
+            this.btnQuanLySach.Size = new System.Drawing.Size(221, 63);
             this.btnQuanLySach.TabIndex = 4;
             this.btnQuanLySach.Text = "Quản lý sách";
             this.btnQuanLySach.UseVisualStyleBackColor = false;
@@ -161,26 +429,43 @@ namespace Library
             this.btnQuanLyNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(2, 263);
+            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(3, 324);
+            this.btnQuanLyNguoiDung.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
-            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(166, 51);
+            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(221, 63);
             this.btnQuanLyNguoiDung.TabIndex = 5;
             this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             // 
             // Users
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 561);
+            this.ClientSize = new System.Drawing.Size(1341, 690);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1024, 600);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1359, 728);
             this.Name = "Users";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.Load += new System.EventHandler(this.Users_Load);
             this.panelContent.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_quan_ly_nguoi_dung)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -199,5 +484,26 @@ namespace Library
         private PictureBox pictureBox1;
         internal Button btnQuanLySach;
         internal Button btnQuanLyNguoiDung;
+        private Panel panel2;
+        private Panel panel4;
+        private SplitContainer splitContainer1;
+        private DataGridView dgv_quan_ly_nguoi_dung;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
+        private Label lbl_email;
+        private Label lbl_ten;
+        private Panel panel5;
+        private Label lbl_trang_thai;
+        private Label lbl_mat_khau;
+        private Panel panel6;
+        private TextBox txt_email;
+        private TextBox txt_ten;
+        private ComboBox cbb_trang_thai;
+        private TextBox txt_mat_khau;
+        private Button btn_them;
+        private Button btn_xoa;
+        private Button btn_sua;
+        private TextBox txt_tim_kiem;
+        private Label lbl_tim_kiem;
     }
 }
