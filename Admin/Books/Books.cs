@@ -14,6 +14,7 @@ namespace Library
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
         public string ketnoi = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=lib;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
         public SqlConnection connection;
+        public DataGridViewCellEventArgs a;
         public Books()
         {
             InitializeComponent();
@@ -61,6 +62,12 @@ namespace Library
         }
         private void Books_Load(object sender, EventArgs e)
         {
+            button1.Enabled = true;
+            button1.Visible = true;
+            button2.Enabled = false;
+            button2.Visible = false;
+            button3.Enabled = false;
+            button3.Visible = false;
             connection = new SqlConnection(ketnoi);
             connection.Open();
             string sql = "SELECT * FROM BOOKS";
@@ -152,16 +159,32 @@ namespace Library
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            button1.Enabled = false;
+            button1.Visible = false;
+            button2.Enabled = true;
+            button2.Visible = true;
+            button3.Enabled = true;
+            button3.Visible = true;
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+            textBox1.Text = row.Cells[1].Value.ToString(); // IDsach
+            textBox2.Text = row.Cells[2].Value.ToString(); // TenSach
+            textBox3.Text = row.Cells[3].Value.ToString(); // TacGia
+            textBox4.Text = row.Cells[4].Value.ToString(); // TheLoai
+                                                           //textBox5.Text = row.Cells[4].Value.ToString(); // SoLuong
+            dateTimePicker1.Value = Convert.ToDateTime(row.Cells[5].Value);
+            a = e;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DataGridViewRow row = dataGridView1.Rows[a.RowIndex];
+            int ide = Convert.ToInt32(row.Cells[0].Value);
             connection = new SqlConnection(this.ketnoi);
             connection.Open();
-            string sql = "UPDATE BOOKS SET tieu_de = @ten, ten_tac_gia = @tac, noi_dung = @nd, theloai = @tl, ngay_xuat_ban = @nxb WHERE id = @id";
+            string sql = "UPDATE BOOKS SET tieu_de = @ten, ten_tac_gia = @tac, noi_dung = @nd, the_loai = @tl, ngay_xuat_ban = @nxb WHERE id = @id";
             using (SqlCommand com = new SqlCommand(sql, connection))
             {
+                com.Parameters.AddWithValue("@id", ide);
                 com.Parameters.AddWithValue("@ten", textBox1.Text);
                 com.Parameters.AddWithValue("@tac", textBox2.Text);
                 com.Parameters.AddWithValue("@nd", textBox3.Text);
@@ -180,14 +203,16 @@ namespace Library
             }
             button1.Enabled = true;
             button1.Visible = true; // Show the add button after updating
-            button2.Enabled = false; // Disable the update button after updating
-            button2.Visible = false; // Hide the update button after updating
+            button2.Enabled = false;
+            button2.Visible = false;
+            button3.Enabled = false;
+            button3.Visible = false;
             Books_Load(sender, e); // Refresh the DataGridView
-            textBox1.Text = ""; // Clear the ID textbox after adding
-            textBox2.Text = ""; // Clear the book name textbox after adding
-            textBox3.Text = ""; // Clear the author textbox after adding
-            textBox4.Text = ""; // Clear the genre textbox after adding
-            dateTimePicker1.Value = DateTime.Now; // Reset the date picker to current date
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -253,6 +278,33 @@ namespace Library
                 dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
                 */
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.Rows[a.RowIndex];
+            int ide = Convert.ToInt32(row.Cells[0].Value);
+            connection = new SqlConnection(this.ketnoi);
+            connection.Open();
+            string sql = "DELETE FROM BOOKS WHERE id = @masach";
+            using (var command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@masach", ide);
+                command.ExecuteNonQuery();
+            }
+            MessageBox.Show("Xóa thành công");
+            button1.Enabled = true;
+            button1.Visible = true; // Show the add button after updating
+            button2.Enabled = false;
+            button2.Visible = false;
+            button3.Enabled = false;
+            button3.Visible = false;
+            Books_Load(sender, e); // Refresh the DataGridView
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
         }
     }
 }
