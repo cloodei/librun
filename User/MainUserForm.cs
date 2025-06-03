@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -13,7 +13,6 @@ namespace Library
         public MainUserForm()
         {
             InitializeComponent();
-            LoadBooks();
             SetActiveButton(btnHome);
         }
 
@@ -32,69 +31,8 @@ namespace Library
             }
         }
 
-        private void LoadBooks()
-        {
-            var books = new[]
-            {
-                new {
-                    Cover = (Image)null,
-                    Title = "The Great Gatsby",
-                    Author = "F. Scott Fitzgerald",
-                    Published = new DateTime(1925, 4, 10),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "To Kill a Mockingbird",
-                    Author = "Harper Lee",
-                    Published = new DateTime(1960, 7, 11),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "1984",
-                    Author = "George Orwell",
-                    Published = new DateTime(1949, 6, 8),
-                    Status = "Borrowed",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "Pride and Prejudice",
-                    Author = "Jane Austen",
-                    Published = new DateTime(1813, 1, 28),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-                new {
-                    Cover = (Image)null,
-                    Title = "The Hobbit",
-                    Author = "J.R.R. Tolkien",
-                    Published = new DateTime(1937, 9, 21),
-                    Status = "Available",
-                    Actions = "View Details"
-                },
-            };
+        private object books;
 
-            dgvBooks.DataSource = books;
-
-            if (dgvBooks.Columns.Count > 0)
-            {
-                dgvBooks.Columns["Published"].DefaultCellStyle.Format = "d MMM yyyy";
-                dgvBooks.Columns["Status"].DefaultCellStyle.ForeColor = Color.Green;
-                dgvBooks.Columns["Status"].DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
-                dgvBooks.Columns["Status"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.ForeColor = PrimaryColor;
-                dgvBooks.Columns["Actions"].DefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Underline);
-                dgvBooks.Columns["Cover"].Width = 80;
-                dgvBooks.Columns["Status"].Width = 100;
-                dgvBooks.Columns["Actions"].Width = 120;
-                dgvBooks.Columns["Published"].Width = 120;
-            }
-        }
 
         private void btnQuanLySach_Click_1(object sender, EventArgs e)
         {
@@ -108,11 +46,73 @@ namespace Library
             var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                global.SignOut();
-
                 var f = new SignInForm();
                 f.Show();
                 this.Close();
+            }
+        }
+
+        private void MainUserForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'userBooksDataSet.BOOKS' table. You can move, or remove it, as needed.
+            this.bOOKSTableAdapter2.Fill(this.userBooksDataSet.BOOKS);
+            dgvBooks.ClearSelection();
+        }
+
+        int so_sach_da_chon = 0;
+        private void ChonSach(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Đảm bảo không phải click vào header
+            {
+                var row = dgvBooks.Rows[e.RowIndex];
+
+                // Kiểm tra xem hàng đang có màu đánh dấu hay không
+                if (row.DefaultCellStyle.BackColor == Color.LightBlue)
+                {
+                    // Hủy đánh dấu
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    so_sach_da_chon--;
+                }
+                else
+                {
+                    // Đánh dấu
+                    row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    so_sach_da_chon++;
+                }
+            }
+            dgvBooks.ClearSelection();
+        }
+
+        private void TimSach(object sender, EventArgs e)
+        {
+            string searchText = tbTimSach.Text.Trim();
+            string safeSearch = searchText.Replace("'", "''");
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                bOOKSBindingSource2.Filter = "";
+            }
+            else
+            {
+                bOOKSBindingSource2.Filter = $"tieu_de LIKE '%{safeSearch}%'";
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show($"Bạn đã chọn {so_sach_da_chon} quyển sách. Bạn có chắc chắn muốn mượn những sách này không?", "Xác nhận mượn sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            
+        }
+
+        private void NhanEnter(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Ngăn không cho phát ra tiếng "bíp" khi nhấn Enter
+                e.Handled = true;
+
+                // Gọi hàm tìm kiếm
+                TimSach(sender, EventArgs.Empty);
             }
         }
     }
