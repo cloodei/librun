@@ -49,7 +49,7 @@ namespace Library
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(86, 17);
+            this.lblTitle.Location = new System.Drawing.Point(124, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(138, 25);
             this.lblTitle.TabIndex = 0;
@@ -97,7 +97,7 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUsername.Location = new System.Drawing.Point(129, 58);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(129, 20);
+            this.txtUsername.Size = new System.Drawing.Size(216, 20);
             this.txtUsername.TabIndex = 2;
             // 
             // txtEmail
@@ -106,7 +106,7 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Location = new System.Drawing.Point(129, 93);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(129, 20);
+            this.txtEmail.Size = new System.Drawing.Size(216, 20);
             this.txtEmail.TabIndex = 4;
             // 
             // txtPassword
@@ -116,7 +116,7 @@ namespace Library
             this.txtPassword.Location = new System.Drawing.Point(129, 127);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(129, 20);
+            this.txtPassword.Size = new System.Drawing.Size(216, 20);
             this.txtPassword.TabIndex = 6;
             // 
             // txtConfirmPassword
@@ -126,16 +126,16 @@ namespace Library
             this.txtConfirmPassword.Location = new System.Drawing.Point(129, 162);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(129, 20);
+            this.txtConfirmPassword.Size = new System.Drawing.Size(216, 20);
             this.txtConfirmPassword.TabIndex = 8;
             // 
             // btnSignUp
             // 
             this.btnSignUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSignUp.Location = new System.Drawing.Point(129, 199);
+            this.btnSignUp.Location = new System.Drawing.Point(129, 196);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(129, 26);
+            this.btnSignUp.Size = new System.Drawing.Size(216, 29);
             this.btnSignUp.TabIndex = 9;
             this.btnSignUp.Text = "Đăng ký";
             this.btnSignUp.UseVisualStyleBackColor = true;
@@ -147,7 +147,7 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSwitchToSignIn.Location = new System.Drawing.Point(86, 250);
             this.btnSwitchToSignIn.Name = "btnSwitchToSignIn";
-            this.btnSwitchToSignIn.Size = new System.Drawing.Size(133, 26);
+            this.btnSwitchToSignIn.Size = new System.Drawing.Size(192, 26);
             this.btnSwitchToSignIn.TabIndex = 10;
             this.btnSwitchToSignIn.Text = "Chuyển sang đăng nhập";
             this.btnSwitchToSignIn.UseVisualStyleBackColor = true;
@@ -155,10 +155,11 @@ namespace Library
             // 
             // SignUpForm
             // 
+            this.AcceptButton = this.btnSignUp;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(309, 286);
+            this.ClientSize = new System.Drawing.Size(368, 286);
             this.Controls.Add(this.btnSwitchToSignIn);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.txtConfirmPassword);
@@ -173,10 +174,12 @@ namespace Library
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(384, 288);
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng ký";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
+            this.Resize += new System.EventHandler(this.SignUpForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

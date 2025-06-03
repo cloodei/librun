@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Windows.Forms;
@@ -11,6 +12,10 @@ namespace Library
         public SignUpForm()
         {
             InitializeComponent();
+
+            lblTitle.Location = new Point(
+                (this.ClientSize.Width - lblTitle.Width) / 2
+            );
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -66,7 +71,7 @@ namespace Library
 
             sqlcmd.Parameters.AddWithValue("@ten", txtUsername.Text);
             sqlcmd.Parameters.AddWithValue("@email", txtEmail.Text);
-            sqlcmd.Parameters.AddWithValue("@trang_thai", "OK");
+            sqlcmd.Parameters.AddWithValue("@trang_thai", "Hoạt động");
             sqlcmd.Parameters.AddWithValue("@mat_khau", txtPassword.Text);
 
             try
@@ -100,6 +105,10 @@ namespace Library
         private void SignUpForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SignUpForm_Resize(object sender, EventArgs e)
+        {
         }
     }
 }
