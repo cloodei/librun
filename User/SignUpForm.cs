@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -9,13 +10,14 @@ namespace Library
 {
     public partial class SignUpForm : Form
     {
+        SqlDataAdapter da;
+        DataTable dt = new DataTable();
+        SqlConnection conn = new SqlConnection(global.connectionString);
+
         public SignUpForm()
         {
             InitializeComponent();
-
-            lblTitle.Location = new Point(
-                (this.ClientSize.Width - lblTitle.Width) / 2
-            );
+            lblTitle.Location = new Point((this.ClientSize.Width - lblTitle.Width) / 2);
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -46,21 +48,19 @@ namespace Library
             }
             if (txtPassword.Text != txtConfirmPassword.Text)
             {
-                MessageBox.Show("Email không đúng", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Mật khẩu không khớp", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            foreach (var x in global.u_list)
-            {
-                if (x.email == txtEmail.Text)
-                {
-                    MessageBox.Show("Email đã tồn tại", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
+            da = new SqlDataAdapter("SELECT email FROM USERS WHERE email = N'" + txtEmail.Text + "'", conn);
+            dt.Clear();
+            da.Fill(dt);
 
-            var conn = new SqlConnection(global.connectionString);
-            conn.Open();
+            if (dt.Rows.Count > 0)
+            {
+                MessageBox.Show("Email đã tồn tại", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             var sqlcmd = new SqlCommand(
                 @"INSERT INTO USERS (ten, email, trang_thai, mat_khau) 
@@ -77,13 +77,7 @@ namespace Library
             try
             {
                 global.user_id = (long)sqlcmd.ExecuteScalar();
-                global.u_list.Append(new ucheck
-                {
-                    id = global.user_id,
-                    password = txtPassword.Text,
-                    email = txtEmail.Text,
-                    username = txtUsername.Text
-                });
+                global.locked = false;
 
                 var u = new MainUserForm();
                 u.Show();
@@ -104,7 +98,7 @@ namespace Library
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
-
+            conn.Open();
         }
 
         private void SignUpForm_Resize(object sender, EventArgs e)

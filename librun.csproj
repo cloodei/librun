@@ -177,6 +177,12 @@
     <Compile Include="Admin\Requests\BorrowRequests.Designer.cs">
       <DependentUpon>BorrowRequests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Users\AlertBorrowed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Users\AlertBorrowed.Designer.cs">
+      <DependentUpon>AlertBorrowed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Users\Users.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Requests\BorrowRequests.resx">
       <DependentUpon>BorrowRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Users\AlertBorrowed.resx">
+      <DependentUpon>AlertBorrowed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>

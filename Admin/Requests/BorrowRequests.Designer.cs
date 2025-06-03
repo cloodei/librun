@@ -31,6 +31,11 @@ namespace Library
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerDetails = new System.Windows.Forms.SplitContainer();
             this.dgvBorrowedBooks = new System.Windows.Forms.DataGridView();
+            this.ten_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adminBorrowDataSet = new librun.adminBorrowDataSet();
@@ -47,11 +52,6 @@ namespace Library
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
             this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
-            this.ten_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
             this.splitContainerDetails.Panel1.SuspendLayout();
@@ -89,7 +89,7 @@ namespace Library
             // 
             // splitContainerDetails.Panel2
             // 
-            this.splitContainerDetails.Panel2.BackColor = System.Drawing.Color.Khaki;
+            this.splitContainerDetails.Panel2.BackColor = System.Drawing.Color.Cornsilk;
             this.splitContainerDetails.Panel2.Controls.Add(this.lblBorrowDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.dtpBorrowDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.btnUpdate);
@@ -105,7 +105,7 @@ namespace Library
             this.dgvBorrowedBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -121,7 +121,7 @@ namespace Library
             this.dgvBorrowedBooks.DataSource = this.bORROWBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -136,6 +136,43 @@ namespace Library
             this.dgvBorrowedBooks.Size = new System.Drawing.Size(837, 347);
             this.dgvBorrowedBooks.TabIndex = 0;
             this.dgvBorrowedBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowedBooks_CellClick);
+            // 
+            // ten_user
+            // 
+            this.ten_user.DataPropertyName = "ten_user";
+            this.ten_user.HeaderText = "Tên người dùng";
+            this.ten_user.Name = "ten_user";
+            this.ten_user.ReadOnly = true;
+            // 
+            // user_id
+            // 
+            this.user_id.DataPropertyName = "user_id";
+            this.user_id.HeaderText = "user_id";
+            this.user_id.Name = "user_id";
+            this.user_id.ReadOnly = true;
+            this.user_id.Visible = false;
+            // 
+            // ten_sach
+            // 
+            this.ten_sach.DataPropertyName = "ten_sach";
+            this.ten_sach.HeaderText = "Tên sách";
+            this.ten_sach.Name = "ten_sach";
+            this.ten_sach.ReadOnly = true;
+            // 
+            // book_id
+            // 
+            this.book_id.DataPropertyName = "book_id";
+            this.book_id.HeaderText = "book_id";
+            this.book_id.Name = "book_id";
+            this.book_id.ReadOnly = true;
+            this.book_id.Visible = false;
+            // 
+            // ngaymuonDataGridViewTextBoxColumn
+            // 
+            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
+            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
+            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bORROWBindingSource
             // 
@@ -155,10 +192,10 @@ namespace Library
             // lblBorrowDate
             // 
             this.lblBorrowDate.AutoSize = true;
-            this.lblBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblBorrowDate.Location = new System.Drawing.Point(9, 25);
+            this.lblBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBorrowDate.Location = new System.Drawing.Point(14, 28);
             this.lblBorrowDate.Name = "lblBorrowDate";
-            this.lblBorrowDate.Size = new System.Drawing.Size(113, 24);
+            this.lblBorrowDate.Size = new System.Drawing.Size(93, 20);
             this.lblBorrowDate.TabIndex = 5;
             this.lblBorrowDate.Text = "Ngày mượn:";
             // 
@@ -166,17 +203,17 @@ namespace Library
             // 
             this.dtpBorrowDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.dtpBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBorrowDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBorrowDate.Location = new System.Drawing.Point(127, 24);
+            this.dtpBorrowDate.Location = new System.Drawing.Point(113, 23);
             this.dtpBorrowDate.Name = "dtpBorrowDate";
-            this.dtpBorrowDate.Size = new System.Drawing.Size(561, 29);
+            this.dtpBorrowDate.Size = new System.Drawing.Size(561, 26);
             this.dtpBorrowDate.TabIndex = 6;
             // 
             // btnUpdate
             // 
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
@@ -309,43 +346,6 @@ namespace Library
             // bORROWTableAdapter
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
-            // 
-            // ten_user
-            // 
-            this.ten_user.DataPropertyName = "ten_user";
-            this.ten_user.HeaderText = "Tên người dùng";
-            this.ten_user.Name = "ten_user";
-            this.ten_user.ReadOnly = true;
-            // 
-            // user_id
-            // 
-            this.user_id.DataPropertyName = "user_id";
-            this.user_id.HeaderText = "user_id";
-            this.user_id.Name = "user_id";
-            this.user_id.ReadOnly = true;
-            this.user_id.Visible = false;
-            // 
-            // ten_sach
-            // 
-            this.ten_sach.DataPropertyName = "ten_sach";
-            this.ten_sach.HeaderText = "Tên sách";
-            this.ten_sach.Name = "ten_sach";
-            this.ten_sach.ReadOnly = true;
-            // 
-            // book_id
-            // 
-            this.book_id.DataPropertyName = "book_id";
-            this.book_id.HeaderText = "book_id";
-            this.book_id.Name = "book_id";
-            this.book_id.ReadOnly = true;
-            this.book_id.Visible = false;
-            // 
-            // ngaymuonDataGridViewTextBoxColumn
-            // 
-            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
-            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
-            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
-            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // BorrowRequests
             // 

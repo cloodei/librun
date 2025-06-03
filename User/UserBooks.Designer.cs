@@ -34,6 +34,8 @@ namespace Library
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -57,6 +59,8 @@ namespace Library
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbTimSach = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -175,7 +179,7 @@ namespace Library
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Info;
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Cornsilk;
             this.splitContainer1.Panel2.Controls.Add(this.btnReturnBooks);
             this.splitContainer1.Size = new System.Drawing.Size(837, 509);
             this.splitContainer1.SplitterDistance = 439;
@@ -186,6 +190,14 @@ namespace Library
             this.dgvUsersBooks.AllowUserToAddRows = false;
             this.dgvUsersBooks.AllowUserToDeleteRows = false;
             this.dgvUsersBooks.AutoGenerateColumns = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsersBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvUsersBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsersBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tieu_de,
@@ -196,6 +208,14 @@ namespace Library
             this.id,
             this.noi_dung});
             this.dgvUsersBooks.DataSource = this.bORROWBindingSource;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsersBooks.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvUsersBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsersBooks.Location = new System.Drawing.Point(0, 0);
             this.dgvUsersBooks.Name = "dgvUsersBooks";
@@ -284,13 +304,13 @@ namespace Library
             // 
             this.btnReturnBooks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReturnBooks.BackColor = System.Drawing.Color.Orange;
+            this.btnReturnBooks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             this.btnReturnBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReturnBooks.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnReturnBooks.ForeColor = System.Drawing.Color.White;
-            this.btnReturnBooks.Location = new System.Drawing.Point(300, 14);
+            this.btnReturnBooks.Location = new System.Drawing.Point(331, 5);
             this.btnReturnBooks.Name = "btnReturnBooks";
-            this.btnReturnBooks.Size = new System.Drawing.Size(251, 40);
+            this.btnReturnBooks.Size = new System.Drawing.Size(196, 51);
             this.btnReturnBooks.TabIndex = 0;
             this.btnReturnBooks.Text = "Trả sách";
             this.btnReturnBooks.UseVisualStyleBackColor = false;
@@ -299,7 +319,9 @@ namespace Library
             // panelContentHeader
             // 
             this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelContentHeader.Controls.Add(this.label1);
             this.panelContentHeader.Controls.Add(this.lblContentHeader);
+            this.panelContentHeader.Controls.Add(this.tbTimSach);
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
             this.panelContentHeader.Name = "panelContentHeader";
@@ -320,6 +342,27 @@ namespace Library
             // bORROWTableAdapter
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(506, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Tìm sách";
+            // 
+            // tbTimSach
+            // 
+            this.tbTimSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTimSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimSach.Location = new System.Drawing.Point(589, 21);
+            this.tbTimSach.Name = "tbTimSach";
+            this.tbTimSach.Size = new System.Drawing.Size(236, 21);
+            this.tbTimSach.TabIndex = 4;
+            this.tbTimSach.TextChanged += new System.EventHandler(this.tbTimSach_TextChanged);
             // 
             // UserBooks
             // 
@@ -368,5 +411,7 @@ namespace Library
         private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn noi_dung;
+        private Label label1;
+        private TextBox tbTimSach;
     }
 }

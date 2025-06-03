@@ -1,9 +1,9 @@
+using librun;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using librun.Admin.Users;
 
 namespace Library
 {
@@ -58,12 +58,12 @@ namespace Library
                 this.Close();
             }
         }
-        string chuoiketnoi = "Data Source = (localdb)\\MSSQLLocalDB;" +
-            "Initial Catalog=lib;" +
-            "Integrated Security = True;";
+
+        string chuoiketnoi = global.connectionString;
         SqlConnection conn;
         SqlDataAdapter daQuanLyNguoiDung;
         DataTable dtQuanLyNguoiDung;
+
         private void Users_Load(object sender, EventArgs e)
         {
             conn = new SqlConnection(chuoiketnoi);
@@ -75,21 +75,17 @@ namespace Library
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
             dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
 
-            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
             dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
             dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
             dgv_quan_ly_nguoi_dung.Columns[3].HeaderText = "Mật khẩu";
             dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-
-            cbb_trang_thai.Items.Add("Hoạt động");
-            cbb_trang_thai.Items.Add("Khóa");
-
+            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
         }
+
         SqlCommand cmd;
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            //string sql = "insert into USERS values(N'"+txt_ten.Text+"', N'"+txt_email.Text+"', N'"+cbb_trang_thai.Text+"', N'"+txt_mat_khau.Text+"')";
             string sql = "INSERT INTO USERS VALUES(@ten, @email, @tt, @mk)";
             cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@ten", txt_ten.Text);
@@ -101,6 +97,7 @@ namespace Library
             dtQuanLyNguoiDung.Clear();
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
         }
+
         string email_current;
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -108,48 +105,54 @@ namespace Library
             txt_email.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[2].Value.ToString();
             txt_mat_khau.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[3].Value.ToString();
             cbb_trang_thai.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[4].Value.ToString();
-            email_current = txt_email.Text;
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            string sql = "update USERS " +
-                "set ten = N'"+txt_ten.Text+"', email = N'"+txt_email.Text+"', trang_thai = N'"+cbb_trang_thai.Text+"', mat_khau = N'"+txt_mat_khau.Text+"' " +
-                "where email = N'"+email_current+"'";
-            cmd = new SqlCommand(sql, conn);
+            cmd = new SqlCommand(
+                "UPDATE USERS SET ten = @t, email = @e, trang_thai = @tt, mat_khau = @m WHERE id = @i",
+                conn
+            );
+
+            cmd.Parameters.AddWithValue("@t", txt_ten.Text);
+            cmd.Parameters.AddWithValue("@e", txt_email.Text);
+            cmd.Parameters.AddWithValue("@tt", cbb_trang_thai.Text);
+            cmd.Parameters.AddWithValue("@m", txt_mat_khau.Text);
+            cmd.Parameters.AddWithValue("@i", dgv_quan_ly_nguoi_dung.CurrentRow.Cells["id"].Value.ToString());
             cmd.ExecuteNonQuery();
-            dtQuanLyNguoiDung.Clear();  
+
+            dtQuanLyNguoiDung.Clear();
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
         }
+
         SqlDataAdapter daTimKiem;
         private void txt_tim_kiem_TextChanged(object sender, EventArgs e)
         {
             string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai " +
                 "from USERS " +
                 "where ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%'";
+
             daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
             daTimKiem.Fill(dtQuanLyNguoiDung);
-
         }
+
         SqlDataAdapter daTBSach;
-        DataTable dtTBSach;
+        DataTable dtTBSach = new DataTable();
         private void dgv_quan_ly_nguoi_dung_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string userDClick = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[5].Value.ToString();
             string sql = "select B.id, B.tieu_de, BR.ngay_muon " +
                 "from BOOKS as B " +
                 "join BORROW as BR on B.id = BR.book_id " +
-                "where BR.user_id = "+userDClick+";";
-            daTBSach = new SqlDataAdapter( sql, conn);
-            dtTBSach = new DataTable();
+                "where BR.user_id = " + userDClick + ";";
+            daTBSach = new SqlDataAdapter(sql, conn);
+
+            dtTBSach.Clear();
             daTBSach.Fill(dtTBSach);
 
             var n = new AlertBorrowed(dtTBSach);
-
             n.ShowDialog();
-            
-            
         }
     }
 }

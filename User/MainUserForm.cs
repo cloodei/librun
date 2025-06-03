@@ -8,6 +8,11 @@ namespace Library
 {
     public partial class MainUserForm : Form
     {
+        SqlDataAdapter da;
+        DataTable dt = new DataTable();
+
+        int so_sach_da_chon = 0;
+
         private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
 
@@ -32,9 +37,6 @@ namespace Library
             }
         }
 
-        private object books;
-
-
         private void btnQuanLySach_Click_1(object sender, EventArgs e)
         {
             var s = new UserBooks();
@@ -52,11 +54,9 @@ namespace Library
                 this.Close();
             }
         }
-
-        SqlDataAdapter da;
-        DataTable dt = new DataTable();
         void handleBooks()
         {
+            dt.Clear();
             da.Fill(dt);
 
             for (int i = 0; i < dgvBooks.RowCount; ++i)
@@ -74,7 +74,6 @@ namespace Library
 
         private void MainUserForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'userBooksDataSet.BOOKS' table. You can move, or remove it, as needed.
             this.bOOKSTableAdapter2.Fill(this.userBooksDataSet.BOOKS);
             dgvBooks.ClearSelection();
 
@@ -88,10 +87,9 @@ namespace Library
             handleBooks();
         }
 
-        int so_sach_da_chon = 0;
         private void ChonSach(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // Đảm bảo không phải click vào header
+            if (e.RowIndex >= 0)
             {
                 var row = dgvBooks.Rows[e.RowIndex];
 
@@ -100,24 +98,56 @@ namespace Library
                     return;
                 }
 
-                // Kiểm tra xem hàng đang có màu đánh dấu hay không
                 if (row.DefaultCellStyle.BackColor == Color.LightBlue)
                 {
-                    // Hủy đánh dấu
                     row.DefaultCellStyle.BackColor = Color.White;
                     so_sach_da_chon--;
                 }
                 else
                 {
-                    // Đánh dấu
                     row.DefaultCellStyle.BackColor = Color.LightBlue;
                     so_sach_da_chon++;
                 }
             }
+
             dgvBooks.ClearSelection();
         }
 
-        private void TimSach(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (so_sach_da_chon == 0)
+            {
+                return;
+            }
+
+            if (global.locked)
+            {
+                MessageBox.Show("Bạn chưa được mượn sách do tài khoản của bạn đã bị khóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var result = MessageBox.Show($"Bạn đã chọn {so_sach_da_chon} quyển sách. Bạn có chắc chắn muốn mượn những sách này không?", "Xác nhận mượn sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                for (int i = 0; i < dgvBooks.RowCount; i++)
+                {
+                    if (dgvBooks.Rows[i].DefaultCellStyle.BackColor == Color.LightBlue)
+                    {
+                        bOOKSTableAdapter2.Insert(global.user_id, Convert.ToInt64(dgvBooks.Rows[i].Cells[0].Value), DateTime.Now.ToString());
+                        dgvBooks.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
+
+                handleBooks();
+                so_sach_da_chon = 0;
+            }
+        }
+
+        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void tbTimSach_TextChanged(object sender, EventArgs e)
         {
             string searchText = tbTimSach.Text.Trim();
             string safeSearch = searchText.Replace("'", "''");
@@ -130,38 +160,8 @@ namespace Library
             {
                 bOOKSBindingSource2.Filter = $"tieu_de LIKE '%{safeSearch}%'";
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show($"Bạn đã chọn {so_sach_da_chon} quyển sách. Bạn có chắc chắn muốn mượn những sách này không?", "Xác nhận mượn sách", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            for (int i = 0; i<dgvBooks.RowCount; i++)
-            {
-                if (dgvBooks.Rows[i].DefaultCellStyle.BackColor == Color.LightBlue)
-                {
-                    bOOKSTableAdapter2.Insert(global.user_id, Convert.ToInt64(dgvBooks.Rows[i].Cells[0].Value), DateTime.Now.ToString());
-                    dgvBooks.Rows[i].DefaultCellStyle.BackColor = Color.White;
-                }
-            }
 
             handleBooks();
-        }
-         
-        private void NhanEnter(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                // Ngăn không cho phát ra tiếng "bíp" khi nhấn Enter
-                e.Handled = true;
-
-                // Gọi hàm tìm kiếm
-                TimSach(sender, EventArgs.Empty);
-            }
-        }
-
-        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //pass
         }
     }
 }

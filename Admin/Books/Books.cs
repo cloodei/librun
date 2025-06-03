@@ -153,50 +153,6 @@ namespace Library
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.RowIndex >= 0)
-            {
-                DialogResult re = MessageBox.Show("Sửa không", "Sửa không", MessageBoxButtons.YesNo);
-                if (re == DialogResult.No)
-                {
-                    DialogResult ro = MessageBox.Show("Xóa không", "Xóa không", MessageBoxButtons.YesNo);
-                    if (ro == DialogResult.Yes)
-                    {
-                        DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                        int ms = Convert.ToInt32(row.Cells[0].Value); // Get the ID of the book to delete  
-                        connection = new SqlConnection(this.ketnoi);
-                        connection.Open();
-                        string sql = "DELETE FROM sach WHERE id = @masach";
-                        using (var command = new SqlCommand(sql, connection))
-                        {
-                            command.Parameters.AddWithValue("@masach", ms);
-                            command.ExecuteNonQuery();
-                        }
-                        MessageBox.Show("Xóa thành công");
-                        Books_Load(sender, e);
-                    }
-                    if (ro == DialogResult.No)
-                    {
-                        return; // Do nothing if the user chooses not to delete
-                    }
-                }
-                if (re == DialogResult.Yes)
-                {
-                    button1.Enabled = false; // Disable the add button when editing
-                    button1.Visible = false; // Hide the add button when editing
-                    button2.Enabled = true; // Enable the update button when editing
-                    button2.Visible = true; // Show the update button when editing
-                    textBox1.Enabled = false;
-                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                    textBox1.Text = row.Cells[1].Value.ToString(); // IDsach
-                    textBox2.Text = row.Cells[2].Value.ToString(); // TenSach
-                    textBox3.Text = row.Cells[3].Value.ToString(); // TacGia
-                    textBox4.Text = row.Cells[4].Value.ToString(); // TheLoai
-                    //textBox5.Text = row.Cells[4].Value.ToString(); // SoLuong
-                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells[5].Value); // NgayXuatBan
-                }
-
-            }
-
         }
 
         private void button2_Click(object sender, EventArgs e)

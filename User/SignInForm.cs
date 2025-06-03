@@ -5,14 +5,6 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public struct ucheck
-    {
-        public long id;
-        public string email;
-        public string username;
-        public string password;
-    }
-
     public partial class SignInForm : Form
     {
         SqlDataAdapter da;
@@ -30,16 +22,24 @@ namespace Library
                 var br = new BorrowRequests();
                 br.Show();
                 this.Hide();
+
+                return;
             }
-            else if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
+
+            if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                for (int i = 0; i < global.u_list.Length; ++i)
+                for (int i = 0; i < dt.Rows.Count; ++i)
                 {
-                    if (txtUsername.Text == global.u_list[i].username)
+                    var username = dt.Rows[i]["ten"].ToString();
+                    var password = dt.Rows[i]["mat_khau"].ToString();
+
+                    if (txtUsername.Text == username)
                     {
-                        if (txtPassword.Text == global.u_list[i].password)
+                        if (txtPassword.Text == password)
                         {
-                            global.user_id = global.u_list[i].id;
+                            global.user_id = Convert.ToInt64(dt.Rows[i]["id"]);
+                            global.locked = dt.Rows[i]["trang_thai"].ToString() == "Khóa";
+
                             var mainUserForm = new MainUserForm();
                             mainUserForm.Show();
                             this.Hide();
@@ -54,11 +54,10 @@ namespace Library
                 }
 
                 MessageBox.Show("Tài khoản không tồn tại.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
+            MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btnSwitchToSignUp_Click(object sender, EventArgs e)
@@ -71,20 +70,12 @@ namespace Library
         private void SignInForm_Load(object sender, EventArgs e)
         {
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT id, email, ten, mat_khau FROM USERS", librun.Properties.Settings.Default.libConnectionString);
+            da = new SqlDataAdapter("SELECT id, ten, mat_khau, trang_thai FROM USERS", librun.Properties.Settings.Default.libConnectionString);
 
             try
             {
+                dt.Clear();
                 da.Fill(dt);
-                global.u_list = new ucheck[dt.Rows.Count];
-
-                for (int i = 0; i < dt.Rows.Count; ++i)
-                {
-                    global.u_list[i].id = Convert.ToInt64(dt.Rows[i][0]);
-                    global.u_list[i].email = dt.Rows[i][1].ToString();
-                    global.u_list[i].username = dt.Rows[i][2].ToString();
-                    global.u_list[i].password = dt.Rows[i][3].ToString();
-                }
             }
             catch (SqlException ex)
             {

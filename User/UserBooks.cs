@@ -83,7 +83,16 @@ namespace Library
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                var readForm = new ReadBookForm(dgvUsersBooks.Rows[e.RowIndex].Cells["tieu_de"].Value.ToString(), dgvUsersBooks.Rows[e.RowIndex].Cells["noi_dung"].Value.ToString());
+                if (global.locked)
+                {
+                    MessageBox.Show("Bạn chưa được đọc sách do tài khoản của bạn đã bị khóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var readForm = new ReadBookForm(
+                    dgvUsersBooks.Rows[e.RowIndex].Cells["tieu_de"].Value.ToString(),
+                    dgvUsersBooks.Rows[e.RowIndex].Cells["noi_dung"].Value.ToString()
+                );
                 readForm.ShowDialog();
             }
         }
@@ -94,6 +103,21 @@ namespace Library
             {
                 dgvUsersBooks.SelectAll();
                 e.Handled = true;
+            }
+        }
+
+        private void tbTimSach_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = tbTimSach.Text.Trim();
+            string safeSearch = searchText.Replace("'", "''");
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                bORROWBindingSource.Filter = "";
+            }
+            else
+            {
+                bORROWBindingSource.Filter = $"tieu_de LIKE '%{safeSearch}%'";
             }
         }
     }
