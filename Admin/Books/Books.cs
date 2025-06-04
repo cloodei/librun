@@ -1,7 +1,5 @@
 using System;
 using System.Data;
-
-//using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
@@ -12,9 +10,10 @@ namespace Library
     {
         private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
-        public string ketnoi = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=lib;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+        public string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
         public SqlConnection connection;
         public DataGridViewCellEventArgs a;
+        
         public Books()
         {
             InitializeComponent();
@@ -60,6 +59,7 @@ namespace Library
                 this.Close();
             }
         }
+
         private void Books_Load(object sender, EventArgs e)
         {
             button1.Enabled = true;
@@ -81,7 +81,6 @@ namespace Library
             dataGridView1.Columns[3].HeaderText = "Nội dung";
             dataGridView1.Columns[4].HeaderText = "Thể loại";
             dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-
         }
         public bool ktra(string id)
         {
@@ -98,44 +97,30 @@ namespace Library
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            /*string ketnoi = "Data Source=.;Initial Catalog=sach;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            SqlConnection connection = new SqlConnection(ketnoi);
-            connection.Open();
-            string sql = "UPDATE sach SET tensach = @ten, tacgia = @tac, theloai = @tl, soluong = @sl, ngayxuatban = @nxb WHERE idsach = @id";
-            using(SqlCommand com = new SqlCommand(sql, connection))
+            if (textBox1.Text.Length == 0)
             {
-                com.Parameters.AddWithValue("@id", textBox1.Text);
-                com.Parameters.AddWithValue("@ten", textBox2.Text);
-                com.Parameters.AddWithValue("@tac", textBox3.Text);
-                com.Parameters.AddWithValue("@tl", textBox4.Text);
-                com.Parameters.AddWithValue("@sl", textBox5.Text);
-                com.Parameters.AddWithValue("@nxb", dateTimePicker1.Value);
-                int rowsAffected = com.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công");
-                    Books_Load(sender, e); // Refresh the DataGridView
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật thất bại");
-                }
-            }*/
-            /*if (ktra(textBox1.Text))
-            {
-                MessageBox.Show("ID sách đã tồn tại");
+                MessageBox.Show("Nhập lại tên sách");
                 return;
             }
-            int sl;
-            try
+
+            if (textBox2.Text.Length == 0)
             {
-                sl = Convert.ToInt32(textBox5.Text);
-            }
-            catch
-            {
-                MessageBox.Show("Số lượng sách phải là một số nguyên");
+                MessageBox.Show("Nhập lại tên tác giả");
                 return;
-            }*/
+            }
+
+            if (textBox3.Text.Length == 0)
+            {
+                MessageBox.Show("Nhập lại nội dung sách");
+                return;
+            }
+
+            if (textBox4.Text.Length == 0)
+            {
+                MessageBox.Show("Nhập lại thể loại sách");
+                return;
+            }
+
             connection = new SqlConnection(this.ketnoi);
             connection.Open();
             string sql = "INSERT INTO BOOKS (tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban) VALUES (@ten, @tac, @nd, @tl, @nxb)";
@@ -148,13 +133,13 @@ namespace Library
                 com.Parameters.AddWithValue("@nxb", dateTimePicker1.Value);
                 int rowsAffected = com.ExecuteNonQuery();
             }
-            Books_Load(sender, e); // Refresh the DataGridView
-            textBox1.Text = ""; // Clear the ID textbox after adding
+
+            Books_Load(sender, e);
+            textBox1.Text = "";
             textBox2.Text = ""; // Clear the book name textbox after adding
             textBox3.Text = ""; // Clear the author textbox after adding
-            textBox4.Text = ""; // Clear the genre textbox after adding
-            //textBox5.Text = ""; // Clear the quantity textbox after adding
-            dateTimePicker1.Value = DateTime.Now; // Reset the date picker to current date
+            textBox4.Text = "";
+            dateTimePicker1.Value = DateTime.Now;
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -221,7 +206,7 @@ namespace Library
 
             if (string.IsNullOrEmpty(keyword))
             {
-                Books_Load(sender, e); // Hiển thị lại toàn bộ danh sách nếu không nhập gì
+                Books_Load(sender, e);
                 return;
             }
             try
@@ -233,7 +218,7 @@ namespace Library
                     string sql = "SELECT * FROM BOOKS WHERE tieu_de LIKE @ten";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@ten", "%" + keyword + "%"); // tìm tiêu đề bắt đầu bằng từ khóa
+                        command.Parameters.AddWithValue("@ten", "%" + keyword + "%");
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         adapter.Fill(dataTable);
                     }
@@ -254,36 +239,14 @@ namespace Library
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi khi tìm kiếm: " + ex.Message);
-                Books_Load(sender, e); // Nếu có lỗi, nạp lại danh sách
-            }
-        
-                /*DataTable dataTable = new DataTable();
-                connection = new SqlConnection(this.ketnoi);
-                connection.Open();
-                string sql = "SELECT * FROM BOOKS WHERE tieu_de = @ten";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@ten", tk);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    dataGridView1.DataSource = dataTable;
-                }
-                dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns[0].HeaderText = "Mã sách";
-                dataGridView1.Columns[1].HeaderText = "Tên sách";
-                dataGridView1.Columns[2].HeaderText = "Tác giả";
-                dataGridView1.Columns[3].HeaderText = "Nội dung";
-                dataGridView1.Columns[4].HeaderText = "Thể loại";
-                dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-                */
-            
+                Books_Load(sender, e);
+            }    
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataGridView1.Rows[a.RowIndex];
-            int ide = Convert.ToInt32(row.Cells[0].Value);
+            long ide = Convert.ToInt64(row.Cells[0].Value);
             connection = new SqlConnection(this.ketnoi);
             connection.Open();
             string sql = "DELETE FROM BOOKS WHERE id = @masach";
@@ -294,12 +257,12 @@ namespace Library
             }
             MessageBox.Show("Xóa thành công");
             button1.Enabled = true;
-            button1.Visible = true; // Show the add button after updating
+            button1.Visible = true;
             button2.Enabled = false;
             button2.Visible = false;
             button3.Enabled = false;
             button3.Visible = false;
-            Books_Load(sender, e); // Refresh the DataGridView
+            Books_Load(sender, e);
             textBox1.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";

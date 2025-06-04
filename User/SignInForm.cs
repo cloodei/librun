@@ -9,6 +9,7 @@ namespace Library
     {
         SqlDataAdapter da;
         DataTable dt;
+        SqlConnection conn = new SqlConnection(librun.Properties.Settings.Default.mainConnectionString);
 
         public SignInForm()
         {
@@ -38,7 +39,35 @@ namespace Library
                         if (txtPassword.Text == password)
                         {
                             global.user_id = Convert.ToInt64(dt.Rows[i]["id"]);
-                            global.locked = dt.Rows[i]["trang_thai"].ToString() == "Khóa";
+                            bool lck = dt.Rows[i]["trang_thai"].ToString() == "Khóa";
+
+                            if (!lck)
+                            {
+                                var dap = new SqlDataAdapter(
+                                    "SELECT ngay_muon FROM BORROW WHERE user_id = " + global.user_id,
+                                    conn
+                                );
+                                var dat = new DataTable();
+                                dap.Fill(dat);
+
+                                for (int j = 0; j < dat.Rows.Count; ++j)
+                                {
+                                    DateTime ngaymuon = DateTime.Parse(dat.Rows[j][0].ToString());
+                                    if (ngaymuon.AddDays(14) < DateTime.Now)
+                                    {
+                                        var cmd = new SqlCommand(
+                                            "UPDATE USERS SET trang_thai = N'Khóa' WHERE id = " + global.user_id,
+                                            conn
+                                        );
+                                        cmd.ExecuteNonQuery();
+
+                                        lck = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            global.locked = lck;
 
                             var mainUserForm = new MainUserForm();
                             mainUserForm.Show();
@@ -69,8 +98,9 @@ namespace Library
 
         private void SignInForm_Load(object sender, EventArgs e)
         {
+            conn.Open();
             dt = new DataTable();
-            da = new SqlDataAdapter("SELECT id, ten, mat_khau, trang_thai FROM USERS", librun.Properties.Settings.Default.libConnectionString);
+            da = new SqlDataAdapter("SELECT id, ten, mat_khau, trang_thai FROM USERS", conn);
 
             try
             {
