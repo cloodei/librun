@@ -77,6 +77,7 @@ namespace Library
                 bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
                 MessageBox.Show("Đã trả sách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            dgvUsersBooks.ClearSelection();
         }
 
         private void dgvUsersBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
