@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Library
@@ -35,10 +35,7 @@ namespace Library
             this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adminBorrowDataSet = new librun.adminBorrowDataSet();
             this.lblBorrowDate = new System.Windows.Forms.Label();
             this.dtpBorrowDate = new System.Windows.Forms.DateTimePicker();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -51,6 +48,11 @@ namespace Library
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
+            this.cbFilter = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adminBorrowDataSet = new librun.adminBorrowDataSet();
             this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
@@ -59,11 +61,11 @@ namespace Library
             this.splitContainerDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowedBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).BeginInit();
             this.panelContentHeader.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContent
@@ -90,6 +92,8 @@ namespace Library
             // splitContainerDetails.Panel2
             // 
             this.splitContainerDetails.Panel2.BackColor = System.Drawing.Color.Cornsilk;
+            this.splitContainerDetails.Panel2.Controls.Add(this.label1);
+            this.splitContainerDetails.Panel2.Controls.Add(this.cbFilter);
             this.splitContainerDetails.Panel2.Controls.Add(this.lblBorrowDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.dtpBorrowDate);
             this.splitContainerDetails.Panel2.Controls.Add(this.btnUpdate);
@@ -167,27 +171,10 @@ namespace Library
             this.book_id.ReadOnly = true;
             this.book_id.Visible = false;
             // 
-            // ngaymuonDataGridViewTextBoxColumn
-            // 
-            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
-            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
-            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
-            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // bORROWBindingSource
             // 
             this.bORROWBindingSource.DataMember = "BORROW";
             this.bORROWBindingSource.DataSource = this.adminBorrowDataSetBindingSource;
-            // 
-            // adminBorrowDataSetBindingSource
-            // 
-            this.adminBorrowDataSetBindingSource.DataSource = this.adminBorrowDataSet;
-            this.adminBorrowDataSetBindingSource.Position = 0;
-            // 
-            // adminBorrowDataSet
-            // 
-            this.adminBorrowDataSet.DataSetName = "adminBorrowDataSet";
-            this.adminBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblBorrowDate
             // 
@@ -205,9 +192,9 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpBorrowDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBorrowDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBorrowDate.Location = new System.Drawing.Point(113, 23);
+            this.dtpBorrowDate.Location = new System.Drawing.Point(162, 23);
             this.dtpBorrowDate.Name = "dtpBorrowDate";
-            this.dtpBorrowDate.Size = new System.Drawing.Size(561, 26);
+            this.dtpBorrowDate.Size = new System.Drawing.Size(512, 26);
             this.dtpBorrowDate.TabIndex = 6;
             // 
             // btnUpdate
@@ -343,6 +330,48 @@ namespace Library
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 
+            // cbFilter
+            // 
+            this.cbFilter.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.cbFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilter.FormattingEnabled = true;
+            this.cbFilter.Items.AddRange(new object[] {
+            "Tất cả",
+            "Quá hạn",
+            "Đúng hạn"});
+            this.cbFilter.Location = new System.Drawing.Point(162, 95);
+            this.cbFilter.Name = "cbFilter";
+            this.cbFilter.Size = new System.Drawing.Size(512, 21);
+            this.cbFilter.TabIndex = 11;
+            this.cbFilter.SelectedIndexChanged += new System.EventHandler(this.cbFilter_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Lọc theo trạng thái";
+            // 
+            // ngaymuonDataGridViewTextBoxColumn
+            // 
+            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
+            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
+            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // adminBorrowDataSetBindingSource
+            // 
+            this.adminBorrowDataSetBindingSource.DataSource = this.adminBorrowDataSet;
+            this.adminBorrowDataSetBindingSource.Position = 0;
+            // 
+            // adminBorrowDataSet
+            // 
+            this.adminBorrowDataSet.DataSetName = "adminBorrowDataSet";
+            this.adminBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // bORROWTableAdapter
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
@@ -368,13 +397,13 @@ namespace Library
             this.splitContainerDetails.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowedBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).EndInit();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -402,5 +431,7 @@ namespace Library
         private DataGridViewTextBoxColumn ten_sach;
         private DataGridViewTextBoxColumn book_id;
         private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
+        private Label label1;
+        private ComboBox cbFilter;
     }
 }
