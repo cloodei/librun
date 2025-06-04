@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -108,5 +108,37 @@ namespace Library
                 MessageBox.Show("Vui lòng chọn một yêu cầu mượn sách để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillDgvBorrowedBooks();
+            dgvBorrowedBooks.ClearSelection();
+
+            CurrencyManager cm = (CurrencyManager)BindingContext[dgvBorrowedBooks.DataSource];
+            cm.SuspendBinding();
+
+            if (cbFilter.Text == "Tất cả")
+            {
+                return;
+            }
+            
+            if (cbFilter.Text == "Quá hạn")
+            {
+                foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
+                {
+                    row.Visible = row.DefaultCellStyle.BackColor == Color.LightPink;
+                }
+                return;
+            }
+
+
+            foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
+            {
+                row.Visible = row.DefaultCellStyle.BackColor != Color.LightPink;
+            }
+
+            cm.ResumeBinding();
+        }
+
     }
 }
