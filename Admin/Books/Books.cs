@@ -233,7 +233,7 @@ namespace Library
                     string sql = "SELECT * FROM BOOKS WHERE tieu_de LIKE @ten";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@ten", keyword + "%"); // tìm tiêu đề bắt đầu bằng từ khóa
+                        command.Parameters.AddWithValue("@ten", "%" + keyword + "%"); // tìm tiêu đề bắt đầu bằng từ khóa
                         SqlDataAdapter adapter = new SqlDataAdapter(command);
                         adapter.Fill(dataTable);
                     }
