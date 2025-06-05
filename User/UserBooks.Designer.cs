@@ -45,12 +45,6 @@ namespace Library
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvUsersBooks = new System.Windows.Forms.DataGridView();
-            this.tieu_de = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten_tac_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.the_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngay_xuat_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noi_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBorrowedBooksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBorrowedBooks = new librun.userBorrowedBooks();
@@ -60,7 +54,13 @@ namespace Library
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.tbTimSach = new System.Windows.Forms.TextBox();
             this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
-            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tieu_de = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_tac_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.the_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngay_xuat_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngay_muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noi_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -204,7 +204,7 @@ namespace Library
             this.ten_tac_gia,
             this.the_loai,
             this.ngay_xuat_ban,
-            this.ngaymuonDataGridViewTextBoxColumn,
+            this.ngay_muon,
             this.id,
             this.noi_dung});
             this.dgvUsersBooks.DataSource = this.bORROWBindingSource;
@@ -226,56 +226,6 @@ namespace Library
             this.dgvUsersBooks.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersBooks_CellContentDoubleClick);
             this.dgvUsersBooks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsersBooks_CellContentDoubleClick);
             this.dgvUsersBooks.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvUsersBooks_KeyDown);
-            // 
-            // tieu_de
-            // 
-            this.tieu_de.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tieu_de.DataPropertyName = "tieu_de";
-            this.tieu_de.HeaderText = "Tiêu đề sách";
-            this.tieu_de.Name = "tieu_de";
-            this.tieu_de.ReadOnly = true;
-            // 
-            // ten_tac_gia
-            // 
-            this.ten_tac_gia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ten_tac_gia.DataPropertyName = "ten_tac_gia";
-            this.ten_tac_gia.HeaderText = "Tên tác giả";
-            this.ten_tac_gia.Name = "ten_tac_gia";
-            this.ten_tac_gia.ReadOnly = true;
-            // 
-            // the_loai
-            // 
-            this.the_loai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.the_loai.DataPropertyName = "the_loai";
-            this.the_loai.HeaderText = "Thể loại";
-            this.the_loai.Name = "the_loai";
-            this.the_loai.ReadOnly = true;
-            // 
-            // ngay_xuat_ban
-            // 
-            this.ngay_xuat_ban.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngay_xuat_ban.DataPropertyName = "ngay_xuat_ban";
-            this.ngay_xuat_ban.HeaderText = "Ngày xuất bản";
-            this.ngay_xuat_ban.Name = "ngay_xuat_ban";
-            this.ngay_xuat_ban.ReadOnly = true;
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // noi_dung
-            // 
-            this.noi_dung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noi_dung.DataPropertyName = "noi_dung";
-            this.noi_dung.HeaderText = "noi_dung";
-            this.noi_dung.Name = "noi_dung";
-            this.noi_dung.ReadOnly = true;
-            this.noi_dung.Visible = false;
             // 
             // bORROWBindingSource
             // 
@@ -357,13 +307,63 @@ namespace Library
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
-            // ngaymuonDataGridViewTextBoxColumn
+            // tieu_de
             // 
-            this.ngaymuonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
-            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
-            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
-            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tieu_de.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tieu_de.DataPropertyName = "tieu_de";
+            this.tieu_de.HeaderText = "Tiêu đề sách";
+            this.tieu_de.Name = "tieu_de";
+            this.tieu_de.ReadOnly = true;
+            // 
+            // ten_tac_gia
+            // 
+            this.ten_tac_gia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ten_tac_gia.DataPropertyName = "ten_tac_gia";
+            this.ten_tac_gia.HeaderText = "Tên tác giả";
+            this.ten_tac_gia.Name = "ten_tac_gia";
+            this.ten_tac_gia.ReadOnly = true;
+            // 
+            // the_loai
+            // 
+            this.the_loai.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.the_loai.DataPropertyName = "the_loai";
+            this.the_loai.HeaderText = "Thể loại";
+            this.the_loai.Name = "the_loai";
+            this.the_loai.ReadOnly = true;
+            // 
+            // ngay_xuat_ban
+            // 
+            this.ngay_xuat_ban.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngay_xuat_ban.DataPropertyName = "ngay_xuat_ban";
+            this.ngay_xuat_ban.HeaderText = "Ngày xuất bản";
+            this.ngay_xuat_ban.Name = "ngay_xuat_ban";
+            this.ngay_xuat_ban.ReadOnly = true;
+            // 
+            // ngay_muon
+            // 
+            this.ngay_muon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngay_muon.DataPropertyName = "ngay_muon";
+            this.ngay_muon.HeaderText = "Ngày mượn";
+            this.ngay_muon.Name = "ngay_muon";
+            this.ngay_muon.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // noi_dung
+            // 
+            this.noi_dung.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noi_dung.DataPropertyName = "noi_dung";
+            this.noi_dung.HeaderText = "noi_dung";
+            this.noi_dung.Name = "noi_dung";
+            this.noi_dung.ReadOnly = true;
+            this.noi_dung.Visible = false;
             // 
             // UserBooks
             // 
@@ -405,14 +405,14 @@ namespace Library
         private DataGridViewTextBoxColumn bookidDataGridViewTextBoxColumn;
         private BindingSource bORROWBindingSource;
         private librun.userBorrowedBooksTableAdapters.BORROWTableAdapter bORROWTableAdapter;
+        private Label label1;
+        private TextBox tbTimSach;
         private DataGridViewTextBoxColumn tieu_de;
         private DataGridViewTextBoxColumn ten_tac_gia;
         private DataGridViewTextBoxColumn the_loai;
         private DataGridViewTextBoxColumn ngay_xuat_ban;
+        private DataGridViewTextBoxColumn ngay_muon;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn noi_dung;
-        private Label label1;
-        private TextBox tbTimSach;
-        private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
     }
 }

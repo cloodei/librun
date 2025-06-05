@@ -59,7 +59,7 @@ namespace Library
 
             foreach (DataGridViewRow row in dgvUsersBooks.Rows)
             {
-                if (Convert.ToDateTime(row.Cells[4].Value).AddDays(14) < DateTime.Now)
+                if (Convert.ToDateTime(row.Cells["ngay_muon"].Value).AddDays(14) < DateTime.Now)
                 {
                     row.DefaultCellStyle.BackColor = Color.LightPink;
                 }
