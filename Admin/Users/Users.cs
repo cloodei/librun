@@ -66,59 +66,69 @@ namespace Library
 
         private void Users_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(chuoiketnoi);
-            conn.Open();
+            try
+            {
+                conn = new SqlConnection(chuoiketnoi);
+                conn.Open();
 
-            string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id from USERS";
-            daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
-            dtQuanLyNguoiDung = new DataTable();
-            daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
-            dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
+                string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id from USERS";
+                daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
+                dtQuanLyNguoiDung = new DataTable();
+                daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+                dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
 
-            dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
-            dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
-            dgv_quan_ly_nguoi_dung.Columns[3].HeaderText = "Mật khẩu";
-            dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
+                dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
+                dgv_quan_ly_nguoi_dung.Columns[3].HeaderText = "Mật khẩu";
+                dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
+                dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         SqlCommand cmd;
 
         private void btn_them_Click(object sender, EventArgs e)
         {
-            string sql = "INSERT INTO USERS VALUES(@ten, @email, @tt, @mk)";
+            string sql = "INSERT INTO USERS VALUES(N'"+txt_ten.Text+"', N'"+txt_email.Text+"', N'"+cbb_trang_thai.Text+"', N'"+txt_mat_khau.Text+"')";
             cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@ten", txt_ten.Text);
-            cmd.Parameters.AddWithValue("@email", txt_email.Text);
-            cmd.Parameters.AddWithValue("@tt", cbb_trang_thai.Text);
-            cmd.Parameters.AddWithValue("@mk", txt_mat_khau.Text);
-
             cmd.ExecuteNonQuery();
             dtQuanLyNguoiDung.Clear();
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
         }
 
         string email_current;
+        DataGridViewRow row_befor = null;
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(row_befor != null)
+            {
+                row_befor.DefaultCellStyle.BackColor = Color.White;
+            }
             txt_ten.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[1].Value.ToString();
             txt_email.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[2].Value.ToString();
             txt_mat_khau.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[3].Value.ToString();
             cbb_trang_thai.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[4].Value.ToString();
+
+            dgv_quan_ly_nguoi_dung.CurrentRow.DefaultCellStyle.BackColor = Color.LightBlue;
+            row_befor = dgv_quan_ly_nguoi_dung.CurrentRow;
+            
+
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
+            string idUser = dgv_quan_ly_nguoi_dung.CurrentRow.Cells["id"].Value.ToString();
             cmd = new SqlCommand(
-                "UPDATE USERS SET ten = @t, email = @e, trang_thai = @tt, mat_khau = @m WHERE id = @i",
+                "UPDATE USERS SET " +
+                "ten = N'"+txt_ten.Text+"', email = N'"+txt_email.Text+"', trang_thai = N'"+cbb_trang_thai.Text+"', mat_khau = N'"+txt_mat_khau.Text+"' " +
+                "WHERE id = "+idUser+"",
                 conn
             );
 
-            cmd.Parameters.AddWithValue("@t", txt_ten.Text);
-            cmd.Parameters.AddWithValue("@e", txt_email.Text);
-            cmd.Parameters.AddWithValue("@tt", cbb_trang_thai.Text);
-            cmd.Parameters.AddWithValue("@m", txt_mat_khau.Text);
-            cmd.Parameters.AddWithValue("@i", dgv_quan_ly_nguoi_dung.CurrentRow.Cells["id"].Value.ToString());
+            
             cmd.ExecuteNonQuery();
 
             dtQuanLyNguoiDung.Clear();
@@ -164,7 +174,7 @@ namespace Library
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            if (txt_email.Text!="")
+            if (txt_email.Text!="" && MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 var idUser = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[5].Value.ToString();
                 string sql = "delete from USERS where id = " + idUser + "";
@@ -187,6 +197,15 @@ namespace Library
         private void cbb_loc_SelectedIndexChanged(object sender, EventArgs e)
         {
             txt_tim_kiem_TextChanged(sender, e);
+        }
+
+        private void dgv_quan_ly_nguoi_dung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow row = dgv_quan_ly_nguoi_dung.Rows[e.RowIndex];
+            if (row.Cells[4].Value.ToString() == "Khóa")
+            {
+                row.DefaultCellStyle.BackColor = Color.LightPink;
+            }
         }
     }
 }
