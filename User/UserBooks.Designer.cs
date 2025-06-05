@@ -34,8 +34,8 @@ namespace Library
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -57,10 +57,10 @@ namespace Library
             this.userBorrowedBooks = new librun.userBorrowedBooks();
             this.btnReturnBooks = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
-            this.lblContentHeader = new System.Windows.Forms.Label();
-            this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblContentHeader = new System.Windows.Forms.Label();
             this.tbTimSach = new System.Windows.Forms.TextBox();
+            this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -190,14 +190,14 @@ namespace Library
             this.dgvUsersBooks.AllowUserToAddRows = false;
             this.dgvUsersBooks.AllowUserToDeleteRows = false;
             this.dgvUsersBooks.AutoGenerateColumns = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvUsersBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUsersBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsersBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsersBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.tieu_de,
@@ -208,14 +208,14 @@ namespace Library
             this.id,
             this.noi_dung});
             this.dgvUsersBooks.DataSource = this.bORROWBindingSource;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsersBooks.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsersBooks.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvUsersBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsersBooks.Location = new System.Drawing.Point(0, 0);
             this.dgvUsersBooks.Name = "dgvUsersBooks";
@@ -328,6 +328,18 @@ namespace Library
             this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(506, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Tìm sách";
+            // 
             // lblContentHeader
             // 
             this.lblContentHeader.AutoSize = true;
@@ -339,21 +351,6 @@ namespace Library
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Sách đã mượn";
             // 
-            // bORROWTableAdapter
-            // 
-            this.bORROWTableAdapter.ClearBeforeFill = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(506, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Tìm sách";
-            // 
             // tbTimSach
             // 
             this.tbTimSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -363,6 +360,10 @@ namespace Library
             this.tbTimSach.Size = new System.Drawing.Size(236, 21);
             this.tbTimSach.TabIndex = 4;
             this.tbTimSach.TextChanged += new System.EventHandler(this.tbTimSach_TextChanged);
+            // 
+            // bORROWTableAdapter
+            // 
+            this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
             // UserBooks
             // 

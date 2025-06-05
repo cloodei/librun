@@ -24,9 +24,9 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Users));
             this.panelContent = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -48,6 +48,8 @@ namespace Library
             this.btn_sua = new System.Windows.Forms.Button();
             this.btn_them = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.lbl_loc_trang_thai = new System.Windows.Forms.Label();
+            this.cbb_loc = new System.Windows.Forms.ComboBox();
             this.txt_tim_kiem = new System.Windows.Forms.TextBox();
             this.lbl_tim_kiem = new System.Windows.Forms.Label();
             this.panelContentHeader = new System.Windows.Forms.Panel();
@@ -59,8 +61,6 @@ namespace Library
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
-            this.cbb_loc = new System.Windows.Forms.ComboBox();
-            this.lbl_loc_trang_thai = new System.Windows.Forms.Label();
             this.panelContent.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -83,10 +83,9 @@ namespace Library
             this.panelContent.Controls.Add(this.panel2);
             this.panelContent.Controls.Add(this.panelContentHeader);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(228, 0);
-            this.panelContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelContent.Location = new System.Drawing.Point(171, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1115, 690);
+            this.panelContent.Size = new System.Drawing.Size(837, 561);
             this.panelContent.TabIndex = 9;
             // 
             // panel2
@@ -94,17 +93,17 @@ namespace Library
             this.panel2.Controls.Add(this.splitContainer1);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 64);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(0, 52);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1115, 626);
+            this.panel2.Size = new System.Drawing.Size(837, 509);
             this.panel2.TabIndex = 1;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 81);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 66);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -115,8 +114,9 @@ namespace Library
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(1115, 545);
-            this.splitContainer1.SplitterDistance = 316;
+            this.splitContainer1.Size = new System.Drawing.Size(837, 443);
+            this.splitContainer1.SplitterDistance = 256;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 2;
             // 
             // dgv_quan_ly_nguoi_dung
@@ -124,39 +124,39 @@ namespace Library
             this.dgv_quan_ly_nguoi_dung.AllowUserToAddRows = false;
             this.dgv_quan_ly_nguoi_dung.AllowUserToDeleteRows = false;
             this.dgv_quan_ly_nguoi_dung.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_quan_ly_nguoi_dung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_quan_ly_nguoi_dung.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_quan_ly_nguoi_dung.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_quan_ly_nguoi_dung.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_quan_ly_nguoi_dung.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_quan_ly_nguoi_dung.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_quan_ly_nguoi_dung.Location = new System.Drawing.Point(0, 0);
-            this.dgv_quan_ly_nguoi_dung.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgv_quan_ly_nguoi_dung.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgv_quan_ly_nguoi_dung.Name = "dgv_quan_ly_nguoi_dung";
             this.dgv_quan_ly_nguoi_dung.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_quan_ly_nguoi_dung.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_quan_ly_nguoi_dung.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_quan_ly_nguoi_dung.RowHeadersWidth = 51;
             this.dgv_quan_ly_nguoi_dung.RowTemplate.Height = 24;
-            this.dgv_quan_ly_nguoi_dung.Size = new System.Drawing.Size(1115, 316);
+            this.dgv_quan_ly_nguoi_dung.Size = new System.Drawing.Size(837, 256);
             this.dgv_quan_ly_nguoi_dung.TabIndex = 0;
             this.dgv_quan_ly_nguoi_dung.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_quan_ly_nguoi_dung_CellClick);
             this.dgv_quan_ly_nguoi_dung.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_quan_ly_nguoi_dung_CellDoubleClick);
@@ -167,17 +167,17 @@ namespace Library
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.69843F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.30157F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 296F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1115, 225);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(837, 184);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel3
@@ -188,39 +188,40 @@ namespace Library
             this.panel3.Controls.Add(this.lbl_email);
             this.panel3.Controls.Add(this.lbl_ten);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(401, 221);
+            this.panel3.Size = new System.Drawing.Size(301, 180);
             this.panel3.TabIndex = 0;
             // 
             // txt_email
             // 
             this.txt_email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_email.Location = new System.Drawing.Point(109, 107);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_email.Location = new System.Drawing.Point(82, 87);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(272, 22);
+            this.txt_email.Size = new System.Drawing.Size(205, 20);
             this.txt_email.TabIndex = 3;
             // 
             // txt_ten
             // 
             this.txt_ten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_ten.Location = new System.Drawing.Point(109, 42);
-            this.txt_ten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_ten.Location = new System.Drawing.Point(82, 34);
+            this.txt_ten.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_ten.Name = "txt_ten";
-            this.txt_ten.Size = new System.Drawing.Size(272, 22);
+            this.txt_ten.Size = new System.Drawing.Size(205, 20);
             this.txt_ten.TabIndex = 2;
             // 
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
             this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_email.Location = new System.Drawing.Point(27, 105);
+            this.lbl_email.Location = new System.Drawing.Point(20, 85);
+            this.lbl_email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_email.Name = "lbl_email";
-            this.lbl_email.Size = new System.Drawing.Size(59, 22);
+            this.lbl_email.Size = new System.Drawing.Size(49, 18);
             this.lbl_email.TabIndex = 1;
             this.lbl_email.Text = "Email:";
             // 
@@ -228,9 +229,10 @@ namespace Library
             // 
             this.lbl_ten.AutoSize = true;
             this.lbl_ten.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ten.Location = new System.Drawing.Point(37, 42);
+            this.lbl_ten.Location = new System.Drawing.Point(28, 34);
+            this.lbl_ten.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_ten.Name = "lbl_ten";
-            this.lbl_ten.Size = new System.Drawing.Size(47, 22);
+            this.lbl_ten.Size = new System.Drawing.Size(37, 18);
             this.lbl_ten.TabIndex = 0;
             this.lbl_ten.Text = "Tên:";
             // 
@@ -243,10 +245,10 @@ namespace Library
             this.panel5.Controls.Add(this.txt_mat_khau);
             this.panel5.Controls.Add(this.lbl_trang_thai);
             this.panel5.Controls.Add(this.lbl_mat_khau);
-            this.panel5.Location = new System.Drawing.Point(410, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(307, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(405, 220);
+            this.panel5.Size = new System.Drawing.Size(304, 179);
             this.panel5.TabIndex = 1;
             // 
             // cbb_trang_thai
@@ -257,29 +259,30 @@ namespace Library
             this.cbb_trang_thai.Items.AddRange(new object[] {
             "Hoạt động",
             "Khóa"});
-            this.cbb_trang_thai.Location = new System.Drawing.Point(121, 103);
-            this.cbb_trang_thai.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbb_trang_thai.Location = new System.Drawing.Point(91, 84);
+            this.cbb_trang_thai.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbb_trang_thai.Name = "cbb_trang_thai";
-            this.cbb_trang_thai.Size = new System.Drawing.Size(270, 24);
+            this.cbb_trang_thai.Size = new System.Drawing.Size(204, 21);
             this.cbb_trang_thai.TabIndex = 5;
             // 
             // txt_mat_khau
             // 
             this.txt_mat_khau.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_mat_khau.Location = new System.Drawing.Point(121, 44);
-            this.txt_mat_khau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_mat_khau.Location = new System.Drawing.Point(91, 36);
+            this.txt_mat_khau.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_mat_khau.Name = "txt_mat_khau";
-            this.txt_mat_khau.Size = new System.Drawing.Size(270, 22);
+            this.txt_mat_khau.Size = new System.Drawing.Size(204, 20);
             this.txt_mat_khau.TabIndex = 4;
             // 
             // lbl_trang_thai
             // 
             this.lbl_trang_thai.AutoSize = true;
             this.lbl_trang_thai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_trang_thai.Location = new System.Drawing.Point(19, 107);
+            this.lbl_trang_thai.Location = new System.Drawing.Point(14, 87);
+            this.lbl_trang_thai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_trang_thai.Name = "lbl_trang_thai";
-            this.lbl_trang_thai.Size = new System.Drawing.Size(97, 22);
+            this.lbl_trang_thai.Size = new System.Drawing.Size(77, 18);
             this.lbl_trang_thai.TabIndex = 1;
             this.lbl_trang_thai.Text = "Trạng thái:";
             // 
@@ -287,9 +290,10 @@ namespace Library
             // 
             this.lbl_mat_khau.AutoSize = true;
             this.lbl_mat_khau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_mat_khau.Location = new System.Drawing.Point(27, 42);
+            this.lbl_mat_khau.Location = new System.Drawing.Point(20, 34);
+            this.lbl_mat_khau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_mat_khau.Name = "lbl_mat_khau";
-            this.lbl_mat_khau.Size = new System.Drawing.Size(88, 22);
+            this.lbl_mat_khau.Size = new System.Drawing.Size(73, 18);
             this.lbl_mat_khau.TabIndex = 0;
             this.lbl_mat_khau.Text = "Mật khẩu:";
             // 
@@ -300,10 +304,10 @@ namespace Library
             this.panel6.Controls.Add(this.btn_sua);
             this.panel6.Controls.Add(this.btn_them);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(821, 2);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel6.Location = new System.Drawing.Point(615, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(291, 221);
+            this.panel6.Size = new System.Drawing.Size(220, 180);
             this.panel6.TabIndex = 2;
             // 
             // btn_xoa
@@ -312,10 +316,10 @@ namespace Library
             this.btn_xoa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_xoa.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_xoa.ForeColor = System.Drawing.Color.White;
-            this.btn_xoa.Location = new System.Drawing.Point(80, 135);
-            this.btn_xoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_xoa.Location = new System.Drawing.Point(60, 110);
+            this.btn_xoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_xoa.Name = "btn_xoa";
-            this.btn_xoa.Size = new System.Drawing.Size(127, 42);
+            this.btn_xoa.Size = new System.Drawing.Size(95, 34);
             this.btn_xoa.TabIndex = 2;
             this.btn_xoa.Text = "Xóa";
             this.btn_xoa.UseVisualStyleBackColor = false;
@@ -327,10 +331,10 @@ namespace Library
             this.btn_sua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sua.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sua.ForeColor = System.Drawing.Color.White;
-            this.btn_sua.Location = new System.Drawing.Point(80, 74);
-            this.btn_sua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_sua.Location = new System.Drawing.Point(60, 60);
+            this.btn_sua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(127, 42);
+            this.btn_sua.Size = new System.Drawing.Size(95, 34);
             this.btn_sua.TabIndex = 1;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = false;
@@ -342,10 +346,10 @@ namespace Library
             this.btn_them.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_them.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_them.ForeColor = System.Drawing.Color.White;
-            this.btn_them.Location = new System.Drawing.Point(80, 14);
-            this.btn_them.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_them.Location = new System.Drawing.Point(60, 11);
+            this.btn_them.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_them.Name = "btn_them";
-            this.btn_them.Size = new System.Drawing.Size(127, 42);
+            this.btn_them.Size = new System.Drawing.Size(95, 34);
             this.btn_them.TabIndex = 0;
             this.btn_them.Text = "Thêm";
             this.btn_them.UseVisualStyleBackColor = false;
@@ -360,17 +364,45 @@ namespace Library
             this.panel4.Controls.Add(this.lbl_tim_kiem);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1115, 81);
+            this.panel4.Size = new System.Drawing.Size(837, 66);
             this.panel4.TabIndex = 1;
+            // 
+            // lbl_loc_trang_thai
+            // 
+            this.lbl_loc_trang_thai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_loc_trang_thai.AutoSize = true;
+            this.lbl_loc_trang_thai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_loc_trang_thai.Location = new System.Drawing.Point(593, 19);
+            this.lbl_loc_trang_thai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_loc_trang_thai.Name = "lbl_loc_trang_thai";
+            this.lbl_loc_trang_thai.Size = new System.Drawing.Size(77, 18);
+            this.lbl_loc_trang_thai.TabIndex = 6;
+            this.lbl_loc_trang_thai.Text = "Trạng thái:";
+            // 
+            // cbb_loc
+            // 
+            this.cbb_loc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbb_loc.FormattingEnabled = true;
+            this.cbb_loc.Items.AddRange(new object[] {
+            "Tất cả",
+            "Hoạt động",
+            "Khóa"});
+            this.cbb_loc.Location = new System.Drawing.Point(671, 20);
+            this.cbb_loc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbb_loc.Name = "cbb_loc";
+            this.cbb_loc.Size = new System.Drawing.Size(92, 21);
+            this.cbb_loc.TabIndex = 5;
+            this.cbb_loc.Text = "Tất cả";
+            this.cbb_loc.SelectedIndexChanged += new System.EventHandler(this.cbb_loc_SelectedIndexChanged);
             // 
             // txt_tim_kiem
             // 
-            this.txt_tim_kiem.Location = new System.Drawing.Point(286, 25);
-            this.txt_tim_kiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txt_tim_kiem.Location = new System.Drawing.Point(214, 20);
+            this.txt_tim_kiem.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_tim_kiem.Name = "txt_tim_kiem";
-            this.txt_tim_kiem.Size = new System.Drawing.Size(455, 22);
+            this.txt_tim_kiem.Size = new System.Drawing.Size(342, 20);
             this.txt_tim_kiem.TabIndex = 4;
             this.txt_tim_kiem.TextChanged += new System.EventHandler(this.txt_tim_kiem_TextChanged);
             // 
@@ -378,9 +410,10 @@ namespace Library
             // 
             this.lbl_tim_kiem.AutoSize = true;
             this.lbl_tim_kiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_tim_kiem.Location = new System.Drawing.Point(166, 24);
+            this.lbl_tim_kiem.Location = new System.Drawing.Point(124, 20);
+            this.lbl_tim_kiem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_tim_kiem.Name = "lbl_tim_kiem";
-            this.lbl_tim_kiem.Size = new System.Drawing.Size(87, 22);
+            this.lbl_tim_kiem.Size = new System.Drawing.Size(73, 18);
             this.lbl_tim_kiem.TabIndex = 4;
             this.lbl_tim_kiem.Text = "Tìm kiếm:";
             // 
@@ -390,9 +423,8 @@ namespace Library
             this.panelContentHeader.Controls.Add(this.lblContentHeader);
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelContentHeader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(1115, 64);
+            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
             // 
             // lblContentHeader
@@ -400,10 +432,9 @@ namespace Library
             this.lblContentHeader.AutoSize = true;
             this.lblContentHeader.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblContentHeader.ForeColor = System.Drawing.Color.White;
-            this.lblContentHeader.Location = new System.Drawing.Point(17, 16);
-            this.lblContentHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblContentHeader.Location = new System.Drawing.Point(13, 13);
             this.lblContentHeader.Name = "lblContentHeader";
-            this.lblContentHeader.Size = new System.Drawing.Size(270, 37);
+            this.lblContentHeader.Size = new System.Drawing.Size(220, 30);
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Quản lý người dùng";
             // 
@@ -418,9 +449,8 @@ namespace Library
             this.panel1.Controls.Add(this.btnQuanLyNguoiDung);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(228, 690);
+            this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 8;
             // 
             // btnSignOut
@@ -431,10 +461,9 @@ namespace Library
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(3, 613);
-            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignOut.Location = new System.Drawing.Point(2, 498);
             this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(221, 63);
+            this.btnSignOut.Size = new System.Drawing.Size(166, 51);
             this.btnSignOut.TabIndex = 9;
             this.btnSignOut.Text = "Đăng xuất";
             this.btnSignOut.UseVisualStyleBackColor = false;
@@ -445,10 +474,9 @@ namespace Library
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Location = new System.Drawing.Point(45, 114);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(34, 93);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(127, 46);
+            this.lblTitle.Size = new System.Drawing.Size(102, 37);
             this.lblTitle.TabIndex = 8;
             this.lblTitle.Text = "Admin";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -460,10 +488,9 @@ namespace Library
             this.btnYeuCauMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnYeuCauMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnYeuCauMuonSach.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(3, 183);
-            this.btnYeuCauMuonSach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(2, 149);
             this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
-            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(221, 63);
+            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
             this.btnYeuCauMuonSach.TabIndex = 7;
             this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn/trả sách";
             this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
@@ -472,10 +499,9 @@ namespace Library
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(4, 12);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(219, 98);
+            this.pictureBox1.Size = new System.Drawing.Size(164, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -487,10 +513,9 @@ namespace Library
             this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLySach.Location = new System.Drawing.Point(3, 254);
-            this.btnQuanLySach.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuanLySach.Location = new System.Drawing.Point(2, 206);
             this.btnQuanLySach.Name = "btnQuanLySach";
-            this.btnQuanLySach.Size = new System.Drawing.Size(221, 63);
+            this.btnQuanLySach.Size = new System.Drawing.Size(166, 51);
             this.btnQuanLySach.TabIndex = 4;
             this.btnQuanLySach.Text = "Quản lý sách";
             this.btnQuanLySach.UseVisualStyleBackColor = false;
@@ -503,50 +528,22 @@ namespace Library
             this.btnQuanLyNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(3, 324);
-            this.btnQuanLyNguoiDung.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(2, 263);
             this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
-            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(221, 63);
+            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(166, 51);
             this.btnQuanLyNguoiDung.TabIndex = 5;
             this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             // 
-            // cbb_loc
-            // 
-            this.cbb_loc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbb_loc.FormattingEnabled = true;
-            this.cbb_loc.Items.AddRange(new object[] {
-            "Tất cả",
-            "Hoạt động",
-            "Khóa"});
-            this.cbb_loc.Location = new System.Drawing.Point(893, 25);
-            this.cbb_loc.Name = "cbb_loc";
-            this.cbb_loc.Size = new System.Drawing.Size(121, 24);
-            this.cbb_loc.TabIndex = 5;
-            this.cbb_loc.Text = "Tất cả";
-            this.cbb_loc.SelectedIndexChanged += new System.EventHandler(this.cbb_loc_SelectedIndexChanged);
-            // 
-            // lbl_loc_trang_thai
-            // 
-            this.lbl_loc_trang_thai.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_loc_trang_thai.AutoSize = true;
-            this.lbl_loc_trang_thai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_loc_trang_thai.Location = new System.Drawing.Point(790, 23);
-            this.lbl_loc_trang_thai.Name = "lbl_loc_trang_thai";
-            this.lbl_loc_trang_thai.Size = new System.Drawing.Size(97, 22);
-            this.lbl_loc_trang_thai.TabIndex = 6;
-            this.lbl_loc_trang_thai.Text = "Trạng thái:";
-            // 
             // Users
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1343, 690);
+            this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1358, 717);
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "Users";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";

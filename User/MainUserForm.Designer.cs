@@ -146,7 +146,7 @@ namespace Library
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 503);
+            this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 4;
             // 
             // btnSignOut
@@ -157,7 +157,7 @@ namespace Library
             this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(3, 453);
+            this.btnSignOut.Location = new System.Drawing.Point(3, 511);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(166, 40);
             this.btnSignOut.TabIndex = 10;
@@ -183,7 +183,7 @@ namespace Library
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(171, 0);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(739, 503);
+            this.panelContent.Size = new System.Drawing.Size(837, 561);
             this.panelContent.TabIndex = 7;
             // 
             // dgvBooks
@@ -222,7 +222,7 @@ namespace Library
             this.dgvBooks.ReadOnly = true;
             this.dgvBooks.RowHeadersWidth = 51;
             this.dgvBooks.RowTemplate.Height = 24;
-            this.dgvBooks.Size = new System.Drawing.Size(739, 393);
+            this.dgvBooks.Size = new System.Drawing.Size(837, 451);
             this.dgvBooks.TabIndex = 4;
             this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChonSach);
             this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
@@ -287,9 +287,9 @@ namespace Library
             this.panel2.BackColor = System.Drawing.Color.Cornsilk;
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 445);
+            this.panel2.Location = new System.Drawing.Point(0, 503);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(739, 58);
+            this.panel2.Size = new System.Drawing.Size(837, 58);
             this.panel2.TabIndex = 3;
             // 
             // button1
@@ -302,7 +302,7 @@ namespace Library
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(311, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 47);
+            this.button1.Size = new System.Drawing.Size(288, 47);
             this.button1.TabIndex = 1;
             this.button1.Text = "Mượn sách";
             this.button1.UseVisualStyleBackColor = false;
@@ -317,15 +317,16 @@ namespace Library
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
             this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(739, 52);
+            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(408, 18);
+            this.label1.Location = new System.Drawing.Point(506, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 18);
             this.label1.TabIndex = 3;
@@ -335,7 +336,7 @@ namespace Library
             // 
             this.tbTimSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTimSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimSach.Location = new System.Drawing.Point(491, 17);
+            this.tbTimSach.Location = new System.Drawing.Point(589, 17);
             this.tbTimSach.Name = "tbTimSach";
             this.tbTimSach.Size = new System.Drawing.Size(236, 21);
             this.tbTimSach.TabIndex = 1;
@@ -364,11 +365,11 @@ namespace Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(910, 503);
+            this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(879, 479);
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "MainUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
