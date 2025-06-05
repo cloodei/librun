@@ -48,12 +48,6 @@ namespace Library
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
             this.dgvBooks = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tieudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tentacgiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noidungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.theloaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayxuatbanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
@@ -62,6 +56,12 @@ namespace Library
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.bOOKSTableAdapter = new librun.libDataSetTableAdapters.BOOKSTableAdapter();
             this.bOOKSTableAdapter2 = new librun.userBooksDataSetTableAdapters.BOOKSTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tieudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tentacgiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noidungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.theloaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayxuatbanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBooksDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
@@ -227,61 +227,6 @@ namespace Library
             this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChonSach);
             this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
             // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            this.idDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // tieudeDataGridViewTextBoxColumn
-            // 
-            this.tieudeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tieudeDataGridViewTextBoxColumn.DataPropertyName = "tieu_de";
-            this.tieudeDataGridViewTextBoxColumn.HeaderText = "Tiêu đề";
-            this.tieudeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tieudeDataGridViewTextBoxColumn.Name = "tieudeDataGridViewTextBoxColumn";
-            this.tieudeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tentacgiaDataGridViewTextBoxColumn
-            // 
-            this.tentacgiaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tentacgiaDataGridViewTextBoxColumn.DataPropertyName = "ten_tac_gia";
-            this.tentacgiaDataGridViewTextBoxColumn.HeaderText = "Tên tác giả";
-            this.tentacgiaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tentacgiaDataGridViewTextBoxColumn.Name = "tentacgiaDataGridViewTextBoxColumn";
-            this.tentacgiaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noidungDataGridViewTextBoxColumn
-            // 
-            this.noidungDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noidungDataGridViewTextBoxColumn.DataPropertyName = "noi_dung";
-            this.noidungDataGridViewTextBoxColumn.HeaderText = "Nội dung";
-            this.noidungDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.noidungDataGridViewTextBoxColumn.Name = "noidungDataGridViewTextBoxColumn";
-            this.noidungDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // theloaiDataGridViewTextBoxColumn
-            // 
-            this.theloaiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.theloaiDataGridViewTextBoxColumn.DataPropertyName = "the_loai";
-            this.theloaiDataGridViewTextBoxColumn.HeaderText = "Thể loại";
-            this.theloaiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.theloaiDataGridViewTextBoxColumn.Name = "theloaiDataGridViewTextBoxColumn";
-            this.theloaiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ngayxuatbanDataGridViewTextBoxColumn
-            // 
-            this.ngayxuatbanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngayxuatbanDataGridViewTextBoxColumn.DataPropertyName = "ngay_xuat_ban";
-            this.ngayxuatbanDataGridViewTextBoxColumn.HeaderText = "Ngày xuất bản";
-            this.ngayxuatbanDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.ngayxuatbanDataGridViewTextBoxColumn.Name = "ngayxuatbanDataGridViewTextBoxColumn";
-            this.ngayxuatbanDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Cornsilk;
@@ -361,6 +306,61 @@ namespace Library
             // 
             this.bOOKSTableAdapter2.ClearBeforeFill = true;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.idDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tieudeDataGridViewTextBoxColumn
+            // 
+            this.tieudeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tieudeDataGridViewTextBoxColumn.DataPropertyName = "tieu_de";
+            this.tieudeDataGridViewTextBoxColumn.HeaderText = "Tiêu đề";
+            this.tieudeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tieudeDataGridViewTextBoxColumn.Name = "tieudeDataGridViewTextBoxColumn";
+            this.tieudeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tentacgiaDataGridViewTextBoxColumn
+            // 
+            this.tentacgiaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tentacgiaDataGridViewTextBoxColumn.DataPropertyName = "ten_tac_gia";
+            this.tentacgiaDataGridViewTextBoxColumn.HeaderText = "Tên tác giả";
+            this.tentacgiaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tentacgiaDataGridViewTextBoxColumn.Name = "tentacgiaDataGridViewTextBoxColumn";
+            this.tentacgiaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noidungDataGridViewTextBoxColumn
+            // 
+            this.noidungDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.noidungDataGridViewTextBoxColumn.DataPropertyName = "noi_dung";
+            this.noidungDataGridViewTextBoxColumn.HeaderText = "Nội dung";
+            this.noidungDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.noidungDataGridViewTextBoxColumn.Name = "noidungDataGridViewTextBoxColumn";
+            this.noidungDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // theloaiDataGridViewTextBoxColumn
+            // 
+            this.theloaiDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.theloaiDataGridViewTextBoxColumn.DataPropertyName = "the_loai";
+            this.theloaiDataGridViewTextBoxColumn.HeaderText = "Thể loại";
+            this.theloaiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.theloaiDataGridViewTextBoxColumn.Name = "theloaiDataGridViewTextBoxColumn";
+            this.theloaiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ngayxuatbanDataGridViewTextBoxColumn
+            // 
+            this.ngayxuatbanDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngayxuatbanDataGridViewTextBoxColumn.DataPropertyName = "ngay_xuat_ban";
+            this.ngayxuatbanDataGridViewTextBoxColumn.HeaderText = "Ngày xuất bản";
+            this.ngayxuatbanDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.ngayxuatbanDataGridViewTextBoxColumn.Name = "ngayxuatbanDataGridViewTextBoxColumn";
+            this.ngayxuatbanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // MainUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,12 +400,12 @@ namespace Library
         private BindingSource bOOKSBindingSource2;
         private librun.userBooksDataSetTableAdapters.BOOKSTableAdapter bOOKSTableAdapter2;
         private DataGridView dgvBooks;
+        private Label label1;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn tieudeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn tentacgiaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn noidungDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn theloaiDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ngayxuatbanDataGridViewTextBoxColumn;
-        private Label label1;
     }
 }
