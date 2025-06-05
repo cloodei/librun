@@ -49,7 +49,6 @@ namespace Library
             this.ten_tac_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.the_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngay_xuat_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noi_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,6 +60,7 @@ namespace Library
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.tbTimSach = new System.Windows.Forms.TextBox();
             this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
+            this.ngaymuonDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
@@ -259,14 +259,6 @@ namespace Library
             this.ngay_xuat_ban.Name = "ngay_xuat_ban";
             this.ngay_xuat_ban.ReadOnly = true;
             // 
-            // ngaymuonDataGridViewTextBoxColumn
-            // 
-            this.ngaymuonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
-            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
-            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
-            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // id
             // 
             this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -365,6 +357,14 @@ namespace Library
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
+            // ngaymuonDataGridViewTextBoxColumn
+            // 
+            this.ngaymuonDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngaymuonDataGridViewTextBoxColumn.DataPropertyName = "ngay_muon";
+            this.ngaymuonDataGridViewTextBoxColumn.HeaderText = "Ngày mượn";
+            this.ngaymuonDataGridViewTextBoxColumn.Name = "ngaymuonDataGridViewTextBoxColumn";
+            this.ngaymuonDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // UserBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,10 +409,10 @@ namespace Library
         private DataGridViewTextBoxColumn ten_tac_gia;
         private DataGridViewTextBoxColumn the_loai;
         private DataGridViewTextBoxColumn ngay_xuat_ban;
-        private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn noi_dung;
         private Label label1;
         private TextBox tbTimSach;
+        private DataGridViewTextBoxColumn ngaymuonDataGridViewTextBoxColumn;
     }
 }

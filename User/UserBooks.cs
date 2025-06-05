@@ -1,6 +1,8 @@
 ﻿using librun.adminBorrowDataSetTableAdapters;
 using librun.User;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -51,10 +53,23 @@ namespace Library
             }
         }
 
+        void fillBooks()
+        {
+            bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
+
+            foreach (DataGridViewRow row in dgvUsersBooks.Rows)
+            {
+                if (Convert.ToDateTime(row.Cells[4].Value).AddDays(14) < DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightPink;
+                }
+            }
+        }
+
         private void UserBooks_Load(object sender, EventArgs e)
         {
             SetActiveButton(btnQuanLySach);
-            bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
+            fillBooks();
         }
 
         private void btnReturnBooks_Click(object sender, EventArgs e)
@@ -74,7 +89,7 @@ namespace Library
                     long bookId = Convert.ToInt64(dgvUsersBooks.SelectedRows[i].Cells["id"].Value);
                     bORROWTableAdapter.Delete(global.user_id, bookId);
                 }
-                bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
+                fillBooks();
                 MessageBox.Show("Đã trả sách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             dgvUsersBooks.ClearSelection();
