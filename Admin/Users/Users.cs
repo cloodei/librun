@@ -130,9 +130,16 @@ namespace Library
         {
             string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai " +
                 "from USERS " +
-                "where ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%'";
+                "where (ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%')";
+            if (cbb_loc.Text == "Hoạt động")
+            {
+                sql = sql + " and trang_thai = N'Hoạt động'";
+            }else if(cbb_loc.Text == "Khóa")
+            {
+                sql = sql+" and trang_thai = N'Khóa'";
+            }
 
-            daTimKiem = new SqlDataAdapter(sql, conn);
+                daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
             daTimKiem.Fill(dtQuanLyNguoiDung);
         }
@@ -153,6 +160,33 @@ namespace Library
 
             var n = new AlertBorrowed(dtTBSach);
             n.ShowDialog();
+        }
+
+        private void btn_xoa_Click(object sender, EventArgs e)
+        {
+            if (txt_email.Text!="")
+            {
+                var idUser = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[5].Value.ToString();
+                string sql = "delete from USERS where id = " + idUser + "";
+                cmd = new SqlCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+                dtQuanLyNguoiDung.Clear();
+                daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+                txt_ten.Text = "";
+                txt_email.Text = "";
+                txt_mat_khau.Text = "";
+                cbb_trang_thai.Text = "";
+                MessageBox.Show("Bạn đã xóa thành công","Thông báo");
+            }
+            else
+            {
+                MessageBox.Show("Bạn hãy chọn người dùng muốn xóa trước","Thông báo");
+            }
+        }
+
+        private void cbb_loc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txt_tim_kiem_TextChanged(sender, e);
         }
     }
 }
