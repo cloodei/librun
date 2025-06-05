@@ -26,9 +26,9 @@ namespace Library
             try
             {
                 this.bORROWTableAdapter.Fill(this.adminBorrowDataSet.BORROW);
-                for (int i = 0; i < dgvBorrowedBooks.Rows.Count; i++)
+                for (int i = 0; i < dgvBorrowedBooks.Rows.Count; ++i)
                 {
-                    DateTime borrowDate = DateTime.Parse(dgvBorrowedBooks.Rows[i].Cells[4].Value.ToString());
+                    DateTime borrowDate = DateTime.Parse(dgvBorrowedBooks.Rows[i].Cells["ngay_muon"].Value.ToString());
                     if (borrowDate.AddDays(14) < DateTime.Now)
                     {
                         dgvBorrowedBooks.Rows[i].DefaultCellStyle.BackColor = Color.LightPink;
@@ -109,6 +109,27 @@ namespace Library
             }
         }
 
+        bool checkAddRow(string finduname, string findbname, string uname, string bname)
+        {
+            uname = uname.Trim().ToLower();
+            bname = bname.Trim().ToLower();
+            finduname = finduname.Trim().ToLower();
+            findbname = findbname.Trim().ToLower();
+
+            if (uname == "")
+            {
+                if (bname == "")
+                    return true;
+
+                return findbname.Contains(bname);
+            }
+
+            if (bname == "")
+                return finduname.Contains(uname);
+
+            return (findbname.Contains(bname) && finduname.Contains(uname));
+        }
+
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillDgvBorrowedBooks();
@@ -117,29 +138,74 @@ namespace Library
             CurrencyManager cm = (CurrencyManager)BindingContext[dgvBorrowedBooks.DataSource];
             cm.SuspendBinding();
 
-            if (cbFilter.Text == "Tất cả")
+            if (cbFilter.Text == "Đúng hạn")
             {
                 foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
                 {
-                    row.Visible = true;
+                    if (
+                        row.DefaultCellStyle.BackColor != Color.LightPink &&
+                        checkAddRow(
+                            row.Cells["ten_user"].Value.ToString(),
+                            row.Cells["ten_sach"].Value.ToString(),
+                            tbUsername.Text,
+                            tbBookName.Text
+                        )
+                    )
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
                 }
             }
             else if (cbFilter.Text == "Quá hạn")
             {
                 foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
                 {
-                    row.Visible = row.DefaultCellStyle.BackColor == Color.LightPink;
+                    if (
+                        row.DefaultCellStyle.BackColor == Color.LightPink &&
+                        checkAddRow(
+                            row.Cells["ten_user"].Value.ToString(),
+                            row.Cells["ten_sach"].Value.ToString(),
+                            tbUsername.Text,
+                            tbBookName.Text
+                        )
+                    )
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
                 }
             }
             else
             {
                 foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
                 {
-                    row.Visible = row.DefaultCellStyle.BackColor != Color.LightPink;
+                    row.Visible = checkAddRow(
+                        row.Cells["ten_user"].Value.ToString(),
+                        row.Cells["ten_sach"].Value.ToString(),
+                        tbUsername.Text,
+                        tbBookName.Text
+                    );
                 }
             }
 
             cm.ResumeBinding();
+        }
+
+        private void tbBookName_TextChanged(object sender, EventArgs e)
+        {
+            cbFilter_SelectedIndexChanged(sender, e);
+        }
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            cbFilter_SelectedIndexChanged(sender, e);
         }
     }
 }
