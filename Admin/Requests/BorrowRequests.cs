@@ -119,26 +119,27 @@ namespace Library
 
             if (cbFilter.Text == "Tất cả")
             {
-                return;
+                foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
+                {
+                    row.Visible = true;
+                }
             }
-            
-            if (cbFilter.Text == "Quá hạn")
+            else if (cbFilter.Text == "Quá hạn")
             {
                 foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
                 {
                     row.Visible = row.DefaultCellStyle.BackColor == Color.LightPink;
                 }
-                return;
             }
-
-
-            foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
+            else
             {
-                row.Visible = row.DefaultCellStyle.BackColor != Color.LightPink;
+                foreach (DataGridViewRow row in dgvBorrowedBooks.Rows)
+                {
+                    row.Visible = row.DefaultCellStyle.BackColor != Color.LightPink;
+                }
             }
 
             cm.ResumeBinding();
         }
-
     }
 }
