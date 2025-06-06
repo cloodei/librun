@@ -62,6 +62,7 @@ namespace Library
             this.noidungDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.theloaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayxuatbanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGioiThieu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBooksDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
@@ -138,6 +139,7 @@ namespace Library
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel1.Controls.Add(this.btnGioiThieu);
             this.panel1.Controls.Add(this.btnSignOut);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblTitle);
@@ -189,6 +191,7 @@ namespace Library
             // dgvBooks
             // 
             this.dgvBooks.AllowUserToAddRows = false;
+            this.dgvBooks.AllowUserToDeleteRows = false;
             this.dgvBooks.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -313,6 +316,7 @@ namespace Library
             this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.idDataGridViewTextBoxColumn.Visible = false;
             this.idDataGridViewTextBoxColumn.Width = 125;
             // 
@@ -324,6 +328,7 @@ namespace Library
             this.tieudeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tieudeDataGridViewTextBoxColumn.Name = "tieudeDataGridViewTextBoxColumn";
             this.tieudeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tieudeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // tentacgiaDataGridViewTextBoxColumn
             // 
@@ -333,6 +338,7 @@ namespace Library
             this.tentacgiaDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.tentacgiaDataGridViewTextBoxColumn.Name = "tentacgiaDataGridViewTextBoxColumn";
             this.tentacgiaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tentacgiaDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // noidungDataGridViewTextBoxColumn
             // 
@@ -342,6 +348,7 @@ namespace Library
             this.noidungDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.noidungDataGridViewTextBoxColumn.Name = "noidungDataGridViewTextBoxColumn";
             this.noidungDataGridViewTextBoxColumn.ReadOnly = true;
+            this.noidungDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // theloaiDataGridViewTextBoxColumn
             // 
@@ -351,6 +358,7 @@ namespace Library
             this.theloaiDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.theloaiDataGridViewTextBoxColumn.Name = "theloaiDataGridViewTextBoxColumn";
             this.theloaiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.theloaiDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ngayxuatbanDataGridViewTextBoxColumn
             // 
@@ -360,6 +368,22 @@ namespace Library
             this.ngayxuatbanDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.ngayxuatbanDataGridViewTextBoxColumn.Name = "ngayxuatbanDataGridViewTextBoxColumn";
             this.ngayxuatbanDataGridViewTextBoxColumn.ReadOnly = true;
+            this.ngayxuatbanDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // btnGioiThieu
+            // 
+            this.btnGioiThieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnGioiThieu.FlatAppearance.BorderSize = 0;
+            this.btnGioiThieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGioiThieu.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGioiThieu.ForeColor = System.Drawing.Color.White;
+            this.btnGioiThieu.Location = new System.Drawing.Point(3, 242);
+            this.btnGioiThieu.Name = "btnGioiThieu";
+            this.btnGioiThieu.Size = new System.Drawing.Size(166, 40);
+            this.btnGioiThieu.TabIndex = 11;
+            this.btnGioiThieu.Text = "Giới thiệu về thư viện";
+            this.btnGioiThieu.UseVisualStyleBackColor = false;
+            this.btnGioiThieu.Click += new System.EventHandler(this.btnGioiThieu_Click);
             // 
             // MainUserForm
             // 
@@ -407,5 +431,6 @@ namespace Library
         private DataGridViewTextBoxColumn noidungDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn theloaiDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ngayxuatbanDataGridViewTextBoxColumn;
+        internal Button btnGioiThieu;
     }
 }
