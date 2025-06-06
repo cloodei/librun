@@ -75,19 +75,33 @@ namespace Library
                 daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
                 dtQuanLyNguoiDung = new DataTable();
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
-                dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
-
-                dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
-                dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
-                dgv_quan_ly_nguoi_dung.Columns[3].HeaderText = "Mật khẩu";
-                dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-                dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+                dtQuanLyNguoiDung.Columns.Add("mat_khau_display", typeof(string));
+                add_mat_khau_display();
             }
             catch (Exception ex) {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void add_mat_khau_display()
+        {
+            
+            foreach (DataRow row in dtQuanLyNguoiDung.Rows)
+                row["mat_khau_display"] = new string('*', row["mat_khau"].ToString().Length);
 
+            dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
+
+
+
+            dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
+            dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
+            dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
+            dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
+            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+            dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
+
+            dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
+            dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
+        }
         SqlCommand cmd;
 
         private void btn_them_Click(object sender, EventArgs e)
@@ -97,6 +111,7 @@ namespace Library
             cmd.ExecuteNonQuery();
             dtQuanLyNguoiDung.Clear();
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+            add_mat_khau_display();
         }
 
         string email_current;
@@ -133,6 +148,7 @@ namespace Library
 
             dtQuanLyNguoiDung.Clear();
             daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+            add_mat_khau_display();
         }
 
         SqlDataAdapter daTimKiem;
@@ -152,6 +168,7 @@ namespace Library
                 daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
             daTimKiem.Fill(dtQuanLyNguoiDung);
+            add_mat_khau_display() ;
         }
 
         SqlDataAdapter daTBSach;
@@ -182,6 +199,7 @@ namespace Library
                 cmd.ExecuteNonQuery();
                 dtQuanLyNguoiDung.Clear();
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+                add_mat_khau_display();
                 txt_ten.Text = "";
                 txt_email.Text = "";
                 txt_mat_khau.Text = "";
