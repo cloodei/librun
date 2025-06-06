@@ -97,8 +97,8 @@ namespace Library
         {
             if (dgvBorrowedBooks.CurrentRow != null)
             {
-                int uid = int.Parse(dgvBorrowedBooks.CurrentRow.Cells[1].Value.ToString());
-                int bid = int.Parse(dgvBorrowedBooks.CurrentRow.Cells[3].Value.ToString());
+                long uid = long.Parse(dgvBorrowedBooks.CurrentRow.Cells[1].Value.ToString());
+                long bid = long.Parse(dgvBorrowedBooks.CurrentRow.Cells[3].Value.ToString());
 
                 this.bORROWTableAdapter.Update(dtpBorrowDate.Text, uid, bid, bid, uid);
                 fillDgvBorrowedBooks();

@@ -1,4 +1,4 @@
-﻿namespace librun.Admin.Books
+﻿namespace Library
 {
     partial class UserBooksBorrow
     {

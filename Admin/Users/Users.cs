@@ -12,7 +12,6 @@ namespace Library
         private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
 
-
         public Users()
         {
             InitializeComponent();
@@ -75,35 +74,33 @@ namespace Library
                 daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
                 dtQuanLyNguoiDung = new DataTable();
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+
                 dtQuanLyNguoiDung.Columns.Add("mat_khau_display", typeof(string));
+
+                dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
+                dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
+                dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
+                dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
+                dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
+
                 add_mat_khau_display();
             }
-            catch (Exception ex) {
+            catch {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void add_mat_khau_display()
         {
-            
             foreach (DataRow row in dtQuanLyNguoiDung.Rows)
                 row["mat_khau_display"] = new string('*', row["mat_khau"].ToString().Length);
-
-            dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
-
-
-
-            dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
-            dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
-            dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
-            dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
-            dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
-
-            dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
-            dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
         }
-        SqlCommand cmd;
 
+        SqlCommand cmd;
         private void btn_them_Click(object sender, EventArgs e)
         {
             string sql = "INSERT INTO USERS VALUES(N'"+txt_ten.Text+"', N'"+txt_email.Text+"', N'"+cbb_trang_thai.Text+"', N'"+txt_mat_khau.Text+"')";
@@ -114,7 +111,6 @@ namespace Library
             add_mat_khau_display();
         }
 
-        string email_current;
         DataGridViewRow row_befor = null;
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -122,15 +118,13 @@ namespace Library
             {
                 row_befor.DefaultCellStyle.BackColor = Color.White;
             }
+            dgv_quan_ly_nguoi_dung.CurrentRow.DefaultCellStyle.BackColor = Color.LightBlue;
             txt_ten.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[1].Value.ToString();
             txt_email.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[2].Value.ToString();
             txt_mat_khau.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[3].Value.ToString();
             cbb_trang_thai.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[4].Value.ToString();
 
-            dgv_quan_ly_nguoi_dung.CurrentRow.DefaultCellStyle.BackColor = Color.LightBlue;
             row_befor = dgv_quan_ly_nguoi_dung.CurrentRow;
-            
-
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
@@ -142,8 +136,6 @@ namespace Library
                 "WHERE id = "+idUser+"",
                 conn
             );
-
-            
             cmd.ExecuteNonQuery();
 
             dtQuanLyNguoiDung.Clear();
@@ -159,16 +151,17 @@ namespace Library
                 "where (ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%')";
             if (cbb_loc.Text == "Hoạt động")
             {
-                sql = sql + " and trang_thai = N'Hoạt động'";
-            }else if(cbb_loc.Text == "Khóa")
+                sql += " and trang_thai = N'Hoạt động'";
+            }
+            else if(cbb_loc.Text == "Khóa")
             {
-                sql = sql+" and trang_thai = N'Khóa'";
+                sql += " and trang_thai = N'Khóa'";
             }
 
-                daTimKiem = new SqlDataAdapter(sql, conn);
+            daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
             daTimKiem.Fill(dtQuanLyNguoiDung);
-            add_mat_khau_display() ;
+            add_mat_khau_display();
         }
 
         SqlDataAdapter daTBSach;

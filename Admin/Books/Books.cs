@@ -2,7 +2,6 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using librun.Admin.Books;
 using Microsoft.Data.SqlClient;
 
 namespace Library
@@ -277,7 +276,7 @@ namespace Library
                 return;
             }
             long ma = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            UserBooksBorrow ub = new UserBooksBorrow(ma);
+            var ub = new UserBooksBorrow(ma);
             ub.Show();
         }
 
