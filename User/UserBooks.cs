@@ -1,4 +1,4 @@
-﻿using librun.adminBorrowDataSetTableAdapters;
+using librun.adminBorrowDataSetTableAdapters;
 using librun.User;
 using System;
 using System.Data;
@@ -134,6 +134,23 @@ namespace Library
             else
             {
                 bORROWBindingSource.Filter = $"tieu_de LIKE '%{safeSearch}%'";
+            }
+        }
+
+        private void btnGioiThieu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Chèn link video vào
+                string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=0gcJCdgAo7VqN5tD";
+
+                // Mở đường dẫn URL bằng trình duyệt web
+                System.Diagnostics.Process.Start(url);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
