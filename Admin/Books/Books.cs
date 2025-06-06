@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using librun.Admin.Books;
 using Microsoft.Data.SqlClient;
 
 namespace Library
@@ -12,9 +13,9 @@ namespace Library
         private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
 
         string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
-        SqlConnection connection;
+        SqlConnection connection, con;
         DataGridViewCellEventArgs a;
-        SqlDataAdapter da;
+        SqlDataAdapter da, com;
         DataTable dt = new DataTable();
 
         public Books()
@@ -65,22 +66,51 @@ namespace Library
 
         private void Books_Load(object sender, EventArgs e)
         {
+            
             connection = new SqlConnection(ketnoi);
             connection.Open();
 
             string sql = "SELECT * FROM BOOKS";
             da = new SqlDataAdapter(sql, connection);
+            dt.Clear();
             da.Fill(dt);
 
             dataGridView1.DataSource = dt;
+            
             dataGridView1.Columns[0].HeaderText = "Mã sách";
             dataGridView1.Columns[1].HeaderText = "Tên sách";
             dataGridView1.Columns[2].HeaderText = "Tác giả";
             dataGridView1.Columns[3].HeaderText = "Nội dung";
             dataGridView1.Columns[4].HeaderText = "Thể loại";
             dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-        }
 
+            /*con = new SqlConnection(ketnoi);
+            con.Open();
+            string co = "SELECT the_loai FROM BOOKS";
+            using(var command = new SqlCommand(co, con))
+            {
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    comboBox1.Items.Add(reader.GetString(0));
+                }
+                
+            }*/
+                
+        }
+        public bool ktra()
+        {
+            string sql = "SELECT COUNT(*) FROM Books WHERE tieu_de = @ten AND ten_tac_gia = @tac AND noi_dung = @nd AND the_loai = @tl";
+            using (var com = new SqlCommand(sql, connection))
+            {
+                com.Parameters.AddWithValue("@ten", textBox1.Text);
+                com.Parameters.AddWithValue("@tac", textBox2.Text);
+                com.Parameters.AddWithValue("@nd", textBox3.Text);
+                com.Parameters.AddWithValue("@tl", textBox4.Text);
+                return com.ExecuteNonQuery() > 0;
+            }
+            
+        }
         void flipButtons(bool show1)
         {
             button1.Enabled = show1;
@@ -116,7 +146,16 @@ namespace Library
                 MessageBox.Show("Nhập lại thể loại sách");
                 return;
             }
-
+            if(!ktra())
+            {
+                MessageBox.Show("Sách đã tồn tại trong hệ thống");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                dateTimePicker1.Value = DateTime.Now;
+                return;
+            }
             string sql = "INSERT INTO BOOKS (tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban) VALUES (@ten, @tac, @nd, @tl, @nxb)";
             using (var com = new SqlCommand(sql, connection))
             {
@@ -143,6 +182,10 @@ namespace Library
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(e.RowIndex >= dataGridView1.Rows.Count - 1 || e.RowIndex < 0)
+            {
+                return; 
+            }
             flipButtons(false);
 
             DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
@@ -190,26 +233,27 @@ namespace Library
         {
             string keyword = ((TextBox)sender).Text.Trim();
 
-            if (string.IsNullOrEmpty(keyword))
-            {
-                Books_Load(sender, e);
-                return;
-            }
             try
             {
-                DataTable dataTable = new DataTable();
-
+                if (string.IsNullOrEmpty(keyword))
+                {
+                    Books_Load(sender, e);
+                    return;
+                }
                 string sql = "SELECT * FROM BOOKS WHERE tieu_de LIKE @ten";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
                     command.Parameters.AddWithValue("@ten", "%" + keyword + "%");
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dataTable);
+                    da = new SqlDataAdapter(command);
+                    dt.Clear();
+                    da.Fill(dt);
                 }
 
-                dataGridView1.DataSource = dataTable;
+                
 
-                if (dataTable.Rows.Count > 0)
+                dataGridView1.DataSource = dt;
+
+                if (dt.Rows.Count > 0)
                 {
                     dataGridView1.Columns[0].HeaderText = "Mã sách";
                     dataGridView1.Columns[1].HeaderText = "Tên sách";
@@ -224,6 +268,22 @@ namespace Library
                 MessageBox.Show("Đã xảy ra lỗi khi tìm kiếm: " + ex.Message);
                 Books_Load(sender, e);
             }
+        }
+
+        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= dataGridView1.Rows.Count - 1 || e.RowIndex < 0)
+            {
+                return;
+            }
+            long ma = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            UserBooksBorrow ub = new UserBooksBorrow(ma);
+            ub.Show();
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void button3_Click(object sender, EventArgs e)
