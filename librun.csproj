@@ -237,11 +237,17 @@
     <Compile Include="User\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\UserProfile.cs">
+    <Compile Include="User\UserRepliesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\UserProfile.Designer.cs">
-      <DependentUpon>UserProfile.cs</DependentUpon>
+    <Compile Include="User\UserRepliesForm.Designer.cs">
+      <DependentUpon>UserRepliesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UserProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserProfileForm.Designer.cs">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User\UserBooks.cs">
       <SubType>Form</SubType>
@@ -285,8 +291,11 @@
     <EmbeddedResource Include="User\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\UserProfile.resx">
-      <DependentUpon>UserProfile.cs</DependentUpon>
+    <EmbeddedResource Include="User\UserRepliesForm.resx">
+      <DependentUpon>UserRepliesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserProfileForm.resx">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\UserBooks.resx">
       <DependentUpon>UserBooks.cs</DependentUpon>

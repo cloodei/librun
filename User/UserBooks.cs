@@ -125,5 +125,10 @@ namespace Library
         {
             global.swapForm(global.profileUF, this);
         }
+
+        private void xemThôngTinPhảnHồiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.repliesUF, this);
+        }
     }
 }

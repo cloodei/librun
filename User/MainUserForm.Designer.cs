@@ -33,28 +33,22 @@ namespace Library
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUserForm));
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnGioiThieu = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panelContent = new System.Windows.Forms.Panel();
-            this.dgvBooks = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panelContentHeader = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbTimSach = new System.Windows.Forms.TextBox();
-            this.lblContentHeader = new System.Windows.Forms.Label();
             this.pbUserProfile = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.quảnLýTàiKhảoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xemThôngTinPhảnHồiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGioiThieu = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.dgvBooks = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tieudeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tentacgiaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,20 +57,26 @@ namespace Library
             this.ngayxuatbanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bOOKSBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.userBooksDataSet = new librun.userBooksDataSet();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panelContentHeader = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbTimSach = new System.Windows.Forms.TextBox();
+            this.lblContentHeader = new System.Windows.Forms.Label();
             this.bOOKSBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.libDataSet = new librun.libDataSet();
             this.bOOKSTableAdapter = new librun.libDataSetTableAdapters.BOOKSTableAdapter();
             this.bOOKSTableAdapter2 = new librun.userBooksDataSetTableAdapters.BOOKSTableAdapter();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panelContentHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBooksDataSet)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panelContentHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libDataSet)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +136,50 @@ namespace Library
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 4;
+            // 
+            // pbUserProfile
+            // 
+            this.pbUserProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbUserProfile.ContextMenuStrip = this.contextMenuStrip1;
+            this.pbUserProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbUserProfile.Image = ((System.Drawing.Image)(resources.GetObject("pbUserProfile.Image")));
+            this.pbUserProfile.Location = new System.Drawing.Point(51, 492);
+            this.pbUserProfile.Name = "pbUserProfile";
+            this.pbUserProfile.Size = new System.Drawing.Size(61, 57);
+            this.pbUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbUserProfile.TabIndex = 5;
+            this.pbUserProfile.TabStop = false;
+            this.pbUserProfile.Click += new System.EventHandler(this.btnSignOut_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýTàiKhảoToolStripMenuItem,
+            this.xemThôngTinPhảnHồiToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 92);
+            // 
+            // quảnLýTàiKhảoToolStripMenuItem
+            // 
+            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
+            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
+            this.quảnLýTàiKhảoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýTàiKhảoToolStripMenuItem_Click);
+            // 
+            // xemThôngTinPhảnHồiToolStripMenuItem
+            // 
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Click += new System.EventHandler(this.xemThôngTinPhảnHồiToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // btnGioiThieu
             // 
@@ -215,120 +259,6 @@ namespace Library
             this.dgvBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ChonSach);
             this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Cornsilk;
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 503);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(837, 58);
-            this.panel2.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(311, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(288, 47);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Mượn sách";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panelContentHeader
-            // 
-            this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panelContentHeader.Controls.Add(this.label1);
-            this.panelContentHeader.Controls.Add(this.tbTimSach);
-            this.panelContentHeader.Controls.Add(this.lblContentHeader);
-            this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelContentHeader.Name = "panelContentHeader";
-            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
-            this.panelContentHeader.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(506, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 18);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Tìm sách";
-            // 
-            // tbTimSach
-            // 
-            this.tbTimSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTimSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimSach.Location = new System.Drawing.Point(589, 17);
-            this.tbTimSach.Name = "tbTimSach";
-            this.tbTimSach.Size = new System.Drawing.Size(236, 21);
-            this.tbTimSach.TabIndex = 1;
-            this.tbTimSach.TextChanged += new System.EventHandler(this.tbTimSach_TextChanged);
-            // 
-            // lblContentHeader
-            // 
-            this.lblContentHeader.AutoSize = true;
-            this.lblContentHeader.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            this.lblContentHeader.ForeColor = System.Drawing.Color.White;
-            this.lblContentHeader.Location = new System.Drawing.Point(13, 13);
-            this.lblContentHeader.Name = "lblContentHeader";
-            this.lblContentHeader.Size = new System.Drawing.Size(105, 30);
-            this.lblContentHeader.TabIndex = 0;
-            this.lblContentHeader.Text = "Kho sách";
-            // 
-            // pbUserProfile
-            // 
-            this.pbUserProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbUserProfile.ContextMenuStrip = this.contextMenuStrip1;
-            this.pbUserProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbUserProfile.Image = ((System.Drawing.Image)(resources.GetObject("pbUserProfile.Image")));
-            this.pbUserProfile.Location = new System.Drawing.Point(51, 492);
-            this.pbUserProfile.Name = "pbUserProfile";
-            this.pbUserProfile.Size = new System.Drawing.Size(61, 57);
-            this.pbUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbUserProfile.TabIndex = 5;
-            this.pbUserProfile.TabStop = false;
-            this.pbUserProfile.Click += new System.EventHandler(this.btnSignOut_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýTàiKhảoToolStripMenuItem,
-            this.xemThôngTinPhảnHồiToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 92);
-            // 
-            // quảnLýTàiKhảoToolStripMenuItem
-            // 
-            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
-            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
-            this.quảnLýTàiKhảoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýTàiKhảoToolStripMenuItem_Click);
-            // 
-            // xemThôngTinPhảnHồiToolStripMenuItem
-            // 
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -400,6 +330,77 @@ namespace Library
             this.userBooksDataSet.DataSetName = "userBooksDataSet";
             this.userBooksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 503);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(837, 58);
+            this.panel2.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(311, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(288, 47);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Mượn sách";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panelContentHeader
+            // 
+            this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.panelContentHeader.Controls.Add(this.label1);
+            this.panelContentHeader.Controls.Add(this.tbTimSach);
+            this.panelContentHeader.Controls.Add(this.lblContentHeader);
+            this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelContentHeader.Name = "panelContentHeader";
+            this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
+            this.panelContentHeader.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(506, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 18);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Tìm sách";
+            // 
+            // tbTimSach
+            // 
+            this.tbTimSach.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTimSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimSach.Location = new System.Drawing.Point(589, 17);
+            this.tbTimSach.Name = "tbTimSach";
+            this.tbTimSach.Size = new System.Drawing.Size(236, 21);
+            this.tbTimSach.TabIndex = 1;
+            this.tbTimSach.TextChanged += new System.EventHandler(this.tbTimSach_TextChanged);
+            // 
+            // lblContentHeader
+            // 
+            this.lblContentHeader.AutoSize = true;
+            this.lblContentHeader.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblContentHeader.ForeColor = System.Drawing.Color.White;
+            this.lblContentHeader.Location = new System.Drawing.Point(13, 13);
+            this.lblContentHeader.Name = "lblContentHeader";
+            this.lblContentHeader.Size = new System.Drawing.Size(105, 30);
+            this.lblContentHeader.TabIndex = 0;
+            this.lblContentHeader.Text = "Kho sách";
+            // 
             // bOOKSBindingSource
             // 
             this.bOOKSBindingSource.DataMember = "BOOKS";
@@ -433,16 +434,16 @@ namespace Library
             this.Load += new System.EventHandler(this.MainUserForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userBooksDataSet)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBooksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bOOKSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.libDataSet)).EndInit();
             this.ResumeLayout(false);

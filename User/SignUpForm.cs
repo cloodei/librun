@@ -90,7 +90,7 @@ namespace Library
 
         private void btnSwitchToSignIn_Click(object sender, EventArgs e)
         {
-            global.swapForm(new SignInForm(), this);
+            global.swapForm(global.signInF, this);
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)

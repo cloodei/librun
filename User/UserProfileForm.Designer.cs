@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    partial class UserProfile
+    partial class UserProfileForm
     {
         private System.ComponentModel.IContainer components = null;
         internal System.Windows.Forms.Button btnHome;
@@ -33,27 +33,27 @@ namespace Library
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfile));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfileForm));
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbUserProfile = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.quảnLýTàiKhảoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemThôngTinPhảnHồiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGioiThieu = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            this.quảnLýTàiKhảoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xemThôngTinPhảnHồiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
             this.panelContentHeader.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHome
@@ -127,6 +127,35 @@ namespace Library
             this.pbUserProfile.TabStop = false;
             this.pbUserProfile.Click += new System.EventHandler(this.pbUserProfile_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýTàiKhảoToolStripMenuItem,
+            this.xemThôngTinPhảnHồiToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 92);
+            // 
+            // quảnLýTàiKhảoToolStripMenuItem
+            // 
+            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
+            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
+            // 
+            // xemThôngTinPhảnHồiToolStripMenuItem
+            // 
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Click += new System.EventHandler(this.xemThôngTinPhảnHồiToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
+            // 
             // btnGioiThieu
             // 
             this.btnGioiThieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
@@ -182,35 +211,7 @@ namespace Library
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Thông tin tài khoản";
             // 
-            // quảnLýTàiKhảoToolStripMenuItem
-            // 
-            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
-            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
-            // 
-            // xemThôngTinPhảnHồiToolStripMenuItem
-            // 
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýTàiKhảoToolStripMenuItem,
-            this.xemThôngTinPhảnHồiToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 70);
-            // 
-            // UserProfile
+            // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -219,18 +220,18 @@ namespace Library
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 600);
-            this.Name = "UserProfile";
+            this.Name = "UserProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
             this.Load += new System.EventHandler(this.UserBooks_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContent.ResumeLayout(false);
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

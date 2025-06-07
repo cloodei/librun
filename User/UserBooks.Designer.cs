@@ -33,13 +33,18 @@ namespace Library
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooks));
             this.btnHome = new System.Windows.Forms.Button();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbUserProfile = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.quảnLýTàiKhảoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xemThôngTinPhảnHồiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGioiThieu = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
@@ -49,24 +54,21 @@ namespace Library
             this.ten_tac_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.the_loai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngay_xuat_ban = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngay_muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noi_dung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBorrowedBooksBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.userBorrowedBooks = new librun.userBorrowedBooks();
             this.btnReturnBooks = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.tbTimSach = new System.Windows.Forms.TextBox();
-            this.pbUserProfile = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.quảnLýTàiKhảoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.xemThôngTinPhảnHồiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ngay_muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userBorrowedBooksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.userBorrowedBooks = new librun.userBorrowedBooks();
             this.bORROWTableAdapter = new librun.userBorrowedBooksTableAdapters.BORROWTableAdapter();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -75,11 +77,9 @@ namespace Library
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
-            this.panelContentHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooks)).BeginInit();
+            this.panelContentHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHome
@@ -137,6 +137,50 @@ namespace Library
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(171, 561);
             this.panel1.TabIndex = 4;
+            // 
+            // pbUserProfile
+            // 
+            this.pbUserProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pbUserProfile.ContextMenuStrip = this.contextMenuStrip1;
+            this.pbUserProfile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbUserProfile.Image = ((System.Drawing.Image)(resources.GetObject("pbUserProfile.Image")));
+            this.pbUserProfile.Location = new System.Drawing.Point(51, 492);
+            this.pbUserProfile.Name = "pbUserProfile";
+            this.pbUserProfile.Size = new System.Drawing.Size(61, 57);
+            this.pbUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbUserProfile.TabIndex = 13;
+            this.pbUserProfile.TabStop = false;
+            this.pbUserProfile.Click += new System.EventHandler(this.pbUserProfile_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quảnLýTàiKhảoToolStripMenuItem,
+            this.xemThôngTinPhảnHồiToolStripMenuItem,
+            this.đăngXuấtToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 92);
+            // 
+            // quảnLýTàiKhảoToolStripMenuItem
+            // 
+            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
+            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
+            this.quảnLýTàiKhảoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýTàiKhảoToolStripMenuItem_Click);
+            // 
+            // xemThôngTinPhảnHồiToolStripMenuItem
+            // 
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
+            this.xemThôngTinPhảnHồiToolStripMenuItem.Click += new System.EventHandler(this.xemThôngTinPhảnHồiToolStripMenuItem_Click);
+            // 
+            // đăngXuấtToolStripMenuItem
+            // 
+            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // btnGioiThieu
             // 
@@ -267,6 +311,14 @@ namespace Library
             this.ngay_xuat_ban.Name = "ngay_xuat_ban";
             this.ngay_xuat_ban.ReadOnly = true;
             // 
+            // ngay_muon
+            // 
+            this.ngay_muon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ngay_muon.DataPropertyName = "ngay_muon";
+            this.ngay_muon.HeaderText = "Ngày mượn";
+            this.ngay_muon.Name = "ngay_muon";
+            this.ngay_muon.ReadOnly = true;
+            // 
             // id
             // 
             this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -289,6 +341,16 @@ namespace Library
             // 
             this.bORROWBindingSource.DataMember = "BORROW";
             this.bORROWBindingSource.DataSource = this.userBorrowedBooksBindingSource;
+            // 
+            // userBorrowedBooksBindingSource
+            // 
+            this.userBorrowedBooksBindingSource.DataSource = this.userBorrowedBooks;
+            this.userBorrowedBooksBindingSource.Position = 0;
+            // 
+            // userBorrowedBooks
+            // 
+            this.userBorrowedBooks.DataSetName = "userBorrowedBooks";
+            this.userBorrowedBooks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btnReturnBooks
             // 
@@ -351,67 +413,6 @@ namespace Library
             this.tbTimSach.TabIndex = 4;
             this.tbTimSach.TextChanged += new System.EventHandler(this.tbTimSach_TextChanged);
             // 
-            // pbUserProfile
-            // 
-            this.pbUserProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pbUserProfile.ContextMenuStrip = this.contextMenuStrip1;
-            this.pbUserProfile.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbUserProfile.Image = ((System.Drawing.Image)(resources.GetObject("pbUserProfile.Image")));
-            this.pbUserProfile.Location = new System.Drawing.Point(51, 492);
-            this.pbUserProfile.Name = "pbUserProfile";
-            this.pbUserProfile.Size = new System.Drawing.Size(61, 57);
-            this.pbUserProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbUserProfile.TabIndex = 13;
-            this.pbUserProfile.TabStop = false;
-            this.pbUserProfile.Click += new System.EventHandler(this.pbUserProfile_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quảnLýTàiKhảoToolStripMenuItem,
-            this.xemThôngTinPhảnHồiToolStripMenuItem,
-            this.đăngXuấtToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(201, 92);
-            // 
-            // quảnLýTàiKhảoToolStripMenuItem
-            // 
-            this.quảnLýTàiKhảoToolStripMenuItem.Name = "quảnLýTàiKhảoToolStripMenuItem";
-            this.quảnLýTàiKhảoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.quảnLýTàiKhảoToolStripMenuItem.Text = "Quản lý tài khoản";
-            this.quảnLýTàiKhảoToolStripMenuItem.Click += new System.EventHandler(this.quảnLýTàiKhảoToolStripMenuItem_Click);
-            // 
-            // xemThôngTinPhảnHồiToolStripMenuItem
-            // 
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Name = "xemThôngTinPhảnHồiToolStripMenuItem";
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.xemThôngTinPhảnHồiToolStripMenuItem.Text = "Xem thông tin phản hồi";
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
-            this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
-            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
-            // 
-            // ngay_muon
-            // 
-            this.ngay_muon.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ngay_muon.DataPropertyName = "ngay_muon";
-            this.ngay_muon.HeaderText = "Ngày mượn";
-            this.ngay_muon.Name = "ngay_muon";
-            this.ngay_muon.ReadOnly = true;
-            // 
-            // userBorrowedBooksBindingSource
-            // 
-            this.userBorrowedBooksBindingSource.DataSource = this.userBorrowedBooks;
-            this.userBorrowedBooksBindingSource.Position = 0;
-            // 
-            // userBorrowedBooks
-            // 
-            this.userBorrowedBooks.DataSetName = "userBorrowedBooks";
-            this.userBorrowedBooks.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // bORROWTableAdapter
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
@@ -431,6 +432,8 @@ namespace Library
             this.Load += new System.EventHandler(this.UserBooks_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelContent.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -439,12 +442,10 @@ namespace Library
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsersBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
-            this.panelContentHeader.ResumeLayout(false);
-            this.panelContentHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBorrowedBooks)).EndInit();
+            this.panelContentHeader.ResumeLayout(false);
+            this.panelContentHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }

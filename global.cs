@@ -15,7 +15,8 @@ namespace Library
         public static SignInForm signInF { get; set; } = null;
         public static SignUpForm signUpF { get; set; } = null;
         public static UserBooks booksUF { get; set; } = null;
-        public static UserProfile profileUF { get; set; } = null;
+        public static UserProfileForm profileUF { get; set; } = null;
+        public static UserRepliesForm repliesUF { get; set; } = null;
         public static MainUserForm mainUF { get; set; } = null;
         public static Users usersAF { get; set; } = null;
         public static Books booksAF { get; set; } = null;

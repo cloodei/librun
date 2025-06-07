@@ -1,13 +1,12 @@
-using librun.User;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class UserProfile : Form
+    public partial class UserRepliesForm : Form
     {
-        public UserProfile()
+        public UserRepliesForm()
         {
             InitializeComponent();
         }
@@ -19,7 +18,7 @@ namespace Library
 
         private void UserBooks_Load(object sender, EventArgs e)
         {
-
+            global.SetActiveButton(panel1.Controls, null);
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -48,6 +47,11 @@ namespace Library
         private void btnQuanLySach_Click(object sender, EventArgs e)
         {
             global.swapForm(global.booksUF, this);
+        }
+
+        private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.profileUF, this);
         }
     }
 }
