@@ -76,16 +76,18 @@ namespace Library
                         var thing = new DataTable();
                         some.Fill(thing);
 
+                        var ck = false;
                         for (int i = 0; i < thing.Rows.Count; ++i)
                         {
                             var ngay = Convert.ToDateTime(thing.Rows[i][0]);
                             if (ngay.AddDays(14) < DateTime.Now)
                             {
-                                global.locked = true;
+                                ck = true;
                                 break;
                             }
                         }
 
+                        global.locked = ck;
                         global.swapForm(global.mainUF, this);
 
                         return;

@@ -1,5 +1,6 @@
 using librun.User;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -40,9 +41,22 @@ namespace Library
                     long bookId = Convert.ToInt64(dgvUsersBooks.SelectedRows[i].Cells["id"].Value);
                     bORROWTableAdapter.Delete(global.user_id, bookId);
                 }
+
+                var lck = false;
+                var some = bORROWTableAdapter.GetData(global.user_id);
+                foreach (DataRow r in some.Rows)
+                {
+                    if (Convert.ToDateTime(r["ngay_muon"]).AddDays(14) < DateTime.Now)
+                    {
+                        lck = true;
+                        break;
+                    }
+                }
+
+                global.locked = lck;
                 fillBooks();
-                MessageBox.Show("Đã trả sách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
             dgvUsersBooks.ClearSelection();
         }
 
