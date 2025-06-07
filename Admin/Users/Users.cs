@@ -9,54 +9,25 @@ namespace Library
 {
     public partial class Users : Form
     {
-        private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
-        private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
-
-
         public Users()
         {
             InitializeComponent();
-            SetActiveButton(btnQuanLyNguoiDung);
-        }
-
-        private void SetActiveButton(Button activeButton)
-        {
-            foreach (Control control in panel1.Controls)
-            {
-                if (control is Button button)
-                {
-                    button.BackColor = SecondaryColor;
-                }
-            }
-            if (activeButton != null)
-            {
-                activeButton.BackColor = PrimaryColor;
-            }
+            global.SetActiveButton(panel1.Controls, btnQuanLyNguoiDung);
         }
 
         private void btnYeuCauMuonSach_Click_1(object sender, EventArgs e)
         {
-            var bs = new BorrowRequests();
-            bs.Show();
-            this.Close();
+            global.swapForm(global.borrowAF, this);
         }
 
         private void btnQuanLySach_Click(object sender, EventArgs e)
         {
-            var b = new Books();
-            b.Show();
-            this.Close();
+            global.swapForm(global.booksAF, this);
         }
 
         private void btnSignOut_Click_1(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                var f = new SignInForm();
-                f.Show();
-                this.Close();
-            }
+            global.SignOut(this);
         }
 
         string chuoiketnoi = global.connectionString;
@@ -76,31 +47,29 @@ namespace Library
                 dtQuanLyNguoiDung = new DataTable();
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
                 dtQuanLyNguoiDung.Columns.Add("mat_khau_display", typeof(string));
+
+                dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
+
+                dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
+                dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
+                dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
+                dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
+
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
+
                 add_mat_khau_display();
             }
-            catch (Exception ex) {
+            catch {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void add_mat_khau_display()
         {
-            
             foreach (DataRow row in dtQuanLyNguoiDung.Rows)
                 row["mat_khau_display"] = new string('*', row["mat_khau"].ToString().Length);
-
-            dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
-
-
-
-            dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
-            dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
-            dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
-            dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-            dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
-            dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
-
-            dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
-            dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
         }
 
         SqlCommand cmd;
@@ -120,7 +89,6 @@ namespace Library
             }
         }
 
-        string email_current;
         DataGridViewRow row_befor = null;
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -135,13 +103,10 @@ namespace Library
 
             dgv_quan_ly_nguoi_dung.CurrentRow.DefaultCellStyle.BackColor = Color.LightBlue;
             row_befor = dgv_quan_ly_nguoi_dung.CurrentRow;
-            
-
         }
 
         private void btn_sua_Click(object sender, EventArgs e)
         {
-            
             var kq = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (kq == DialogResult.Yes)
             {
@@ -157,8 +122,6 @@ namespace Library
                  );
                 cmd.ExecuteNonQuery();
                 
-                //dtQuanLyNguoiDung.Clear();
-                //daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
                 txt_tim_kiem_TextChanged(sender, e);
                 MessageBox.Show("Bạn đã sửa thành công", "Thông báo");
             }
@@ -172,13 +135,14 @@ namespace Library
                 "where (ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%')";
             if (cbb_loc.Text == "Hoạt động")
             {
-                sql = sql + " and trang_thai = N'Hoạt động'";
-            }else if(cbb_loc.Text == "Khóa")
+                sql += " and trang_thai = N'Hoạt động'";
+            }
+            else if(cbb_loc.Text == "Khóa")
             {
-                sql = sql+" and trang_thai = N'Khóa'";
+                sql += " and trang_thai = N'Khóa'";
             }
 
-                daTimKiem = new SqlDataAdapter(sql, conn);
+            daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
             daTimKiem.Fill(dtQuanLyNguoiDung);
             add_mat_khau_display() ;

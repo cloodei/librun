@@ -2,7 +2,6 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Net.Mail;
 using System.Windows.Forms;
 
@@ -12,12 +11,15 @@ namespace Library
     {
         SqlDataAdapter da;
         DataTable dt = new DataTable();
-        SqlConnection conn = new SqlConnection(global.connectionString);
+        readonly SqlConnection conn = new SqlConnection(global.connectionString);
 
         public SignUpForm()
         {
             InitializeComponent();
-            lblTitle.Location = new Point((this.ClientSize.Width - lblTitle.Width) / 2);
+            lblTitle.Location = new Point(
+                (lblTitle.Parent.ClientSize.Width - lblTitle.Width) / 2,
+                12
+            );
         }
 
         private void btnSignUp_Click(object sender, EventArgs e)
@@ -63,9 +65,9 @@ namespace Library
             }
 
             var sqlcmd = new SqlCommand(
-                @"INSERT INTO USERS (ten, email, trang_thai, mat_khau) 
-                   OUTPUT INSERTED.id
-                   VALUES (@ten, @email, @trang_thai, @mat_khau);",
+                "INSERT INTO USERS (ten, email, trang_thai, mat_khau) " +
+                "OUTPUT INSERTED.id " +
+                "VALUES (@ten, @email, @trang_thai, @mat_khau);",
                 conn
             );
 
@@ -78,10 +80,7 @@ namespace Library
             {
                 global.user_id = (long)sqlcmd.ExecuteScalar();
                 global.locked = false;
-
-                var u = new MainUserForm();
-                u.Show();
-                this.Hide();
+                global.swapForm(global.mainUF, this);
             }
             catch (Exception err)
             {
@@ -91,18 +90,12 @@ namespace Library
 
         private void btnSwitchToSignIn_Click(object sender, EventArgs e)
         {
-            var signInForm = new SignInForm();
-            signInForm.Show();
-            this.Close();
+            global.swapForm(new SignInForm(), this);
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
             conn.Open();
-        }
-
-        private void SignUpForm_Resize(object sender, EventArgs e)
-        {
         }
     }
 }

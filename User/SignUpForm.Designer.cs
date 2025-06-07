@@ -17,6 +17,9 @@ namespace Library
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Button btnSwitchToSignIn;
+        private System.Windows.Forms.PictureBox pictureBoxRight;
+        private System.Windows.Forms.Panel panelLeft;
+        private System.Windows.Forms.Panel panelContainer;
 
         protected override void Dispose(bool disposing)
         {
@@ -43,145 +46,197 @@ namespace Library
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.btnSwitchToSignIn = new System.Windows.Forms.Button();
+            this.pictureBoxRight = new System.Windows.Forms.PictureBox();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.panelContainer = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).BeginInit();
+            this.panelLeft.SuspendLayout();
+            this.panelContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(124, 9);
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.lblTitle.Location = new System.Drawing.Point(93, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(138, 25);
+            this.lblTitle.Size = new System.Drawing.Size(144, 45);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Form Đăng ký";
+            this.lblTitle.Text = "Đăng ký";
             // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(26, 61);
+            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblUsername.Location = new System.Drawing.Point(27, 64);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(32, 13);
+            this.lblUsername.Size = new System.Drawing.Size(28, 17);
             this.lblUsername.TabIndex = 1;
-            this.lblUsername.Text = "Tên: ";
+            this.lblUsername.Text = "Tên";
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(26, 95);
+            this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblEmail.Location = new System.Drawing.Point(27, 129);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(35, 13);
+            this.lblEmail.Size = new System.Drawing.Size(39, 17);
             this.lblEmail.TabIndex = 3;
-            this.lblEmail.Text = "Email:";
+            this.lblEmail.Text = "Email";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(26, 130);
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblPassword.Location = new System.Drawing.Point(27, 194);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(58, 13);
+            this.lblPassword.Size = new System.Drawing.Size(62, 17);
             this.lblPassword.TabIndex = 5;
-            this.lblPassword.Text = "Mật khẩu: ";
+            this.lblPassword.Text = "Mật khẩu";
             // 
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
-            this.lblConfirmPassword.Location = new System.Drawing.Point(26, 165);
+            this.lblConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lblConfirmPassword.Location = new System.Drawing.Point(27, 259);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(106, 13);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(118, 17);
             this.lblConfirmPassword.TabIndex = 7;
-            this.lblConfirmPassword.Text = "Xác nhận mật khẩu: ";
+            this.lblConfirmPassword.Text = "Xác nhận mật khẩu";
             // 
             // txtUsername
             // 
-            this.txtUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUsername.Location = new System.Drawing.Point(129, 58);
+            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtUsername.Location = new System.Drawing.Point(27, 89);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(216, 20);
+            this.txtUsername.Size = new System.Drawing.Size(280, 27);
             this.txtUsername.TabIndex = 2;
             // 
             // txtEmail
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(129, 93);
+            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtEmail.Location = new System.Drawing.Point(27, 154);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(216, 20);
+            this.txtEmail.Size = new System.Drawing.Size(280, 27);
             this.txtEmail.TabIndex = 4;
             // 
             // txtPassword
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(129, 127);
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtPassword.Location = new System.Drawing.Point(27, 219);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(216, 20);
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(280, 27);
             this.txtPassword.TabIndex = 6;
             // 
             // txtConfirmPassword
             // 
-            this.txtConfirmPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(129, 162);
+            this.txtConfirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(27, 284);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(216, 20);
+            this.txtConfirmPassword.PasswordChar = '●';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(280, 27);
             this.txtConfirmPassword.TabIndex = 8;
             // 
             // btnSignUp
             // 
-            this.btnSignUp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSignUp.Location = new System.Drawing.Point(129, 196);
+            this.btnSignUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSignUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignUp.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignUp.ForeColor = System.Drawing.Color.White;
+            this.btnSignUp.Location = new System.Drawing.Point(27, 331);
             this.btnSignUp.Name = "btnSignUp";
-            this.btnSignUp.Size = new System.Drawing.Size(216, 29);
+            this.btnSignUp.Size = new System.Drawing.Size(280, 45);
             this.btnSignUp.TabIndex = 9;
             this.btnSignUp.Text = "Đăng ký";
-            this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.UseVisualStyleBackColor = false;
             this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // btnSwitchToSignIn
             // 
-            this.btnSwitchToSignIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSwitchToSignIn.Location = new System.Drawing.Point(86, 250);
+            this.btnSwitchToSignIn.BackColor = System.Drawing.Color.White;
+            this.btnSwitchToSignIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSwitchToSignIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSwitchToSignIn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSwitchToSignIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnSwitchToSignIn.Location = new System.Drawing.Point(27, 386);
             this.btnSwitchToSignIn.Name = "btnSwitchToSignIn";
-            this.btnSwitchToSignIn.Size = new System.Drawing.Size(192, 26);
+            this.btnSwitchToSignIn.Size = new System.Drawing.Size(280, 40);
             this.btnSwitchToSignIn.TabIndex = 10;
             this.btnSwitchToSignIn.Text = "Chuyển sang đăng nhập";
-            this.btnSwitchToSignIn.UseVisualStyleBackColor = true;
+            this.btnSwitchToSignIn.UseVisualStyleBackColor = false;
             this.btnSwitchToSignIn.Click += new System.EventHandler(this.btnSwitchToSignIn_Click);
+            // 
+            // pictureBoxRight
+            // 
+            this.pictureBoxRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.pictureBoxRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pictureBoxRight.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxRight.Image")));
+            this.pictureBoxRight.Location = new System.Drawing.Point(334, 0);
+            this.pictureBoxRight.Name = "pictureBoxRight";
+            this.pictureBoxRight.Size = new System.Drawing.Size(334, 457);
+            this.pictureBoxRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBoxRight.TabIndex = 1;
+            this.pictureBoxRight.TabStop = false;
+            // 
+            // panelLeft
+            // 
+            this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.lblTitle);
+            this.panelLeft.Controls.Add(this.lblUsername);
+            this.panelLeft.Controls.Add(this.txtUsername);
+            this.panelLeft.Controls.Add(this.lblEmail);
+            this.panelLeft.Controls.Add(this.txtEmail);
+            this.panelLeft.Controls.Add(this.lblPassword);
+            this.panelLeft.Controls.Add(this.txtPassword);
+            this.panelLeft.Controls.Add(this.lblConfirmPassword);
+            this.panelLeft.Controls.Add(this.txtConfirmPassword);
+            this.panelLeft.Controls.Add(this.btnSignUp);
+            this.panelLeft.Controls.Add(this.btnSwitchToSignIn);
+            this.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Padding = new System.Windows.Forms.Padding(40);
+            this.panelLeft.Size = new System.Drawing.Size(334, 457);
+            this.panelLeft.TabIndex = 0;
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.Controls.Add(this.panelLeft);
+            this.panelContainer.Controls.Add(this.pictureBoxRight);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 0);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(668, 457);
+            this.panelContainer.TabIndex = 0;
             // 
             // SignUpForm
             // 
             this.AcceptButton = this.btnSignUp;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(368, 286);
-            this.Controls.Add(this.btnSwitchToSignIn);
-            this.Controls.Add(this.btnSignUp);
-            this.Controls.Add(this.txtConfirmPassword);
-            this.Controls.Add(this.lblConfirmPassword);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(668, 457);
+            this.Controls.Add(this.panelContainer);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(384, 288);
+            this.MinimumSize = new System.Drawing.Size(684, 496);
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng ký";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
-            this.Resize += new System.EventHandler(this.SignUpForm_Resize);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).EndInit();
+            this.panelLeft.ResumeLayout(false);
+            this.panelLeft.PerformLayout();
+            this.panelContainer.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

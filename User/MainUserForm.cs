@@ -13,47 +13,22 @@ namespace Library
 
         int so_sach_da_chon = 0;
 
-        private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
-        private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
-
         public MainUserForm()
         {
             InitializeComponent();
-            SetActiveButton(btnHome);
-        }
-
-        private void SetActiveButton(Button activeButton)
-        {
-            foreach (Control control in panel1.Controls)
-            {
-                if (control is Button button)
-                {
-                    button.BackColor = SecondaryColor;
-                }
-            }
-            if (activeButton != null)
-            {
-                activeButton.BackColor = PrimaryColor;
-            }
+            global.SetActiveButton(panel1.Controls, btnHome);
         }
 
         private void btnQuanLySach_Click_1(object sender, EventArgs e)
         {
-            var s = new UserBooks();
-            s.Show();
-            this.Hide();
+            global.swapForm(global.booksUF, this);
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                var f = new SignInForm();
-                f.Show();
-                this.Close();
-            }
+            global.SignOut(this);
         }
+
         void handleBooks()
         {
             dt.Clear();
@@ -168,16 +143,12 @@ namespace Library
         {
             try
             {
-                // Chèn link video vào
                 string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=0gcJCdgAo7VqN5tD";
-
-                // Mở đường dẫn URL bằng trình duyệt web
                 System.Diagnostics.Process.Start(url);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

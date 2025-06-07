@@ -1,6 +1,5 @@
 using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
 
@@ -8,64 +7,35 @@ namespace Library
 {
     public partial class Books : Form
     {
-        private readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
-        private readonly Color SecondaryColor = Color.FromArgb(40, 44, 52);
-
         string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
-        SqlConnection connection, con;
+        SqlConnection connection;
         DataGridViewCellEventArgs a;
-        SqlDataAdapter da, com;
+        SqlDataAdapter da;
         DataTable dt = new DataTable();
 
         public Books()
         {
             InitializeComponent();
-            SetActiveButton(btnQuanLySach);
-        }
-
-        private void SetActiveButton(Button activeButton)
-        {
-            foreach (Control control in panel1.Controls)
-            {
-                if (control is Button button)
-                {
-                    button.BackColor = SecondaryColor;
-                }
-            }
-            if (activeButton != null)
-            {
-                activeButton.BackColor = PrimaryColor;
-            }
+            global.SetActiveButton(panel1.Controls, btnQuanLySach);
         }
 
         private void btnYeuCauMuonSach_Click(object sender, EventArgs e)
         {
-            var bs = new BorrowRequests();
-            bs.Show();
-            this.Close();
+            global.swapForm(global.borrowAF, this);
         }
 
         private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
-            var u = new Users();
-            u.Show();
-            this.Close();
+            global.swapForm(global.usersAF, this);
         }
 
         private void btnSignOut_Click_1(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận đăng xuất", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                var f = new SignInForm();
-                f.Show();
-                this.Close();
-            }
+            global.SignOut(this);
         }
 
         private void Books_Load(object sender, EventArgs e)
         {
-            
             connection = new SqlConnection(ketnoi);
             connection.Open();
 
@@ -82,21 +52,8 @@ namespace Library
             dataGridView1.Columns[3].HeaderText = "Nội dung";
             dataGridView1.Columns[4].HeaderText = "Thể loại";
             dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-
-            /*con = new SqlConnection(ketnoi);
-            con.Open();
-            string co = "SELECT the_loai FROM BOOKS";
-            using(var command = new SqlCommand(co, con))
-            {
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    comboBox1.Items.Add(reader.GetString(0));
-                }
-                
-            }*/
-                
         }
+
         public bool ktra()
         {
             string sql = "SELECT COUNT(*) FROM Books WHERE tieu_de = @ten AND ten_tac_gia = @tac AND noi_dung = @nd AND the_loai = @tl";
@@ -108,8 +65,8 @@ namespace Library
                 com.Parameters.AddWithValue("@tl", textBox4.Text);
                 return com.ExecuteNonQuery() > 0;
             }
-            
         }
+
         void flipButtons(bool show1)
         {
             button1.Enabled = show1;
@@ -145,6 +102,7 @@ namespace Library
                 MessageBox.Show("Nhập lại thể loại sách");
                 return;
             }
+
             if(!ktra())
             {
                 MessageBox.Show("Sách đã tồn tại trong hệ thống");
@@ -155,6 +113,7 @@ namespace Library
                 dateTimePicker1.Value = DateTime.Now;
                 return;
             }
+
             string sql = "INSERT INTO BOOKS (tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban) VALUES (@ten, @tac, @nd, @tl, @nxb)";
             using (var com = new SqlCommand(sql, connection))
             {
@@ -183,7 +142,7 @@ namespace Library
         {
             if(e.RowIndex >= dataGridView1.Rows.Count - 1 || e.RowIndex < 0)
             {
-                return; 
+                return;
             }
             flipButtons(false);
 
@@ -248,8 +207,6 @@ namespace Library
                     da.Fill(dt);
                 }
 
-                
-
                 dataGridView1.DataSource = dt;
 
                 if (dt.Rows.Count > 0)
@@ -277,12 +234,7 @@ namespace Library
             }
             long ma = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
             var ub = new UserBooksBorrow(ma);
-            ub.Show();
-        }
-
-        private void comboBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            ub.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)

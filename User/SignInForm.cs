@@ -1,89 +1,99 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Library
 {
     public partial class SignInForm : Form
     {
+        DataTable dt = new DataTable();
+        readonly SqlConnection conn = new SqlConnection(global.connectionString);
         SqlDataAdapter da;
-        DataTable dt;
-        SqlConnection conn = new SqlConnection(librun.Properties.Settings.Default.mainConnectionString);
 
         public SignInForm()
         {
             InitializeComponent();
+
+            lblWelcome.Location = new Point(
+                (lblWelcome.Parent.ClientSize.Width - lblWelcome.Width) / 2,
+                12
+            );
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "1" && txtPassword.Text == "1")
+            if (txtEmail.Text == "1" && txtPassword.Text == "1")
             {
-                var br = new BorrowRequests();
-                br.Show();
-                this.Hide();
+                global.swapForm(global.borrowAF, this);
 
                 return;
             }
 
-            if (!string.IsNullOrWhiteSpace(txtUsername.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                for (int i = 0; i < dt.Rows.Count; ++i)
+                da = new SqlDataAdapter("SELECT * FROM USERS WHERE email = N'" + txtEmail.Text + "'", conn);
+
+                try
                 {
-                    var username = dt.Rows[i]["ten"].ToString();
-                    var password = dt.Rows[i]["mat_khau"].ToString();
+                    dt.Clear();
+                    da.Fill(dt);
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Lỗi khi lấy dữ liệu người dùng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi không xác định: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                    if (txtUsername.Text == username)
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Tài khoản không tồn tại.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var email = dt.Rows[0]["email"].ToString();
+                var password = dt.Rows[0]["mat_khau"].ToString();
+                var lck = dt.Rows[0]["trang_thai"].ToString() == "Khóa";
+
+                if (email == txtEmail.Text)
+                {
+                    if (password  == txtPassword.Text)
                     {
-                        if (txtPassword.Text == password)
+                        if (lck)
                         {
-                            global.user_id = Convert.ToInt64(dt.Rows[i]["id"]);
-                            bool lck = dt.Rows[i]["trang_thai"].ToString() == "Khóa";
+                            MessageBox.Show("Bạn không thể đăng nhập do tài khoản của bạn hiện đang bị khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            return;
+                        }
 
-                            if (!lck)
+                        global.user_id = Convert.ToInt64(dt.Rows[0]["id"]);
+
+                        var some = new SqlDataAdapter("SELECT ngay_muon FROM BORROW WHERE user_id = " + global.user_id, conn);
+                        var thing = new DataTable();
+                        some.Fill(thing);
+
+                        for (int i = 0; i < thing.Rows.Count; ++i)
+                        {
+                            var ngay = Convert.ToDateTime(thing.Rows[i][0]);
+                            if (ngay.AddDays(14) < DateTime.Now)
                             {
-                                var dap = new SqlDataAdapter(
-                                    "SELECT ngay_muon FROM BORROW WHERE user_id = " + global.user_id,
-                                    conn
-                                );
-                                var dat = new DataTable();
-                                dap.Fill(dat);
-
-                                for (int j = 0; j < dat.Rows.Count; ++j)
-                                {
-                                    DateTime ngaymuon = DateTime.Parse(dat.Rows[j][0].ToString());
-                                    if (ngaymuon.AddDays(14) < DateTime.Now)
-                                    {
-                                        var cmd = new SqlCommand(
-                                            "UPDATE USERS SET trang_thai = N'Khóa' WHERE id = " + global.user_id,
-                                            conn
-                                        );
-                                        cmd.ExecuteNonQuery();
-
-                                        lck = true;
-                                        break;
-                                    }
-                                }
+                                global.locked = true;
+                                break;
                             }
-
-                            global.locked = lck;
-
-                            var mainUserForm = new MainUserForm();
-                            mainUserForm.Show();
-                            this.Hide();
                         }
-                        else
-                        {
-                            MessageBox.Show("Sai mật khẩu.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+
+                        global.swapForm(global.mainUF, this);
 
                         return;
                     }
-                }
 
-                MessageBox.Show("Tài khoản không tồn tại.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                    MessageBox.Show("Sai mật khẩu.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -91,30 +101,12 @@ namespace Library
 
         private void btnSwitchToSignUp_Click(object sender, EventArgs e)
         {
-            var signUpForm = new SignUpForm();
-            signUpForm.Show();
-            this.Hide();
+            global.swapForm(global.signUpF, this);
         }
 
         private void SignInForm_Load(object sender, EventArgs e)
         {
             conn.Open();
-            dt = new DataTable();
-            da = new SqlDataAdapter("SELECT id, ten, mat_khau, trang_thai FROM USERS", conn);
-
-            try
-            {
-                dt.Clear();
-                da.Fill(dt);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu người dùng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi không xác định: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }
