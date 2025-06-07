@@ -22,16 +22,16 @@ namespace librun
 
         public static void Start()
         {
-            global.signInF = new SignInForm();
-            global.signUpF = new SignUpForm();
-            global.booksUF = new UserBooks();
-            global.mainUF = new MainUserForm();
-            global.profileUF = new UserProfile();
-            global.usersAF = new Users();
-            global.booksAF = new Books();
-            global.borrowAF = new BorrowRequests();
+            //global.signInF = new SignInForm();
+            //global.signUpF = new SignUpForm();
+            //global.booksUF = new UserBooks();
+            //global.mainUF = new MainUserForm();
+            //global.profileUF = new UserProfile();
+            //global.usersAF = new Users();
+            //global.booksAF = new Books();
+            //global.borrowAF = new BorrowRequests();
 
-            Application.Run(global.signInF);
+            Application.Run(global.signInF = new SignInForm());
         }
     }
 }

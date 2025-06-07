@@ -33,8 +33,15 @@ namespace Library
 
         public static void swapForm<T, F>(T open, F close) where F : Form where T : Form, new()
         {
+            if (open == null)
+                open = new T();
+
             open.Show();
-            close.Hide();
+
+            if (close == signInF)
+                close.Hide();
+            else
+                close.Close();
         }
 
         public static void SignOut(Form caller)
