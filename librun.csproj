@@ -213,12 +213,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>userBorrowedBooks.xsd</DependentUpon>
     </Compile>
-    <Compile Include="UserPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserPanel.Designer.cs">
-      <DependentUpon>UserPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\MainUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,9 +267,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserPanel.resx">
-      <DependentUpon>UserPanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="User\MainUserForm.resx">
       <DependentUpon>MainUserForm.cs</DependentUpon>
     </EmbeddedResource>
