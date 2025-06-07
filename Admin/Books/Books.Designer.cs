@@ -413,7 +413,7 @@ namespace Library
             this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
             this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
             this.btnYeuCauMuonSach.TabIndex = 7;
-            this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn/trả sách";
+            this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn sách";
             this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
             this.btnYeuCauMuonSach.Click += new System.EventHandler(this.btnYeuCauMuonSach_Click);
             // 

@@ -237,6 +237,12 @@
     <Compile Include="User\SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\UserProfile.Designer.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\UserBooks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UserProfile.resx">
+      <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\UserBooks.resx">
       <DependentUpon>UserBooks.cs</DependentUpon>
@@ -347,6 +356,7 @@
     <Content Include=".gitignore" />
     <Content Include="assets\1-11-512.png" />
     <Content Include="assets\libHeaderIcon.png" />
+    <Content Include="assets\user-profile.png" />
     <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

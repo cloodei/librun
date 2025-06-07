@@ -24,11 +24,6 @@ namespace Library
             global.swapForm(global.booksUF, this);
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
-        {
-            global.SignOut(this);
-        }
-
         void handleBooks()
         {
             dt.Clear();
@@ -150,6 +145,21 @@ namespace Library
             {
                 MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.SignOut(this);
+        }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(pbUserProfile, new Point(pbUserProfile.Width, 0));
+        }
+
+        private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.profileUF, this);
         }
     }
 }

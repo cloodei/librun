@@ -18,22 +18,9 @@ namespace Library
             global.swapForm(global.mainUF, this);
         }
 
-        private void btnSignOut_Click(object sender, EventArgs e)
-        {
-            global.SignOut(this);
-        }
-
         void fillBooks()
         {
             bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
-
-            foreach (DataGridViewRow row in dgvUsersBooks.Rows)
-            {
-                if (Convert.ToDateTime(row.Cells["ngay_muon"].Value).AddDays(14) < DateTime.Now)
-                {
-                    row.DefaultCellStyle.BackColor = Color.LightPink;
-                }
-            }
         }
 
         private void UserBooks_Load(object sender, EventArgs e)
@@ -113,6 +100,30 @@ namespace Library
             {
                 MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvUsersBooks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var r = dgvUsersBooks.Rows[e.RowIndex];
+            if (Convert.ToDateTime(r.Cells["ngay_muon"].Value).AddDays(14) < DateTime.Now)
+            {
+                r.DefaultCellStyle.BackColor = Color.LightPink;
+            }
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.SignOut(this);
+        }
+
+        private void pbUserProfile_Click(object sender, EventArgs e)
+        {
+            contextMenuStrip1.Show(pbUserProfile, new Point(pbUserProfile.Width, 0));
+        }
+
+        private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.profileUF, this);
         }
     }
 }

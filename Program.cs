@@ -17,7 +17,21 @@ namespace librun
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(global.signInF = new SignInForm());
+            Start();
+        }
+
+        public static void Start()
+        {
+            global.signInF = new SignInForm();
+            global.signUpF = new SignUpForm();
+            global.booksUF = new UserBooks();
+            global.mainUF = new MainUserForm();
+            global.profileUF = new UserProfile();
+            global.usersAF = new Users();
+            global.booksAF = new Books();
+            global.borrowAF = new BorrowRequests();
+
+            Application.Run(global.signInF);
         }
     }
 }
