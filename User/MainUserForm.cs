@@ -16,12 +16,7 @@ namespace Library
         public MainUserForm()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnHome);
-        }
-
-        private void btnQuanLySach_Click_1(object sender, EventArgs e)
-        {
-            global.swapForm(global.booksUF, this);
+            global.SetActiveButton(userSidenav1.panel1.Controls, userSidenav1.btnHome);
         }
 
         void handleBooks()
@@ -132,39 +127,6 @@ namespace Library
             }
 
             handleBooks();
-        }
-
-        private void btnGioiThieu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=0gcJCdgAo7VqN5tD";
-                System.Diagnostics.Process.Start(url);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.SignOut(this);
-        }
-
-        private void btnSignOut_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip1.Show(pbUserProfile, new Point(pbUserProfile.Width, 0));
-        }
-
-        private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.profileUF, this);
-        }
-
-        private void xemThôngTinPhảnHồiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.repliesUF, this);
         }
     }
 }

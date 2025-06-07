@@ -25,40 +25,34 @@ namespace Library
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowRequests));
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerDetails = new System.Windows.Forms.SplitContainer();
             this.dgvBorrowedBooks = new System.Windows.Forms.DataGridView();
+            this.ten_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngay_muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.adminBorrowDataSet = new librun.adminBorrowDataSet();
+            this.label2 = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbBookName = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbFilter = new System.Windows.Forms.ComboBox();
             this.dtpBorrowDate = new System.Windows.Forms.DateTimePicker();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSignOut = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnYeuCauMuonSach = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnQuanLySach = new System.Windows.Forms.Button();
-            this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
             this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
-            this.tbBookName = new System.Windows.Forms.TextBox();
-            this.tbUsername = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ten_user = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ten_sach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngay_muon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
+            this.adminSidenav1 = new AdminSidenav();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
             this.splitContainerDetails.Panel1.SuspendLayout();
@@ -68,13 +62,11 @@ namespace Library
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).BeginInit();
-            this.panelContentHeader.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panelContentHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContent
@@ -117,14 +109,14 @@ namespace Library
             this.dgvBorrowedBooks.AllowUserToDeleteRows = false;
             this.dgvBorrowedBooks.AutoGenerateColumns = false;
             this.dgvBorrowedBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBorrowedBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBorrowedBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBorrowedBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBorrowedBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ten_user,
@@ -133,14 +125,14 @@ namespace Library
             this.book_id,
             this.ngay_muon});
             this.dgvBorrowedBooks.DataSource = this.bORROWBindingSource;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBorrowedBooks.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvBorrowedBooks.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBorrowedBooks.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBorrowedBooks.Location = new System.Drawing.Point(0, 0);
             this.dgvBorrowedBooks.MultiSelect = false;
@@ -150,6 +142,43 @@ namespace Library
             this.dgvBorrowedBooks.Size = new System.Drawing.Size(837, 347);
             this.dgvBorrowedBooks.TabIndex = 0;
             this.dgvBorrowedBooks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBorrowedBooks_CellClick);
+            // 
+            // ten_user
+            // 
+            this.ten_user.DataPropertyName = "ten_user";
+            this.ten_user.HeaderText = "Tên người dùng";
+            this.ten_user.Name = "ten_user";
+            this.ten_user.ReadOnly = true;
+            // 
+            // user_id
+            // 
+            this.user_id.DataPropertyName = "user_id";
+            this.user_id.HeaderText = "user_id";
+            this.user_id.Name = "user_id";
+            this.user_id.ReadOnly = true;
+            this.user_id.Visible = false;
+            // 
+            // ten_sach
+            // 
+            this.ten_sach.DataPropertyName = "ten_sach";
+            this.ten_sach.HeaderText = "Tên sách";
+            this.ten_sach.Name = "ten_sach";
+            this.ten_sach.ReadOnly = true;
+            // 
+            // book_id
+            // 
+            this.book_id.DataPropertyName = "book_id";
+            this.book_id.HeaderText = "book_id";
+            this.book_id.Name = "book_id";
+            this.book_id.ReadOnly = true;
+            this.book_id.Visible = false;
+            // 
+            // ngay_muon
+            // 
+            this.ngay_muon.DataPropertyName = "ngay_muon";
+            this.ngay_muon.HeaderText = "Ngày mượn";
+            this.ngay_muon.Name = "ngay_muon";
+            this.ngay_muon.ReadOnly = true;
             // 
             // bORROWBindingSource
             // 
@@ -165,6 +194,79 @@ namespace Library
             // 
             this.adminBorrowDataSet.DataSetName = "adminBorrowDataSet";
             this.adminBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(86, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(89, 20);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Ngày mượn";
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(0, 97);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.tbBookName);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tbUsername);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Size = new System.Drawing.Size(837, 61);
+            this.splitContainer1.SplitterDistance = 419;
+            this.splitContainer1.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(3, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(172, 20);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Tìm kiếm theo tên sách";
+            // 
+            // tbBookName
+            // 
+            this.tbBookName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbBookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.tbBookName.Location = new System.Drawing.Point(181, 11);
+            this.tbBookName.Name = "tbBookName";
+            this.tbBookName.Size = new System.Drawing.Size(235, 24);
+            this.tbBookName.TabIndex = 14;
+            this.tbBookName.TextChanged += new System.EventHandler(this.tbBookName_TextChanged);
+            // 
+            // tbUsername
+            // 
+            this.tbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.tbUsername.Location = new System.Drawing.Point(164, 11);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(238, 24);
+            this.tbUsername.TabIndex = 16;
+            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 20);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Theo tên người dùng";
             // 
             // label1
             // 
@@ -241,216 +343,17 @@ namespace Library
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Thống kê";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.panel1.Controls.Add(this.btnSignOut);
-            this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Controls.Add(this.btnYeuCauMuonSach);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btnQuanLySach);
-            this.panel1.Controls.Add(this.btnQuanLyNguoiDung);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 561);
-            this.panel1.TabIndex = 8;
-            // 
-            // btnSignOut
-            // 
-            this.btnSignOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnSignOut.FlatAppearance.BorderSize = 0;
-            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(2, 498);
-            this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(166, 51);
-            this.btnSignOut.TabIndex = 9;
-            this.btnSignOut.Text = "Đăng xuất";
-            this.btnSignOut.UseVisualStyleBackColor = false;
-            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Location = new System.Drawing.Point(34, 93);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(102, 37);
-            this.lblTitle.TabIndex = 8;
-            this.lblTitle.Text = "Admin";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnYeuCauMuonSach
-            // 
-            this.btnYeuCauMuonSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnYeuCauMuonSach.FlatAppearance.BorderSize = 0;
-            this.btnYeuCauMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYeuCauMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnYeuCauMuonSach.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(2, 149);
-            this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
-            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
-            this.btnYeuCauMuonSach.TabIndex = 7;
-            this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn sách";
-            this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnQuanLySach
-            // 
-            this.btnQuanLySach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnQuanLySach.FlatAppearance.BorderSize = 0;
-            this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLySach.Location = new System.Drawing.Point(2, 206);
-            this.btnQuanLySach.Name = "btnQuanLySach";
-            this.btnQuanLySach.Size = new System.Drawing.Size(166, 51);
-            this.btnQuanLySach.TabIndex = 4;
-            this.btnQuanLySach.Text = "Quản lý sách";
-            this.btnQuanLySach.UseVisualStyleBackColor = false;
-            this.btnQuanLySach.Click += new System.EventHandler(this.btnQuanLySach_Click_1);
-            // 
-            // btnQuanLyNguoiDung
-            // 
-            this.btnQuanLyNguoiDung.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnQuanLyNguoiDung.FlatAppearance.BorderSize = 0;
-            this.btnQuanLyNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(2, 263);
-            this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
-            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(166, 51);
-            this.btnQuanLyNguoiDung.TabIndex = 5;
-            this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
-            this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
-            this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
-            // 
             // bORROWTableAdapter
             // 
             this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
-            // tbBookName
+            // adminSidenav1
             // 
-            this.tbBookName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbBookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.tbBookName.Location = new System.Drawing.Point(181, 11);
-            this.tbBookName.Name = "tbBookName";
-            this.tbBookName.Size = new System.Drawing.Size(235, 24);
-            this.tbBookName.TabIndex = 14;
-            this.tbBookName.TextChanged += new System.EventHandler(this.tbBookName_TextChanged);
-            // 
-            // tbUsername
-            // 
-            this.tbUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.tbUsername.Location = new System.Drawing.Point(164, 11);
-            this.tbUsername.Name = "tbUsername";
-            this.tbUsername.Size = new System.Drawing.Size(238, 24);
-            this.tbUsername.TabIndex = 16;
-            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(155, 20);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Theo tên người dùng";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 97);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.tbBookName);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tbUsername);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(837, 61);
-            this.splitContainer1.SplitterDistance = 419;
-            this.splitContainer1.TabIndex = 17;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 13);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(172, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Tìm kiếm theo tên sách";
-            // 
-            // ten_user
-            // 
-            this.ten_user.DataPropertyName = "ten_user";
-            this.ten_user.HeaderText = "Tên người dùng";
-            this.ten_user.Name = "ten_user";
-            this.ten_user.ReadOnly = true;
-            // 
-            // user_id
-            // 
-            this.user_id.DataPropertyName = "user_id";
-            this.user_id.HeaderText = "user_id";
-            this.user_id.Name = "user_id";
-            this.user_id.ReadOnly = true;
-            this.user_id.Visible = false;
-            // 
-            // ten_sach
-            // 
-            this.ten_sach.DataPropertyName = "ten_sach";
-            this.ten_sach.HeaderText = "Tên sách";
-            this.ten_sach.Name = "ten_sach";
-            this.ten_sach.ReadOnly = true;
-            // 
-            // book_id
-            // 
-            this.book_id.DataPropertyName = "book_id";
-            this.book_id.HeaderText = "book_id";
-            this.book_id.Name = "book_id";
-            this.book_id.ReadOnly = true;
-            this.book_id.Visible = false;
-            // 
-            // ngay_muon
-            // 
-            this.ngay_muon.DataPropertyName = "ngay_muon";
-            this.ngay_muon.HeaderText = "Ngày mượn";
-            this.ngay_muon.Name = "ngay_muon";
-            this.ngay_muon.ReadOnly = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(86, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Ngày mượn";
+            this.adminSidenav1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.adminSidenav1.Location = new System.Drawing.Point(0, 0);
+            this.adminSidenav1.Name = "adminSidenav1";
+            this.adminSidenav1.Size = new System.Drawing.Size(171, 561);
+            this.adminSidenav1.TabIndex = 10;
             // 
             // BorrowRequests
             // 
@@ -458,7 +361,7 @@ namespace Library
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 561);
             this.Controls.Add(this.panelContent);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adminSidenav1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "BorrowRequests";
@@ -475,30 +378,20 @@ namespace Library
             ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).EndInit();
-            this.panelContentHeader.ResumeLayout(false);
-            this.panelContentHeader.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panelContentHeader.ResumeLayout(false);
+            this.panelContentHeader.PerformLayout();
             this.ResumeLayout(false);
 
         }
         private Panel panelContent;
         private Panel panelContentHeader;
         private Label lblContentHeader;
-        private Panel panel1;
-        internal Button btnSignOut;
-        private Label lblTitle;
-        internal Button btnYeuCauMuonSach;
-        private PictureBox pictureBox1;
-        internal Button btnQuanLySach;
-        internal Button btnQuanLyNguoiDung;
         private SplitContainer splitContainerDetails;
         private DataGridView dgvBorrowedBooks;
         private DateTimePicker dtpBorrowDate;
@@ -520,5 +413,6 @@ namespace Library
         private DataGridViewTextBoxColumn book_id;
         private DataGridViewTextBoxColumn ngay_muon;
         private Label label2;
+        private AdminSidenav adminSidenav1;
     }
 }

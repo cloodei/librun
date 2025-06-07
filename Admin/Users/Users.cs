@@ -12,22 +12,7 @@ namespace Library
         public Users()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnQuanLyNguoiDung);
-        }
-
-        private void btnYeuCauMuonSach_Click_1(object sender, EventArgs e)
-        {
-            global.swapForm(global.borrowAF, this);
-        }
-
-        private void btnQuanLySach_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.booksAF, this);
-        }
-
-        private void btnSignOut_Click_1(object sender, EventArgs e)
-        {
-            global.SignOut(this);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLyNguoiDung);
         }
 
         string chuoiketnoi = global.connectionString;

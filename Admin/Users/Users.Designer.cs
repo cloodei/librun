@@ -57,13 +57,7 @@ namespace Library
             this.cbb_loc = new System.Windows.Forms.ComboBox();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSignOut = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnYeuCauMuonSach = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnQuanLySach = new System.Windows.Forms.Button();
-            this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
+            this.adminSidenav1 = new AdminSidenav();
             this.panelContent.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -80,8 +74,6 @@ namespace Library
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panelContentHeader.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelContent
@@ -174,7 +166,7 @@ namespace Library
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.69843F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.30157F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 227F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 2, 0);
@@ -256,7 +248,7 @@ namespace Library
             this.panel5.Location = new System.Drawing.Point(304, 2);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(302, 165);
+            this.panel5.Size = new System.Drawing.Size(301, 165);
             this.panel5.TabIndex = 1;
             // 
             // cbb_trang_thai
@@ -271,7 +263,7 @@ namespace Library
             this.cbb_trang_thai.Location = new System.Drawing.Point(98, 82);
             this.cbb_trang_thai.Margin = new System.Windows.Forms.Padding(2);
             this.cbb_trang_thai.Name = "cbb_trang_thai";
-            this.cbb_trang_thai.Size = new System.Drawing.Size(202, 25);
+            this.cbb_trang_thai.Size = new System.Drawing.Size(201, 25);
             this.cbb_trang_thai.TabIndex = 5;
             // 
             // txt_mat_khau
@@ -282,7 +274,7 @@ namespace Library
             this.txt_mat_khau.Location = new System.Drawing.Point(97, 29);
             this.txt_mat_khau.Margin = new System.Windows.Forms.Padding(2);
             this.txt_mat_khau.Name = "txt_mat_khau";
-            this.txt_mat_khau.Size = new System.Drawing.Size(202, 23);
+            this.txt_mat_khau.Size = new System.Drawing.Size(201, 23);
             this.txt_mat_khau.TabIndex = 4;
             // 
             // lbl_trang_thai
@@ -314,10 +306,10 @@ namespace Library
             this.panel6.Controls.Add(this.btn_sua);
             this.panel6.Controls.Add(this.btn_them);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(610, 2);
+            this.panel6.Location = new System.Drawing.Point(609, 2);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(224, 165);
+            this.panel6.Size = new System.Drawing.Size(225, 165);
             this.panel6.TabIndex = 2;
             // 
             // btn_xoa
@@ -484,102 +476,13 @@ namespace Library
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Quản lý người dùng";
             // 
-            // panel1
+            // adminSidenav1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.panel1.Controls.Add(this.btnSignOut);
-            this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Controls.Add(this.btnYeuCauMuonSach);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btnQuanLySach);
-            this.panel1.Controls.Add(this.btnQuanLyNguoiDung);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(171, 561);
-            this.panel1.TabIndex = 8;
-            // 
-            // btnSignOut
-            // 
-            this.btnSignOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSignOut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnSignOut.FlatAppearance.BorderSize = 0;
-            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOut.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSignOut.ForeColor = System.Drawing.Color.White;
-            this.btnSignOut.Location = new System.Drawing.Point(2, 498);
-            this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(166, 51);
-            this.btnSignOut.TabIndex = 9;
-            this.btnSignOut.Text = "Đăng xuất";
-            this.btnSignOut.UseVisualStyleBackColor = false;
-            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click_1);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTitle.Location = new System.Drawing.Point(34, 93);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(102, 37);
-            this.lblTitle.TabIndex = 8;
-            this.lblTitle.Text = "Admin";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnYeuCauMuonSach
-            // 
-            this.btnYeuCauMuonSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnYeuCauMuonSach.FlatAppearance.BorderSize = 0;
-            this.btnYeuCauMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYeuCauMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnYeuCauMuonSach.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(2, 149);
-            this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
-            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
-            this.btnYeuCauMuonSach.TabIndex = 7;
-            this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn sách";
-            this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
-            this.btnYeuCauMuonSach.Click += new System.EventHandler(this.btnYeuCauMuonSach_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 80);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnQuanLySach
-            // 
-            this.btnQuanLySach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnQuanLySach.FlatAppearance.BorderSize = 0;
-            this.btnQuanLySach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuanLySach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnQuanLySach.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLySach.Location = new System.Drawing.Point(2, 206);
-            this.btnQuanLySach.Name = "btnQuanLySach";
-            this.btnQuanLySach.Size = new System.Drawing.Size(166, 51);
-            this.btnQuanLySach.TabIndex = 4;
-            this.btnQuanLySach.Text = "Quản lý sách";
-            this.btnQuanLySach.UseVisualStyleBackColor = false;
-            this.btnQuanLySach.Click += new System.EventHandler(this.btnQuanLySach_Click);
-            // 
-            // btnQuanLyNguoiDung
-            // 
-            this.btnQuanLyNguoiDung.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnQuanLyNguoiDung.FlatAppearance.BorderSize = 0;
-            this.btnQuanLyNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.White;
-            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(2, 263);
-            this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
-            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(166, 51);
-            this.btnQuanLyNguoiDung.TabIndex = 5;
-            this.btnQuanLyNguoiDung.Text = "Quản lý người dùng";
-            this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
+            this.adminSidenav1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.adminSidenav1.Location = new System.Drawing.Point(0, 0);
+            this.adminSidenav1.Name = "adminSidenav1";
+            this.adminSidenav1.Size = new System.Drawing.Size(171, 561);
+            this.adminSidenav1.TabIndex = 10;
             // 
             // Users
             // 
@@ -587,7 +490,7 @@ namespace Library
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1007, 561);
             this.Controls.Add(this.panelContent);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.adminSidenav1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1022, 588);
             this.Name = "Users";
@@ -615,22 +518,12 @@ namespace Library
             this.panel8.PerformLayout();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
         private Panel panelContent;
         private Panel panelContentHeader;
         private Label lblContentHeader;
-        private Panel panel1;
-        internal Button btnSignOut;
-        private Label lblTitle;
-        internal Button btnYeuCauMuonSach;
-        private PictureBox pictureBox1;
-        internal Button btnQuanLySach;
-        internal Button btnQuanLyNguoiDung;
         private Panel panel2;
         private SplitContainer splitContainer1;
         private DataGridView dgv_quan_ly_nguoi_dung;
@@ -657,5 +550,6 @@ namespace Library
         private Panel panel8;
         private Label lbl_loc_trang_thai;
         private ComboBox cbb_loc;
+        private AdminSidenav adminSidenav1;
     }
 }

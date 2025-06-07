@@ -1,13 +1,13 @@
 using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
 
 namespace Library
 {
     public partial class Books : Form
     {
-        string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
+        string ketnoi = global.connectionString;
         SqlConnection connection;
         DataGridViewCellEventArgs a;
         SqlDataAdapter da;
@@ -16,22 +16,7 @@ namespace Library
         public Books()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnQuanLySach);
-        }
-
-        private void btnYeuCauMuonSach_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.borrowAF, this);
-        }
-
-        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.usersAF, this);
-        }
-
-        private void btnSignOut_Click_1(object sender, EventArgs e)
-        {
-            global.SignOut(this);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLySach);
         }
 
         private void Books_Load(object sender, EventArgs e)

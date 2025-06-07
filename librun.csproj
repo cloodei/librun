@@ -195,6 +195,18 @@
     <Compile Include="Admin\Users\Users.Designer.cs">
       <DependentUpon>Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="components\AdminSidenav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\AdminSidenav.Designer.cs">
+      <DependentUpon>AdminSidenav.cs</DependentUpon>
+    </Compile>
+    <Compile Include="components\UserSidenav.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="components\UserSidenav.Designer.cs">
+      <DependentUpon>UserSidenav.cs</DependentUpon>
+    </Compile>
     <Compile Include="global.cs" />
     <Compile Include="libDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -269,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Users\Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\AdminSidenav.resx">
+      <DependentUpon>AdminSidenav.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\UserSidenav.resx">
+      <DependentUpon>UserSidenav.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

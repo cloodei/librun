@@ -10,12 +10,7 @@ namespace Library
         public UserBooks()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnQuanLySach);
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.mainUF, this);
+            global.SetActiveButton(userSidenav1.panel1.Controls, userSidenav1.btnQuanLySach);
         }
 
         void fillBooks()
@@ -89,19 +84,6 @@ namespace Library
                 bORROWBindingSource.Filter = $"tieu_de LIKE '%{safeSearch}%'";
         }
 
-        private void btnGioiThieu_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=0gcJCdgAo7VqN5tD";
-                System.Diagnostics.Process.Start(url);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Không thể mở liên kết: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void dgvUsersBooks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var r = dgvUsersBooks.Rows[e.RowIndex];
@@ -109,26 +91,6 @@ namespace Library
             {
                 r.DefaultCellStyle.BackColor = Color.LightPink;
             }
-        }
-
-        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.SignOut(this);
-        }
-
-        private void pbUserProfile_Click(object sender, EventArgs e)
-        {
-            contextMenuStrip1.Show(pbUserProfile, new Point(pbUserProfile.Width, 0));
-        }
-
-        private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.profileUF, this);
-        }
-
-        private void xemThôngTinPhảnHồiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.repliesUF, this);
         }
     }
 }

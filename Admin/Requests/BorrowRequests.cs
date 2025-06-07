@@ -9,7 +9,7 @@ namespace Library
         public BorrowRequests()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnYeuCauMuonSach);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnYeuCauMuonSach);
         }
 
         private void BorrowRequests_Load(object sender, EventArgs e)
@@ -33,21 +33,6 @@ namespace Library
             {
                 MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnSignOut_Click(object sender, EventArgs e)
-        {
-            global.SignOut(this);
-        }
-
-        private void btnQuanLySach_Click_1(object sender, EventArgs e)
-        {
-            global.swapForm(global.booksAF, this);
-        }
-
-        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.usersAF, this);
         }
 
         private void dgvBorrowedBooks_CellClick(object sender, DataGridViewCellEventArgs e)
