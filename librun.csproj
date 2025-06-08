@@ -214,6 +214,24 @@
     <Compile Include="components\AdminSidenav.Designer.cs">
       <DependentUpon>AdminSidenav.cs</DependentUpon>
     </Compile>
+    <Compile Include="components\SideForms\ContactForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\SideForms\ContactForm.Designer.cs">
+      <DependentUpon>ContactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="components\SideForms\CreateReplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\SideForms\CreateReplyForm.Designer.cs">
+      <DependentUpon>CreateReplyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="components\SideForms\ReadReplyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="components\SideForms\ReadReplyForm.Designer.cs">
+      <DependentUpon>ReadReplyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="components\UserSidenav.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,16 +256,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>userBorrowedBooks.xsd</DependentUpon>
     </Compile>
+    <Compile Include="userRepliesDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>userRepliesDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="User\MainUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="User\MainUserForm.Designer.cs">
       <DependentUpon>MainUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\ReadBookForm.cs">
+    <Compile Include="components\SideForms\ReadBookForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\ReadBookForm.Designer.cs">
+    <Compile Include="components\SideForms\ReadBookForm.Designer.cs">
       <DependentUpon>ReadBookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User\SignInForm.cs">
@@ -304,6 +327,15 @@
     <EmbeddedResource Include="components\AdminSidenav.resx">
       <DependentUpon>AdminSidenav.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="components\SideForms\ContactForm.resx">
+      <DependentUpon>ContactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\SideForms\CreateReplyForm.resx">
+      <DependentUpon>CreateReplyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="components\SideForms\ReadReplyForm.resx">
+      <DependentUpon>ReadReplyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="components\UserSidenav.resx">
       <DependentUpon>UserSidenav.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,7 +351,7 @@
     <EmbeddedResource Include="User\MainUserForm.resx">
       <DependentUpon>MainUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\ReadBookForm.resx">
+    <EmbeddedResource Include="components\SideForms\ReadBookForm.resx">
       <DependentUpon>ReadBookForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\SignInForm.resx">
@@ -393,6 +425,17 @@
     <None Include="userBorrowedBooks.xss">
       <DependentUpon>userBorrowedBooks.xsd</DependentUpon>
     </None>
+    <None Include="userRepliesDataSet.xsc">
+      <DependentUpon>userRepliesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="userRepliesDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>userRepliesDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="userRepliesDataSet.xss">
+      <DependentUpon>userRepliesDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -405,6 +448,10 @@
     <Content Include="assets\user-profile.png" />
     <Content Include="favicon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

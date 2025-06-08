@@ -49,6 +49,7 @@ namespace Library
             this.pictureBoxRight = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
             this.panelContainer = new System.Windows.Forms.Panel();
+            this.lbContact = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).BeginInit();
             this.panelLeft.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -188,6 +189,7 @@ namespace Library
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.lbContact);
             this.panelLeft.Controls.Add(this.lblTitle);
             this.panelLeft.Controls.Add(this.lblUsername);
             this.panelLeft.Controls.Add(this.txtUsername);
@@ -216,6 +218,19 @@ namespace Library
             this.panelContainer.Size = new System.Drawing.Size(668, 457);
             this.panelContainer.TabIndex = 0;
             // 
+            // lbContact
+            // 
+            this.lbContact.AutoSize = true;
+            this.lbContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbContact.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContact.Location = new System.Drawing.Point(72, 429);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(192, 13);
+            this.lbContact.TabIndex = 8;
+            this.lbContact.Text = "Bạn đang gặp phải vấn đề khi đăng ký?";
+            this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbContact.Click += new System.EventHandler(this.lbContact_Click);
+            // 
             // SignUpForm
             // 
             this.AcceptButton = this.btnSignUp;
@@ -241,5 +256,7 @@ namespace Library
         }
 
         #endregion
+
+        private Label lbContact;
     }
 }

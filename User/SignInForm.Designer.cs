@@ -31,6 +31,7 @@ namespace Library
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnSwitchToSignUp = new System.Windows.Forms.Button();
             this.pictureBoxLeft = new System.Windows.Forms.PictureBox();
+            this.lbContact = new System.Windows.Forms.Label();
             this.panelContainer.SuspendLayout();
             this.panelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).BeginInit();
@@ -49,6 +50,7 @@ namespace Library
             // panelRight
             // 
             this.panelRight.BackColor = System.Drawing.Color.White;
+            this.panelRight.Controls.Add(this.lbContact);
             this.panelRight.Controls.Add(this.lblWelcome);
             this.panelRight.Controls.Add(this.lblUsername);
             this.panelRight.Controls.Add(this.txtEmail);
@@ -166,6 +168,19 @@ namespace Library
             this.pictureBoxLeft.TabIndex = 0;
             this.pictureBoxLeft.TabStop = false;
             // 
+            // lbContact
+            // 
+            this.lbContact.AutoSize = true;
+            this.lbContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbContact.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContact.Location = new System.Drawing.Point(65, 329);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(206, 13);
+            this.lbContact.TabIndex = 7;
+            this.lbContact.Text = "Bạn đang gặp phải vấn đề khi đăng nhập?";
+            this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbContact.Click += new System.EventHandler(this.lbContact_Click);
+            // 
             // SignInForm
             // 
             this.AcceptButton = this.btnSignIn;
@@ -201,5 +216,6 @@ namespace Library
         private Button btnSignIn;
         private Button btnSwitchToSignUp;
         private PictureBox pictureBoxLeft;
+        private Label lbContact;
     }
 }

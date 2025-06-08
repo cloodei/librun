@@ -97,6 +97,53 @@ namespace Library
         {
             conn = new SqlConnection(global.connectionString);
             conn.Open();
+
+            cmd = new SqlCommand(
+                "INSERT INTO REPLY(user_id, noi_dung, trang_thai, muc_do) " +
+                "VALUES(@uid, @nd, N'chưa hồi đáp', @md)",
+                conn
+            );
+        }
+
+        SqlDataAdapter findda;
+        SqlCommand cmd;
+        DataTable finddt;
+
+        private void lbContact_Click(object sender, EventArgs e)
+        {
+            var f = new ContactForm();
+            var r = f.ShowDialog();
+
+            if (r == DialogResult.OK)
+            {
+                var (ue, nd, pl) = (f.ue, f.nd, f.pl);
+                findda = new SqlDataAdapter(
+                    "SELECT id FROM USERS WHERE email = N'" + ue + "'",
+                    conn
+                );
+                finddt = new DataTable();
+                findda.Fill(finddt);
+
+                if (finddt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy tài khoản với email: " + ue, "Thông tin không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                cmd.Parameters.AddWithValue("@uid", finddt.Rows[0][0]);
+                cmd.Parameters.AddWithValue("@nd", nd);
+                cmd.Parameters.AddWithValue("@md", pl);
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Phản hồi của bạn đã được ghi nhận", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Phản hồi của bạn đã không được gửi thành công", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

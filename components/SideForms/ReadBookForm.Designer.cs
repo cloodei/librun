@@ -1,4 +1,4 @@
-﻿namespace librun.User
+﻿namespace Library
 {
     partial class ReadBookForm
     {
@@ -29,23 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReadBookForm));
-            this.lbBookContents = new System.Windows.Forms.Label();
             this.lbBookName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lbBookContents = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lbBookContents
-            // 
-            this.lbBookContents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbBookContents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbBookContents.Location = new System.Drawing.Point(0, 0);
-            this.lbBookContents.Name = "lbBookContents";
-            this.lbBookContents.Size = new System.Drawing.Size(245, 161);
-            this.lbBookContents.TabIndex = 1;
-            this.lbBookContents.Text = "label2";
             // 
             // lbBookName
             // 
@@ -78,6 +68,16 @@
             this.panel2.Size = new System.Drawing.Size(245, 161);
             this.panel2.TabIndex = 3;
             // 
+            // lbBookContents
+            // 
+            this.lbBookContents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbBookContents.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbBookContents.Location = new System.Drawing.Point(0, 0);
+            this.lbBookContents.Name = "lbBookContents";
+            this.lbBookContents.Size = new System.Drawing.Size(245, 161);
+            this.lbBookContents.TabIndex = 1;
+            this.lbBookContents.Text = "label2";
+            // 
             // ReadBookForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,9 +97,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbBookContents;
+
         private System.Windows.Forms.Label lbBookName;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbBookContents;
     }
 }
