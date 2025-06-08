@@ -2,7 +2,10 @@ using librun;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq.Expressions;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace Library
@@ -12,7 +15,22 @@ namespace Library
         public Users()
         {
             InitializeComponent();
-            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLyNguoiDung);
+            global.SetActiveButton(panel1.Controls, btnQuanLyNguoiDung);
+        }
+
+        private void btnYeuCauMuonSach_Click_1(object sender, EventArgs e)
+        {
+            global.swapForm(global.borrowAF, this);
+        }
+
+        private void btnQuanLySach_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.booksAF, this);
+        }
+
+        private void btnSignOut_Click_1(object sender, EventArgs e)
+        {
+            global.SignOut(this);
         }
 
         string chuoiketnoi = global.connectionString;
@@ -20,6 +38,7 @@ namespace Library
         SqlDataAdapter daQuanLyNguoiDung;
         DataTable dtQuanLyNguoiDung;
 
+        DataTable dtQLND_Goc;
         private void Users_Load(object sender, EventArgs e)
         {
             try
@@ -30,17 +49,20 @@ namespace Library
                 string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id from USERS";
                 daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
                 dtQuanLyNguoiDung = new DataTable();
-                daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
-                dtQuanLyNguoiDung.Columns.Add("mat_khau_display", typeof(string));
+                dtQLND_Goc = new DataTable();
 
+                daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+                daQuanLyNguoiDung.Fill(dtQLND_Goc);
+
+                dtQuanLyNguoiDung.Columns.Add("mat_khau_display", typeof(string));
                 dgv_quan_ly_nguoi_dung.DataSource = dtQuanLyNguoiDung;
 
-                dgv_quan_ly_nguoi_dung.Columns[1].HeaderText = "Tên";
-                dgv_quan_ly_nguoi_dung.Columns[2].HeaderText = "Email";
-                dgv_quan_ly_nguoi_dung.Columns[3].Visible = false;
-                dgv_quan_ly_nguoi_dung.Columns[4].HeaderText = "Trạng thái";
-                dgv_quan_ly_nguoi_dung.Columns[5].Visible = false;
-                dgv_quan_ly_nguoi_dung.Columns[6].HeaderText = "Mật khẩu";
+                dgv_quan_ly_nguoi_dung.Columns["ten"].HeaderText = "Tên";
+                dgv_quan_ly_nguoi_dung.Columns["email"].HeaderText = "Email";
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau"].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns["trang_thai"].HeaderText = "Trạng thái";
+                dgv_quan_ly_nguoi_dung.Columns["id"].Visible = false;
+                dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].HeaderText = "Mật khẩu";
 
                 dgv_quan_ly_nguoi_dung.Columns["mat_khau_display"].DisplayIndex = 3;
                 dgv_quan_ly_nguoi_dung.Columns["mat_khau"].DisplayIndex = 6;
@@ -56,18 +78,84 @@ namespace Library
             foreach (DataRow row in dtQuanLyNguoiDung.Rows)
                 row["mat_khau_display"] = new string('*', row["mat_khau"].ToString().Length);
         }
+        private bool check_empty(bool funtion_Delete)
+        {
+            bool check = true;
+            string thong_bao = "Bạn chưa nhập dữ liệu:";
+            if(txt_ten.Text == "")
+            {
+                thong_bao += " Tên,";
+                check = false;
+            }
+            if (txt_email.Text == "")
+            {
+                thong_bao += " Email,";
+                check = false;
+            }
+            if (txt_mat_khau.Text == "")
+            {
+                thong_bao += " Mật khẩu,";
+                check = false;
+            }
+            if (cbb_trang_thai.Text == "")
+            {
+                thong_bao += " Trạng thái,";
+                check = false;
+            }
+            if (check) {
+                return true;
+            }
+            else
+            {
+                if (!funtion_Delete)
+                {
+                    thong_bao = thong_bao.Substring(0, thong_bao.Length - 1);
+                    MessageBox.Show(thong_bao);
+                }
+                return false;
+            }
+
+        }
+        private bool check_email(bool funtion_Edit)
+        {
+            try
+            {
+                var email = new MailAddress(txt_email.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Email không đúng đinh dạng", "Thêm người dùng lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (email_current == txt_email.Text && funtion_Edit)
+            {
+                return true;
+            }
+            int len = dtQLND_Goc.Select("email = '" + txt_email.Text + "'").Length;
+            
+            if (len != 0)
+            {
+                MessageBox.Show("Email đã tồn tại", "Thêm người dùng lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+            
+
+        }
 
         SqlCommand cmd;
         private void btn_them_Click(object sender, EventArgs e)
         {
             var kq = MessageBox.Show("Bạn có chắc chắn muốn thêm?", "Xác nhận thêm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (kq == DialogResult.Yes && check_empty(false) && check_email(false))
             {
                 string sql = "INSERT INTO USERS VALUES(N'" + txt_ten.Text + "', N'" + txt_email.Text + "', N'" + cbb_trang_thai.Text + "', N'" + txt_mat_khau.Text + "')";
                 cmd = new SqlCommand(sql, conn);
                 cmd.ExecuteNonQuery();
                 dtQuanLyNguoiDung.Clear();
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
+                dtQLND_Goc.Clear();
+                daQuanLyNguoiDung.Fill(dtQLND_Goc);
                 add_mat_khau_display();
                 txt_tim_kiem_TextChanged(sender, e);
                 MessageBox.Show("Bạn đã thêm thành công", "Thông báo");
@@ -75,6 +163,7 @@ namespace Library
         }
 
         DataGridViewRow row_befor = null;
+        string email_current;
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(row_befor != null)
@@ -85,7 +174,7 @@ namespace Library
             txt_email.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[2].Value.ToString();
             txt_mat_khau.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[3].Value.ToString();
             cbb_trang_thai.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[4].Value.ToString();
-
+            email_current = txt_email.Text;
             dgv_quan_ly_nguoi_dung.CurrentRow.DefaultCellStyle.BackColor = Color.LightBlue;
             row_befor = dgv_quan_ly_nguoi_dung.CurrentRow;
         }
@@ -93,7 +182,7 @@ namespace Library
         private void btn_sua_Click(object sender, EventArgs e)
         {
             var kq = MessageBox.Show("Bạn có chắc chắn muốn sửa?", "Xác nhận sửa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (kq == DialogResult.Yes)
+            if (kq == DialogResult.Yes && check_empty(false) && check_email(true))
             {
                 string idUser = dgv_quan_ly_nguoi_dung.CurrentRow.Cells["id"].Value.ToString();
                 cmd = new SqlCommand(
@@ -106,7 +195,8 @@ namespace Library
                      conn
                  );
                 cmd.ExecuteNonQuery();
-                
+                dtQLND_Goc.Clear();
+                daQuanLyNguoiDung.Fill(dtQLND_Goc);
                 txt_tim_kiem_TextChanged(sender, e);
                 MessageBox.Show("Bạn đã sửa thành công", "Thông báo");
             }
@@ -153,7 +243,7 @@ namespace Library
 
         private void btn_xoa_Click(object sender, EventArgs e)
         {
-            if (txt_email.Text!="" )
+            if (check_empty(true))
             {
                 var kq = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (kq == DialogResult.Yes)
