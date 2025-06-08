@@ -13,12 +13,12 @@ namespace Library
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.mainUF, this.FindForm());
+            global.mainUF = global.swapForm(global.mainUF, this.FindForm());
         }
 
         private void btnQuanLySach_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.booksUF, this.FindForm());
+            global.booksUF = global.swapForm(global.booksUF, this.FindForm());
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -41,12 +41,12 @@ namespace Library
 
         private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.profileUF, this.FindForm());
+            global.profileUF = global.swapForm(global.profileUF, this.FindForm());
         }
 
         private void xemThôngTinPhảnHồiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.repliesUF, this.FindForm());
+            global.repliesUF = global.swapForm(global.repliesUF, this.FindForm());
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)

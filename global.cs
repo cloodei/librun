@@ -3,6 +3,11 @@ using System.Windows.Forms;
 
 namespace Library
 {
+    public interface IFData
+    {
+        void InitForm();
+    }
+
     public static class global
     {
         public static readonly Color PrimaryColor = Color.FromArgb(0, 123, 255);
@@ -33,17 +38,22 @@ namespace Library
                 activeButton.BackColor = PrimaryColor;
         }
 
-        public static void swapForm<T, F>(T open, F close) where F : Form where T : Form, new()
+        public static T swapForm<T, F>(T open, F close) where F : Form where T : Form, new()
         {
-            if (open == null)
+            if (open == close)
+                return open;
+
+            bool isnew = open == null;
+            if (isnew)
                 open = new T();
 
             open.Show();
+            close.Hide();
 
-            if (close == signInF)
-                close.Hide();
-            else
-                close.Close();
+            if (!isnew && open is IFData reloadable)
+                reloadable.InitForm();
+
+            return open;
         }
 
         public static void SignOut(Form caller)

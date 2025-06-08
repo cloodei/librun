@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class SignUpForm : Form
+    public partial class SignUpForm : Form, IFData
     {
         SqlDataAdapter da;
         DataTable dt = new DataTable();
@@ -22,6 +22,18 @@ namespace Library
             );
         }
 
+        public void InitForm()
+        {
+            conn = new SqlConnection(global.connectionString);
+            conn.Open();
+
+            cmd = new SqlCommand(
+                "INSERT INTO REPLY(user_id, noi_dung, trang_thai, muc_do) " +
+                "VALUES(@uid, @nd, N'chưa hồi đáp', @md)",
+                conn
+            );
+        }
+
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
@@ -29,9 +41,14 @@ namespace Library
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng ký", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (txtUsername.Text.Length < 3 || txtPassword.Text.Length < 6)
+            if (txtUsername.Text.Length < 3)
             {
-                MessageBox.Show("Tên đăng nhập phải có ít nhất 3 ký tự và mật khẩu ít nhất 6 ký tự.", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tên đăng nhập phải có ít nhất 3 ký tự.", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (txtPassword.Text.Length < 6)
+            {
+                MessageBox.Show("Mật khẩu phải có ít nhất 6 ký tự.", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             try
@@ -39,13 +56,13 @@ namespace Library
                 var email = new MailAddress(txtEmail.Text);
                 if (email.Address != txtEmail.Text)
                 {
-                    MessageBox.Show("Email không đúng", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Email không đúng định dạng", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
             catch
             {
-                MessageBox.Show("Email không đúng", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email không đúng định dạng", "Đăng ký lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (txtPassword.Text != txtConfirmPassword.Text)
@@ -80,7 +97,7 @@ namespace Library
             {
                 global.user_id = (long)sqlcmd.ExecuteScalar();
                 global.locked = false;
-                global.swapForm(global.mainUF, this);
+                global.mainUF = global.swapForm(global.mainUF, this);
             }
             catch (Exception err)
             {
@@ -95,14 +112,7 @@ namespace Library
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
-            conn = new SqlConnection(global.connectionString);
-            conn.Open();
-
-            cmd = new SqlCommand(
-                "INSERT INTO REPLY(user_id, noi_dung, trang_thai, muc_do) " +
-                "VALUES(@uid, @nd, N'chưa hồi đáp', @md)",
-                conn
-            );
+            InitForm();
         }
 
         SqlDataAdapter findda;

@@ -26,8 +26,7 @@ namespace Library
         {
             if (txtEmail.Text == "1" && txtPassword.Text == "1")
             {
-                global.swapForm(global.borrowAF, this);
-
+                global.borrowAF = global.swapForm(global.borrowAF, this);
                 return;
             }
 
@@ -88,7 +87,7 @@ namespace Library
                         }
 
                         global.locked = ck;
-                        global.swapForm(global.mainUF, this);
+                        global.mainUF = global.swapForm(global.mainUF, this);
 
                         return;
                     }
@@ -103,7 +102,7 @@ namespace Library
 
         private void btnSwitchToSignUp_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.signUpF, this);
+            global.signUpF = global.swapForm(global.signUpF, this);
         }
 
         private void SignInForm_Load(object sender, EventArgs e)

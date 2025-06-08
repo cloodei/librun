@@ -5,12 +5,17 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class UserBooks : Form
+    public partial class UserBooks : Form, IFData
     {
         public UserBooks()
         {
             InitializeComponent();
             global.SetActiveButton(userSidenav1.panel1.Controls, userSidenav1.btnQuanLySach);
+        }
+
+        public void InitForm()
+        {
+            fillBooks();
         }
 
         void fillBooks()

@@ -4,17 +4,22 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class UserRepliesForm : Form
+    public partial class UserRepliesForm : Form, IFData
     {
         public UserRepliesForm()
         {
             InitializeComponent();
         }
 
-        private void UserBooks_Load(object sender, EventArgs e)
+        public void InitForm()
         {
             this.rEPLYTableAdapter.Fill(this.userRepliesDataSet.REPLY, global.user_id);
             global.SetActiveButton(userSidenav1.panel1.Controls, null);
+        }
+
+        private void UserBooks_Load(object sender, EventArgs e)
+        {
+            InitForm();
         }
 
         string checkFilter()
@@ -25,19 +30,13 @@ namespace Library
             if (alltt && allpl)
                 return "";
 
-            string some = cbPl.Text;
-            some = char.ToLower(some[0]) + some.Substring(1);
-
             if (alltt)
-                return $"muc_do = '{some}'";
-
-            string thing = cbTt.Text;
-            thing = char.ToLower(thing[0]) + thing.Substring(1);
+                return $"muc_do = '{char.ToLower(cbPl.Text[0]) + cbPl.Text.Substring(1)}'";
 
             if (allpl)
-                return $"trang_thai = '{thing}'";
+                return $"trang_thai = '{char.ToLower(cbTt.Text[0]) + cbTt.Text.Substring(1)}'";
 
-            return $"muc_do = '{some}' AND trang_thai = '{thing}'";
+            return $"muc_do = '{char.ToLower(cbPl.Text[0]) + cbPl.Text.Substring(1)}' AND trang_thai = '{char.ToLower(cbTt.Text[0]) + cbTt.Text.Substring(1)}'";
         }
 
         void fillData()
@@ -86,10 +85,9 @@ namespace Library
         private void dgvReplies_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var r = dgvReplies.Rows[e.RowIndex];
+
             if (r.Cells["tt"].Value.ToString() == "đã giải quyết")
-            {
                 r.DefaultCellStyle.BackColor = Color.LightGreen;
-            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

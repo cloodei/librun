@@ -2,15 +2,13 @@ using librun;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq.Expressions;
 using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class Users : Form
+    public partial class Users : Form, IFData
     {
         public Users()
         {
@@ -18,13 +16,7 @@ namespace Library
             global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLyNguoiDung);
         }
 
-        string chuoiketnoi = global.connectionString;
-        SqlConnection conn;
-        SqlDataAdapter daQuanLyNguoiDung;
-        DataTable dtQuanLyNguoiDung;
-
-        DataTable dtQLND_Goc;
-        private void Users_Load(object sender, EventArgs e)
+        public void InitForm()
         {
             try
             {
@@ -54,9 +46,21 @@ namespace Library
 
                 add_mat_khau_display();
             }
-            catch {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        string chuoiketnoi = global.connectionString;
+        SqlConnection conn;
+        SqlDataAdapter daQuanLyNguoiDung;
+        DataTable dtQuanLyNguoiDung;
+        DataTable dtQLND_Goc;
+
+        private void Users_Load(object sender, EventArgs e)
+        {
+            InitForm();
         }
 
         public void add_mat_khau_display()

@@ -4,12 +4,17 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class BorrowRequests : Form
+    public partial class BorrowRequests : Form, IFData
     {
         public BorrowRequests()
         {
             InitializeComponent();
             global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnTtMuonSach);
+        }
+
+        public void InitForm()
+        {
+            fillDgvBorrowedBooks();
         }
 
         private void BorrowRequests_Load(object sender, EventArgs e)

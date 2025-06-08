@@ -36,6 +36,12 @@ namespace Library
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelContent = new System.Windows.Forms.Panel();
             this.dgvReplies = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rEPLYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userRepliesDataSet = new librun.userRepliesDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,12 +54,6 @@ namespace Library
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.rEPLYTableAdapter = new librun.userRepliesDataSetTableAdapters.REPLYTableAdapter();
             this.userSidenav1 = new Library.UserSidenav();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReplies)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEPLYBindingSource)).BeginInit();
@@ -127,6 +127,50 @@ namespace Library
             this.dgvReplies.TabIndex = 1;
             this.dgvReplies.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReplies_CellDoubleClick);
             this.dgvReplies.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvReplies_CellFormatting);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // nd
+            // 
+            this.nd.DataPropertyName = "noi_dung";
+            this.nd.HeaderText = "Nội dung";
+            this.nd.Name = "nd";
+            this.nd.ReadOnly = true;
+            // 
+            // hd
+            // 
+            this.hd.DataPropertyName = "hoi_dap";
+            this.hd.HeaderText = "hoi_dap";
+            this.hd.Name = "hd";
+            this.hd.ReadOnly = true;
+            this.hd.Visible = false;
+            // 
+            // tt
+            // 
+            this.tt.DataPropertyName = "trang_thai";
+            this.tt.HeaderText = "Trạng thái";
+            this.tt.Name = "tt";
+            this.tt.ReadOnly = true;
+            // 
+            // pl
+            // 
+            this.pl.DataPropertyName = "muc_do";
+            this.pl.HeaderText = "Phân loại";
+            this.pl.Name = "pl";
+            this.pl.ReadOnly = true;
+            // 
+            // ng
+            // 
+            this.ng.DataPropertyName = "ngay_gui";
+            this.ng.HeaderText = "Ngày gửi";
+            this.ng.Name = "ng";
+            this.ng.ReadOnly = true;
             // 
             // rEPLYBindingSource
             // 
@@ -245,50 +289,6 @@ namespace Library
             this.userSidenav1.Name = "userSidenav1";
             this.userSidenav1.Size = new System.Drawing.Size(171, 561);
             this.userSidenav1.TabIndex = 8;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // nd
-            // 
-            this.nd.DataPropertyName = "noi_dung";
-            this.nd.HeaderText = "Nội dung";
-            this.nd.Name = "nd";
-            this.nd.ReadOnly = true;
-            // 
-            // hd
-            // 
-            this.hd.DataPropertyName = "hoi_dap";
-            this.hd.HeaderText = "hoi_dap";
-            this.hd.Name = "hd";
-            this.hd.ReadOnly = true;
-            this.hd.Visible = false;
-            // 
-            // tt
-            // 
-            this.tt.DataPropertyName = "trang_thai";
-            this.tt.HeaderText = "Trạng thái";
-            this.tt.Name = "tt";
-            this.tt.ReadOnly = true;
-            // 
-            // pl
-            // 
-            this.pl.DataPropertyName = "muc_do";
-            this.pl.HeaderText = "Phân loại";
-            this.pl.Name = "pl";
-            this.pl.ReadOnly = true;
-            // 
-            // ng
-            // 
-            this.ng.DataPropertyName = "ngay_gui";
-            this.ng.HeaderText = "Ngày gửi";
-            this.ng.Name = "ng";
-            this.ng.ReadOnly = true;
             // 
             // UserRepliesForm
             // 

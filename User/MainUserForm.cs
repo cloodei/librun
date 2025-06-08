@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class MainUserForm : Form
+    public partial class MainUserForm : Form, IFData
     {
         SqlDataAdapter da;
         DataTable dt = new DataTable();
@@ -17,6 +17,21 @@ namespace Library
         {
             InitializeComponent();
             global.SetActiveButton(userSidenav1.panel1.Controls, userSidenav1.btnHome);
+        }
+
+        public void InitForm()
+        {
+            this.bOOKSTableAdapter2.Fill(this.userBooksDataSet.BOOKS);
+            dgvBooks.ClearSelection();
+
+            da = new SqlDataAdapter(
+                "SELECT book_id " +
+                "FROM BORROW " +
+                "WHERE user_id = " + global.user_id,
+                global.connectionString
+            );
+
+            handleBooks();
         }
 
         void handleBooks()
@@ -39,17 +54,7 @@ namespace Library
 
         private void MainUserForm_Load(object sender, EventArgs e)
         {
-            this.bOOKSTableAdapter2.Fill(this.userBooksDataSet.BOOKS);
-            dgvBooks.ClearSelection();
-
-            da = new SqlDataAdapter(
-                "SELECT book_id " +
-                "FROM BORROW " +
-                "WHERE user_id = " + global.user_id,
-                librun.Properties.Settings.Default.mainConnectionString
-            );
-
-            handleBooks();
+            InitForm();
         }
 
         private void ChonSach(object sender, DataGridViewCellEventArgs e)
@@ -118,13 +123,9 @@ namespace Library
             string safeSearch = searchText.Replace("'", "''");
 
             if (string.IsNullOrEmpty(searchText))
-            {
                 bOOKSBindingSource2.Filter = "";
-            }
             else
-            {
                 bOOKSBindingSource2.Filter = $"tieu_de LIKE '%{safeSearch}%'";
-            }
 
             handleBooks();
         }

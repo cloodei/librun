@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace Library
 {
-    public partial class Books : Form
+    public partial class Books : Form, IFData
     {
         string ketnoi = global.connectionString;
         SqlConnection connection;
@@ -19,10 +19,10 @@ namespace Library
             global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLySach);
         }
 
-        private void Books_Load(object sender, EventArgs e)
+        public void InitForm()
         {
             connection = new SqlConnection(ketnoi);
-            connection.Open(); 
+            connection.Open();
             string sql = "SELECT * FROM BOOKS";
             da = new SqlDataAdapter(sql, connection);
             dt.Clear();
@@ -37,17 +37,32 @@ namespace Library
             dataGridView1.Columns[4].HeaderText = "Thể loại";
             dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
 
-            dataGridView1.Columns.Add("sua", "");
-            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.Columns.Add("xoa", "");
-            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            
-            for(int i = 0; i < dataGridView1.RowCount; i++)
+            try
+            {
+                var _ = dataGridView1.Columns[6];
+            }
+            catch
+            {
+                dataGridView1.Columns.Add("sua", "");
+                dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            try
+            {
+                var _ = dataGridView1.Columns[7];
+            }
+            catch
+            {
+                dataGridView1.Columns.Add("xoa", "");
+                dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
             {
                 dataGridView1.Rows[i].Cells[6].Value = "Sửa";
                 dataGridView1.Rows[i].Cells[7].Value = "Xóa";
                 dataGridView1.Columns[6].DefaultCellStyle.BackColor = Color.LightGreen;
-                dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink; 
+                dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink;
             }
             foreach (DataGridViewColumn col in dataGridView1.Columns)
             {
@@ -55,10 +70,15 @@ namespace Library
             }
         }
 
+        private void Books_Load(object sender, EventArgs e)
+        {
+            InitForm();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             BorrowBookForm bookForm = new BorrowBookForm(this, da,  dt, 0);
-            bookForm.Show();
+            bookForm.ShowDialog();
             this.Enabled = false;
             bookForm.button3.Enabled = false;
             bookForm.button3.Visible = false;
