@@ -1,26 +1,76 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
+using librun.Admin.Books;
+using System.Data.SqlClient;
 
 namespace Library
 {
     public partial class Books : Form
     {
-        string ketnoi = global.connectionString;
+        string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
         SqlConnection connection;
-        DataGridViewCellEventArgs a;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
 
         public Books()
         {
             InitializeComponent();
-            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLySach);
+            global.SetActiveButton(panel1.Controls, btnQuanLySach);
+        }
+
+        private void btnYeuCauMuonSach_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.borrowAF, this);
+        }
+
+        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
+        {
+            global.swapForm(global.usersAF, this);
+        }
+
+        private void btnSignOut_Click_1(object sender, EventArgs e)
+        {
+            global.SignOut(this);
         }
 
         private void Books_Load(object sender, EventArgs e)
         {
+            connection = new SqlConnection(ketnoi);
+            connection.Open(); 
+            string sql = "SELECT * FROM BOOKS";
+            da = new SqlDataAdapter(sql, connection);
+            dt.Clear();
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+
+            // TODO: This line of code loads data into the 'libDataSet1.BOOKS' table. You can move, or remove it, as needed.
+            //this.bOOKSTableAdapter.Fill(this.libDataSet1.BOOKS);
+            dataGridView1.Columns[0].HeaderText = "Mã sách";
+            dataGridView1.Columns[1].HeaderText = "Tên sách";
+            dataGridView1.Columns[2].HeaderText = "Tác giả";
+            dataGridView1.Columns[3].HeaderText = "Nội dung";
+            dataGridView1.Columns[4].HeaderText = "Thể loại";
+            dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
+
+            dataGridView1.Columns.Add("sua", "");
+            dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns.Add("xoa", "");
+            dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            for(int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                dataGridView1.Rows[i].Cells[6].Value = "Sửa";
+                dataGridView1.Rows[i].Cells[7].Value = "Xóa";
+                dataGridView1.Columns[6].DefaultCellStyle.BackColor = Color.LightGreen;
+                dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink; 
+            }
+            foreach (DataGridViewColumn col in dataGridView1.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            /*
             connection = new SqlConnection(ketnoi);
             connection.Open();
 
@@ -37,140 +87,89 @@ namespace Library
             dataGridView1.Columns[3].HeaderText = "Nội dung";
             dataGridView1.Columns[4].HeaderText = "Thể loại";
             dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-        }
-
-        public bool ktra()
-        {
-            string sql = "SELECT COUNT(*) FROM Books WHERE tieu_de = @ten AND ten_tac_gia = @tac AND noi_dung = @nd AND the_loai = @tl";
-            using (var com = new SqlCommand(sql, connection))
-            {
-                com.Parameters.AddWithValue("@ten", textBox1.Text);
-                com.Parameters.AddWithValue("@tac", textBox2.Text);
-                com.Parameters.AddWithValue("@nd", textBox3.Text);
-                com.Parameters.AddWithValue("@tl", textBox4.Text);
-                return com.ExecuteNonQuery() > 0;
-            }
-        }
-
-        void flipButtons(bool show1)
-        {
-            button1.Enabled = show1;
-            button1.Visible = show1;
-            button2.Enabled = !show1;
-            button2.Visible = !show1;
-            button3.Enabled = !show1;
-            button3.Visible = !show1;
+            dataGridView1.Columns[6].HeaderText = "";
+            dataGridView1.Columns[7].HeaderText = "";*/
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length == 0)
-            {
-                MessageBox.Show("Nhập lại tên sách");
-                return;
-            }
-
-            if (textBox2.Text.Length == 0)
-            {
-                MessageBox.Show("Nhập lại tên tác giả");
-                return;
-            }
-
-            if (textBox3.Text.Length == 0)
-            {
-                MessageBox.Show("Nhập lại nội dung sách");
-                return;
-            }
-
-            if (textBox4.Text.Length == 0)
-            {
-                MessageBox.Show("Nhập lại thể loại sách");
-                return;
-            }
-
-            if(!ktra())
-            {
-                MessageBox.Show("Sách đã tồn tại trong hệ thống");
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
-                dateTimePicker1.Value = DateTime.Now;
-                return;
-            }
-
-            string sql = "INSERT INTO BOOKS (tieu_de, ten_tac_gia, noi_dung, the_loai, ngay_xuat_ban) VALUES (@ten, @tac, @nd, @tl, @nxb)";
-            using (var com = new SqlCommand(sql, connection))
-            {
-                com.Parameters.AddWithValue("@ten", textBox1.Text);
-                com.Parameters.AddWithValue("@tac", textBox2.Text);
-                com.Parameters.AddWithValue("@nd", textBox3.Text);
-                com.Parameters.AddWithValue("@tl", textBox4.Text);
-                com.Parameters.AddWithValue("@nxb", dateTimePicker1.Value);
-                com.ExecuteNonQuery();
-            }
-
-            dt.Clear();
-            da.Fill(dt);
-
-            flipButtons(true);
-            dataGridView1.ClearSelection();
-
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            dateTimePicker1.Value = DateTime.Now;
+            //DataGridViewRow row = new DataGridViewRow();
+            BorrowBookForm bookForm = new BorrowBookForm(this, da,  dt, 0);
+            bookForm.Show();
+            this.Enabled = false;
+            bookForm.button3.Enabled = false;
+            bookForm.button3.Visible = false;
+            bookForm.button1.Enabled = true;
+            bookForm.button1.Visible = true;
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void button1_EnabledChanged(object sender, EventArgs e)
         {
-            if(e.RowIndex >= dataGridView1.Rows.Count - 1 || e.RowIndex < 0)
+            for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                return;
+                dataGridView1.Rows[i].Cells[6].Value = "Sửa";
+                dataGridView1.Rows[i].Cells[7].Value = "Xóa";
+                dataGridView1.Columns[6].DefaultCellStyle.BackColor = Color.LightGreen;
+                dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink;
             }
-            flipButtons(false);
-
-            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-            textBox1.Text = row.Cells[1].Value.ToString();
-            textBox2.Text = row.Cells[2].Value.ToString();
-            textBox3.Text = row.Cells[3].Value.ToString();
-            textBox4.Text = row.Cells[4].Value.ToString();
-
-            dateTimePicker1.Value = Convert.ToDateTime(row.Cells[5].Value);
-            a = e;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dataGridView1.Rows[a.RowIndex];
-            long ide = Convert.ToInt64(row.Cells[0].Value);
-
-            string sql = "UPDATE BOOKS SET tieu_de = @ten, ten_tac_gia = @tac, noi_dung = @nd, the_loai = @tl, ngay_xuat_ban = @nxb WHERE id = @id";
-            using (SqlCommand com = new SqlCommand(sql, connection))
+            if(e.RowIndex >= 0)
             {
-                com.Parameters.AddWithValue("@id", ide);
-                com.Parameters.AddWithValue("@ten", textBox1.Text);
-                com.Parameters.AddWithValue("@tac", textBox2.Text);
-                com.Parameters.AddWithValue("@nd", textBox3.Text);
-                com.Parameters.AddWithValue("@tl", textBox4.Text);
-                com.Parameters.AddWithValue("@nxb", dateTimePicker1.Value);
-                com.ExecuteNonQuery();
-
-                MessageBox.Show("Cập nhật thành công");
+                if(e.ColumnIndex == 6)
+                {
+                    long id = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                    BorrowBookForm bookForm = new BorrowBookForm(this, da, dt, id);
+                    bookForm.Show();
+                    this.Enabled = false;
+                    bookForm.button3.Enabled = true;
+                    bookForm.button3.Visible = true;
+                    bookForm.button1.Enabled = false;
+                    bookForm.button1.Visible = false;
+                    bookForm.textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    bookForm.textBox2.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    bookForm.richTextBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    bookForm.textBox4.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                    bookForm.dateTimePicker1.Value = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+                }
+                else if(e.ColumnIndex == 7)
+                {
+                    DialogResult result = MessageBox.Show(
+                        "Bạn có chắc chắn muốn xóa sách này?",
+                        "Xác nhận xóa",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question
+                    );
+                    if( result == DialogResult.Yes)
+                    {
+                        string sql = "DELETE FROM BOOKS WHERE id = @masach";
+                        using (var command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@masach", dataGridView1.CurrentRow.Cells[0].Value);
+                            command.ExecuteNonQuery();
+                        }
+                        MessageBox.Show("Xóa thành công");
+                        dt.Clear();
+                        da.Fill(dt);
+                        for (int i = 0; i < dataGridView1.RowCount; i++)
+                        {
+                            dataGridView1.Rows[i].Cells[6].Value = "Sửa";
+                            dataGridView1.Rows[i].Cells[7].Value = "Xóa";
+                            dataGridView1.Columns[6].DefaultCellStyle.BackColor = Color.LightGreen;
+                            dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink;
+                        }
+                    }
+                }
+                else
+                {
+                    UserBooksBorrow ub = new UserBooksBorrow(Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value));
+                    ub.Show();
+                }
             }
-
-            flipButtons(true);
-
-            dt.Clear();
-            da.Fill(dt);
-
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            dateTimePicker1.Value = DateTime.Now;
         }
+
 
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
@@ -178,11 +177,6 @@ namespace Library
 
             try
             {
-                if (string.IsNullOrEmpty(keyword))
-                {
-                    Books_Load(sender, e);
-                    return;
-                }
                 string sql = "SELECT * FROM BOOKS WHERE tieu_de LIKE @ten";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
@@ -203,6 +197,13 @@ namespace Library
                     dataGridView1.Columns[4].HeaderText = "Thể loại";
                     dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
                 }
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    dataGridView1.Rows[i].Cells[6].Value = "Sửa";
+                    dataGridView1.Rows[i].Cells[7].Value = "Xóa";
+                    dataGridView1.Columns[6].DefaultCellStyle.BackColor = Color.LightGreen;
+                    dataGridView1.Columns[7].DefaultCellStyle.BackColor = Color.LightPink;
+                }
             }
             catch (Exception ex)
             {
@@ -211,39 +212,30 @@ namespace Library
             }
         }
 
-        private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= dataGridView1.Rows.Count - 1 || e.RowIndex < 0)
+            if(e.RowIndex >= 0)
             {
-                return;
+                dataGridView1.Rows[e.RowIndex].Cells[0].Style.BackColor = Color.LightBlue;
+                dataGridView1.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.LightBlue;
+                dataGridView1.Rows[e.RowIndex].Cells[2].Style.BackColor = Color.LightBlue;
+                dataGridView1.Rows[e.RowIndex].Cells[3].Style.BackColor = Color.LightBlue;
+                dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.LightBlue;
+                dataGridView1.Rows[e.RowIndex].Cells[5].Style.BackColor = Color.LightBlue;
             }
-            long ma = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-            var ub = new UserBooksBorrow(ma);
-            ub.ShowDialog();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = dataGridView1.Rows[a.RowIndex];
-            long ide = Convert.ToInt64(row.Cells[0].Value);
-
-            string sql = "DELETE FROM BOOKS WHERE id = @masach";
-            using (var command = new SqlCommand(sql, connection))
+            if (e.RowIndex >= 0)
             {
-                command.Parameters.AddWithValue("@masach", ide);
-                command.ExecuteNonQuery();
+                dataGridView1.Rows[e.RowIndex].Cells[0].Style.BackColor = Color.White;
+                dataGridView1.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
+                dataGridView1.Rows[e.RowIndex].Cells[2].Style.BackColor = Color.White;
+                dataGridView1.Rows[e.RowIndex].Cells[3].Style.BackColor = Color.White;
+                dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.White;
+                dataGridView1.Rows[e.RowIndex].Cells[5].Style.BackColor = Color.White;
             }
-            MessageBox.Show("Xóa thành công");
-
-            flipButtons(true);
-            dt.Clear();
-            da.Fill(dt);
-
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            dateTimePicker1.Value = DateTime.Now;
         }
     }
 }
