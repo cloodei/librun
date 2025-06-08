@@ -1,4 +1,4 @@
-﻿namespace librun.Admin.Books
+﻿namespace Library
 {
     partial class BorrowBookForm
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BorrowBookForm));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -205,9 +206,11 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(563, 341);
             this.Name = "BorrowBookForm";
-            this.Text = "BorrowBookForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thông tin sách";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BorrowBookForm_FormClosed);
             this.Load += new System.EventHandler(this.BorrowBookForm_Load);
             this.ResumeLayout(false);

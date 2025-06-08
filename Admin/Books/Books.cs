@@ -2,14 +2,13 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using librun.Admin.Books;
 using System.Data.SqlClient;
 
 namespace Library
 {
     public partial class Books : Form
     {
-        string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
+        string ketnoi = global.connectionString;
         SqlConnection connection;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
@@ -17,22 +16,7 @@ namespace Library
         public Books()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnQuanLySach);
-        }
-
-        private void btnYeuCauMuonSach_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.borrowAF, this);
-        }
-
-        private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.usersAF, this);
-        }
-
-        private void btnSignOut_Click_1(object sender, EventArgs e)
-        {
-            global.SignOut(this);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLySach);
         }
 
         private void Books_Load(object sender, EventArgs e)
@@ -46,8 +30,6 @@ namespace Library
 
             dataGridView1.DataSource = dt;
 
-            // TODO: This line of code loads data into the 'libDataSet1.BOOKS' table. You can move, or remove it, as needed.
-            //this.bOOKSTableAdapter.Fill(this.libDataSet1.BOOKS);
             dataGridView1.Columns[0].HeaderText = "Mã sách";
             dataGridView1.Columns[1].HeaderText = "Tên sách";
             dataGridView1.Columns[2].HeaderText = "Tác giả";
@@ -59,6 +41,7 @@ namespace Library
             dataGridView1.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns.Add("xoa", "");
             dataGridView1.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
             for(int i = 0; i < dataGridView1.RowCount; i++)
             {
                 dataGridView1.Rows[i].Cells[6].Value = "Sửa";
@@ -70,30 +53,10 @@ namespace Library
             {
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            /*
-            connection = new SqlConnection(ketnoi);
-            connection.Open();
-
-            string sql = "SELECT * FROM BOOKS";
-            da = new SqlDataAdapter(sql, connection);
-            dt.Clear();
-            da.Fill(dt);
-
-            dataGridView1.DataSource = dt;
-            
-            dataGridView1.Columns[0].HeaderText = "Mã sách";
-            dataGridView1.Columns[1].HeaderText = "Tên sách";
-            dataGridView1.Columns[2].HeaderText = "Tác giả";
-            dataGridView1.Columns[3].HeaderText = "Nội dung";
-            dataGridView1.Columns[4].HeaderText = "Thể loại";
-            dataGridView1.Columns[5].HeaderText = "Ngày xuất bản";
-            dataGridView1.Columns[6].HeaderText = "";
-            dataGridView1.Columns[7].HeaderText = "";*/
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //DataGridViewRow row = new DataGridViewRow();
             BorrowBookForm bookForm = new BorrowBookForm(this, da,  dt, 0);
             bookForm.Show();
             this.Enabled = false;

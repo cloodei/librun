@@ -28,11 +28,12 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserBooksBorrow));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbl_tb_sach = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_tb_sach = new System.Windows.Forms.Label();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +50,27 @@ namespace Library
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(593, 66);
             this.panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(333, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Tìm kiếm";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(412, 24);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(169, 20);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lbl_tb_sach
             // 
@@ -79,27 +101,6 @@ namespace Library
             this.dataGridView2.Size = new System.Drawing.Size(593, 205);
             this.dataGridView2.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(333, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 20);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Tìm kiếm";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(412, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 20);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // UserBooksBorrow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -107,9 +108,11 @@ namespace Library
             this.ClientSize = new System.Drawing.Size(593, 271);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(609, 310);
             this.Name = "UserBooksBorrow";
-            this.Text = "UserBooksBorrow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Thông tin người mượn";
             this.Load += new System.EventHandler(this.UserBooksBorrow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

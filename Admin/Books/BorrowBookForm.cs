@@ -1,25 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
-namespace librun.Admin.Books
+namespace Library
 {
     public partial class BorrowBookForm : Form
     {
-        string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
+        string ketnoi = global.connectionString;
         SqlConnection connection;
         SqlDataAdapter da;
         DataTable dt = new DataTable();
         public long ide;
         public Form form;
+
         public BorrowBookForm(Form bf, SqlDataAdapter da, DataTable dt, long r)
         {
             InitializeComponent();
@@ -100,10 +94,8 @@ namespace librun.Admin.Books
         }
         private void BorrowBookForm_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'libDataSet2.BOOKS' table. You can move, or remove it, as needed.
             connection = new SqlConnection(ketnoi);
             connection.Open();
-
         }
 
         private void BorrowBookForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -150,12 +142,14 @@ namespace librun.Admin.Books
                 MessageBox.Show("Sách đã tồn tại");
                 return;
             }
+
             DialogResult result = MessageBox.Show(
                 "Sửa sách không?",
                 "chắc chưa?",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
             );
+
             if (result == DialogResult.No)
             {
                 return;

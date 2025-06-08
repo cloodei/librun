@@ -15,22 +15,7 @@ namespace Library
         public Users()
         {
             InitializeComponent();
-            global.SetActiveButton(panel1.Controls, btnQuanLyNguoiDung);
-        }
-
-        private void btnYeuCauMuonSach_Click_1(object sender, EventArgs e)
-        {
-            global.swapForm(global.borrowAF, this);
-        }
-
-        private void btnQuanLySach_Click(object sender, EventArgs e)
-        {
-            global.swapForm(global.booksAF, this);
-        }
-
-        private void btnSignOut_Click_1(object sender, EventArgs e)
-        {
-            global.SignOut(this);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLyNguoiDung);
         }
 
         string chuoiketnoi = global.connectionString;
@@ -73,11 +58,13 @@ namespace Library
                 MessageBox.Show("Lỗi khi tải dữ liệu: " , "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void add_mat_khau_display()
         {
             foreach (DataRow row in dtQuanLyNguoiDung.Rows)
                 row["mat_khau_display"] = new string('*', row["mat_khau"].ToString().Length);
         }
+
         private bool check_empty(bool funtion_Delete)
         {
             bool check = true;
@@ -102,6 +89,7 @@ namespace Library
                 thong_bao += " Trạng thái,";
                 check = false;
             }
+
             if (check) {
                 return true;
             }
@@ -116,11 +104,17 @@ namespace Library
             }
 
         }
+
         private bool check_email(bool funtion_Edit)
         {
             try
             {
                 var email = new MailAddress(txt_email.Text);
+                if (email.Address != txt_email.Text)
+                {
+                    MessageBox.Show("Email không đúng đinh dạng", "Thêm người dùng lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
             }
             catch
             {
@@ -139,8 +133,6 @@ namespace Library
                 return false;
             }
             return true;
-            
-
         }
 
         SqlCommand cmd;

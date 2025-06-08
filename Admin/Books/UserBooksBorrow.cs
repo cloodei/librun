@@ -1,19 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 
 namespace Library
 {
     public partial class UserBooksBorrow : Form
     {
-        string ketnoi = librun.Properties.Settings.Default.mainConnectionString;
+        string ketnoi = global.connectionString;
         SqlConnection connection;
         DataGridViewCellEventArgs a;
         SqlDataAdapter da;
@@ -30,7 +25,7 @@ namespace Library
         {
             connection = new SqlConnection(ketnoi);
             connection.Open();
-            string sql = "SELECT  BORROW.user_id, USERS.ten, USERS.email, USERS.trang_thai, BORROW.ngay_muon FROM BORROW INNER JOIN USERS ON BORROW.user_id = USERS.id WHERE book_id = @i";
+            string sql = "SELECT BORROW.user_id, USERS.ten, USERS.email, USERS.trang_thai, BORROW.ngay_muon FROM BORROW INNER JOIN USERS ON BORROW.user_id = USERS.id WHERE book_id = @i";
             using(var command = new SqlCommand(sql, connection))
             {
                 command.Parameters.AddWithValue("@i", userId);
