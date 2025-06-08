@@ -32,10 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSignOut = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.btnYeuCauMuonSach = new System.Windows.Forms.Button();
+            this.btnTtMuonSach = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnQuanLySach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
+            this.btnQuanLyPhanHoi = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -43,9 +44,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel1.Controls.Add(this.btnQuanLyPhanHoi);
             this.panel1.Controls.Add(this.btnSignOut);
             this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Controls.Add(this.btnYeuCauMuonSach);
+            this.panel1.Controls.Add(this.btnTtMuonSach);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnQuanLySach);
             this.panel1.Controls.Add(this.btnQuanLyNguoiDung);
@@ -83,20 +85,20 @@
             this.lblTitle.Text = "Admin";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnYeuCauMuonSach
+            // btnTtMuonSach
             // 
-            this.btnYeuCauMuonSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnYeuCauMuonSach.FlatAppearance.BorderSize = 0;
-            this.btnYeuCauMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYeuCauMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnYeuCauMuonSach.ForeColor = System.Drawing.Color.White;
-            this.btnYeuCauMuonSach.Location = new System.Drawing.Point(2, 149);
-            this.btnYeuCauMuonSach.Name = "btnYeuCauMuonSach";
-            this.btnYeuCauMuonSach.Size = new System.Drawing.Size(166, 51);
-            this.btnYeuCauMuonSach.TabIndex = 7;
-            this.btnYeuCauMuonSach.Text = "Thống kê thông tin mượn sách";
-            this.btnYeuCauMuonSach.UseVisualStyleBackColor = false;
-            this.btnYeuCauMuonSach.Click += new System.EventHandler(this.btnYeuCauMuonSach_Click);
+            this.btnTtMuonSach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnTtMuonSach.FlatAppearance.BorderSize = 0;
+            this.btnTtMuonSach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTtMuonSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnTtMuonSach.ForeColor = System.Drawing.Color.White;
+            this.btnTtMuonSach.Location = new System.Drawing.Point(2, 149);
+            this.btnTtMuonSach.Name = "btnTtMuonSach";
+            this.btnTtMuonSach.Size = new System.Drawing.Size(166, 51);
+            this.btnTtMuonSach.TabIndex = 7;
+            this.btnTtMuonSach.Text = "Thống kê thông tin mượn sách";
+            this.btnTtMuonSach.UseVisualStyleBackColor = false;
+            this.btnTtMuonSach.Click += new System.EventHandler(this.btnYeuCauMuonSach_Click);
             // 
             // pictureBox1
             // 
@@ -138,6 +140,21 @@
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 
+            // btnQuanLyPhanHoi
+            // 
+            this.btnQuanLyPhanHoi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnQuanLyPhanHoi.FlatAppearance.BorderSize = 0;
+            this.btnQuanLyPhanHoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuanLyPhanHoi.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnQuanLyPhanHoi.ForeColor = System.Drawing.Color.White;
+            this.btnQuanLyPhanHoi.Location = new System.Drawing.Point(2, 320);
+            this.btnQuanLyPhanHoi.Name = "btnQuanLyPhanHoi";
+            this.btnQuanLyPhanHoi.Size = new System.Drawing.Size(166, 51);
+            this.btnQuanLyPhanHoi.TabIndex = 10;
+            this.btnQuanLyPhanHoi.Text = "Quản lý phản hồi";
+            this.btnQuanLyPhanHoi.UseVisualStyleBackColor = false;
+            this.btnQuanLyPhanHoi.Click += new System.EventHandler(this.btnQuanLyPhanHoi_Click);
+            // 
             // AdminSidenav
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +162,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "AdminSidenav";
             this.Size = new System.Drawing.Size(171, 561);
-            this.Load += new System.EventHandler(this.AdminSidenav_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -156,10 +172,11 @@
         #endregion
         internal System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Label lblTitle;
-        internal System.Windows.Forms.Button btnYeuCauMuonSach;
+        internal System.Windows.Forms.Button btnTtMuonSach;
         private System.Windows.Forms.PictureBox pictureBox1;
         internal System.Windows.Forms.Button btnQuanLySach;
         internal System.Windows.Forms.Button btnQuanLyNguoiDung;
         public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button btnQuanLyPhanHoi;
     }
 }

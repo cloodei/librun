@@ -20,6 +20,7 @@ namespace Library
         public static MainUserForm mainUF { get; set; } = null;
         public static Users usersAF { get; set; } = null;
         public static Books booksAF { get; set; } = null;
+        public static Replies repliesAF { get; set; } = null;
         public static BorrowRequests borrowAF { get; set; } = null;
 
         public static void SetActiveButton(Control.ControlCollection c, Button activeButton)

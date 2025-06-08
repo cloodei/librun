@@ -6,8 +6,6 @@ namespace Library
 {
     public partial class UserSidenav : UserControl
     {
-        Form f;
-
         public UserSidenav()
         {
             InitializeComponent();
@@ -15,12 +13,12 @@ namespace Library
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.mainUF, f);
+            global.swapForm(global.mainUF, this.FindForm());
         }
 
         private void btnQuanLySach_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.booksUF, f);
+            global.swapForm(global.booksUF, this.FindForm());
         }
 
         private void btnGioiThieu_Click(object sender, EventArgs e)
@@ -43,22 +41,17 @@ namespace Library
 
         private void quảnLýTàiKhảoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.profileUF, f);
+            global.swapForm(global.profileUF, this.FindForm());
         }
 
         private void xemThôngTinPhảnHồiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            global.swapForm(global.repliesUF, f);
+            global.swapForm(global.repliesUF, this.FindForm());
         }
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            global.SignOut(f);
-        }
-
-        private void UserSidenav_Load(object sender, EventArgs e)
-        {
-            f = this.FindForm();
+            global.SignOut(this.FindForm());
         }
     }
 }

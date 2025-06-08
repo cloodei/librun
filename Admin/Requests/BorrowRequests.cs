@@ -9,7 +9,7 @@ namespace Library
         public BorrowRequests()
         {
             InitializeComponent();
-            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnYeuCauMuonSach);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnTtMuonSach);
         }
 
         private void BorrowRequests_Load(object sender, EventArgs e)

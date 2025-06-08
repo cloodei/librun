@@ -179,7 +179,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "UserSidenav";
             this.Size = new System.Drawing.Size(171, 561);
-            this.Load += new System.EventHandler(this.UserSidenav_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserProfile)).EndInit();

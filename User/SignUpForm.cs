@@ -11,7 +11,7 @@ namespace Library
     {
         SqlDataAdapter da;
         DataTable dt = new DataTable();
-        readonly SqlConnection conn = new SqlConnection(global.connectionString);
+        SqlConnection conn;
 
         public SignUpForm()
         {
@@ -95,6 +95,7 @@ namespace Library
 
         private void SignUpForm_Load(object sender, EventArgs e)
         {
+            conn = new SqlConnection(global.connectionString);
             conn.Open();
         }
     }

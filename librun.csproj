@@ -184,6 +184,12 @@
     <Compile Include="Admin\Books\UserBooksBorrow.Designer.cs">
       <DependentUpon>UserBooksBorrow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Replies\Replies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Replies\Replies.Designer.cs">
+      <DependentUpon>Replies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Requests\BorrowRequests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Books\UserBooksBorrow.resx">
       <DependentUpon>UserBooksBorrow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Replies\Replies.resx">
+      <DependentUpon>Replies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Requests\BorrowRequests.resx">
       <DependentUpon>BorrowRequests.cs</DependentUpon>
