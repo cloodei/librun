@@ -24,23 +24,15 @@ namespace Library
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Replies));
             this.panelContent = new System.Windows.Forms.Panel();
             this.splitContainerDetails = new System.Windows.Forms.SplitContainer();
-            this.bORROWBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adminBorrowDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adminBorrowDataSet = new librun.adminBorrowDataSet();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
             this.adminSidenav1 = new Library.AdminSidenav();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
             this.splitContainerDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).BeginInit();
             this.panelContentHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,21 +60,6 @@ namespace Library
             this.splitContainerDetails.SplitterDistance = 347;
             this.splitContainerDetails.TabIndex = 1;
             // 
-            // bORROWBindingSource
-            // 
-            this.bORROWBindingSource.DataMember = "BORROW";
-            this.bORROWBindingSource.DataSource = this.adminBorrowDataSetBindingSource;
-            // 
-            // adminBorrowDataSetBindingSource
-            // 
-            this.adminBorrowDataSetBindingSource.DataSource = this.adminBorrowDataSet;
-            this.adminBorrowDataSetBindingSource.Position = 0;
-            // 
-            // adminBorrowDataSet
-            // 
-            this.adminBorrowDataSet.DataSetName = "adminBorrowDataSet";
-            this.adminBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // panelContentHeader
             // 
             this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
@@ -103,10 +80,6 @@ namespace Library
             this.lblContentHeader.Size = new System.Drawing.Size(231, 30);
             this.lblContentHeader.TabIndex = 0;
             this.lblContentHeader.Text = "Phản hồi người dùng";
-            // 
-            // bORROWTableAdapter
-            // 
-            this.bORROWTableAdapter.ClearBeforeFill = true;
             // 
             // adminSidenav1
             // 
@@ -132,9 +105,6 @@ namespace Library
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).EndInit();
             this.splitContainerDetails.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bORROWBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBorrowDataSet)).EndInit();
             this.panelContentHeader.ResumeLayout(false);
             this.panelContentHeader.PerformLayout();
             this.ResumeLayout(false);
@@ -144,10 +114,6 @@ namespace Library
         private Panel panelContentHeader;
         private Label lblContentHeader;
         private SplitContainer splitContainerDetails;
-        private librun.adminBorrowDataSet adminBorrowDataSet;
-        private BindingSource adminBorrowDataSetBindingSource;
-        private BindingSource bORROWBindingSource;
-        private librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter bORROWTableAdapter;
         private AdminSidenav adminSidenav1;
     }
 }
