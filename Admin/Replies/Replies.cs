@@ -85,10 +85,18 @@ namespace Library
 
         private void dgv_phan_hoi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            string DaGiaiQuyet = dgv_phan_hoi.Rows[e.RowIndex].Cells["trang_thai"].Value.ToString();
-            if (DaGiaiQuyet == "đã giải quyết")
+            string mucDo = dgv_phan_hoi.Rows[e.RowIndex].Cells["muc_do"].Value.ToString();
+            if (mucDo == "phản hồi")
             {
-                dgv_phan_hoi.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+                dgv_phan_hoi.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightBlue;
+            }
+            if (mucDo == "khiếu nại")
+            {
+                dgv_phan_hoi.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightPink;
+            }
+            if (mucDo == "yêu cầu")
+            {
+                dgv_phan_hoi.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightYellow;
             }
         }
         private string check_fill(string sql)
