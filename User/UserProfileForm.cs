@@ -16,7 +16,6 @@ namespace Library
         public UserProfileForm()
         {
             InitializeComponent();
-            lbCanhBao.Visible = global.locked;
             global.SetActiveButton(userSidenav1.panel1.Controls, null);
         }
 
@@ -35,7 +34,8 @@ namespace Library
             da.Fill(dt);
             dtc.Clear();
             dac.Fill(dtc);
-            countBooks = dtc.Rows[0][0].ToString();
+            countBooks = (dtc.Rows.Count <= 0) ? "0" : dtc.Rows[0][0].ToString();
+            lbCanhBao.Visible = global.locked;
 
             if (dt.Rows.Count > 0)
             {

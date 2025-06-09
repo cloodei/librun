@@ -23,6 +23,7 @@ namespace Library
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignInForm));
             this.panelContainer = new System.Windows.Forms.Panel();
             this.panelRight = new System.Windows.Forms.Panel();
+            this.lbContact = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -31,7 +32,6 @@ namespace Library
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnSwitchToSignUp = new System.Windows.Forms.Button();
             this.pictureBoxLeft = new System.Windows.Forms.PictureBox();
-            this.lbContact = new System.Windows.Forms.Label();
             this.panelContainer.SuspendLayout();
             this.panelRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLeft)).BeginInit();
@@ -44,7 +44,7 @@ namespace Library
             this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContainer.Location = new System.Drawing.Point(0, 0);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(656, 361);
+            this.panelContainer.Size = new System.Drawing.Size(672, 400);
             this.panelContainer.TabIndex = 0;
             // 
             // panelRight
@@ -62,8 +62,21 @@ namespace Library
             this.panelRight.Location = new System.Drawing.Point(331, 0);
             this.panelRight.Name = "panelRight";
             this.panelRight.Padding = new System.Windows.Forms.Padding(40);
-            this.panelRight.Size = new System.Drawing.Size(325, 361);
+            this.panelRight.Size = new System.Drawing.Size(341, 400);
             this.panelRight.TabIndex = 1;
+            // 
+            // lbContact
+            // 
+            this.lbContact.AutoSize = true;
+            this.lbContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbContact.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbContact.Location = new System.Drawing.Point(65, 329);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(206, 13);
+            this.lbContact.TabIndex = 7;
+            this.lbContact.Text = "Bạn đang gặp phải vấn đề khi đăng nhập?";
+            this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbContact.Click += new System.EventHandler(this.lbContact_Click);
             // 
             // lblWelcome
             // 
@@ -97,7 +110,7 @@ namespace Library
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.txtEmail.Location = new System.Drawing.Point(18, 91);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(286, 27);
+            this.txtEmail.Size = new System.Drawing.Size(302, 27);
             this.txtEmail.TabIndex = 2;
             // 
             // lblPassword
@@ -119,7 +132,7 @@ namespace Library
             this.txtPassword.Location = new System.Drawing.Point(18, 161);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
-            this.txtPassword.Size = new System.Drawing.Size(286, 27);
+            this.txtPassword.Size = new System.Drawing.Size(302, 27);
             this.txtPassword.TabIndex = 4;
             // 
             // btnSignIn
@@ -133,7 +146,7 @@ namespace Library
             this.btnSignIn.ForeColor = System.Drawing.Color.White;
             this.btnSignIn.Location = new System.Drawing.Point(18, 226);
             this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(286, 45);
+            this.btnSignIn.Size = new System.Drawing.Size(302, 45);
             this.btnSignIn.TabIndex = 5;
             this.btnSignIn.Text = "Đăng nhập";
             this.btnSignIn.UseVisualStyleBackColor = false;
@@ -150,7 +163,7 @@ namespace Library
             this.btnSwitchToSignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnSwitchToSignUp.Location = new System.Drawing.Point(18, 286);
             this.btnSwitchToSignUp.Name = "btnSwitchToSignUp";
-            this.btnSwitchToSignUp.Size = new System.Drawing.Size(286, 40);
+            this.btnSwitchToSignUp.Size = new System.Drawing.Size(302, 40);
             this.btnSwitchToSignUp.TabIndex = 6;
             this.btnSwitchToSignUp.Text = "Chuyển sang đăng ký";
             this.btnSwitchToSignUp.UseVisualStyleBackColor = false;
@@ -163,23 +176,10 @@ namespace Library
             this.pictureBoxLeft.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLeft.Image")));
             this.pictureBoxLeft.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxLeft.Name = "pictureBoxLeft";
-            this.pictureBoxLeft.Size = new System.Drawing.Size(331, 361);
+            this.pictureBoxLeft.Size = new System.Drawing.Size(331, 400);
             this.pictureBoxLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxLeft.TabIndex = 0;
             this.pictureBoxLeft.TabStop = false;
-            // 
-            // lbContact
-            // 
-            this.lbContact.AutoSize = true;
-            this.lbContact.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbContact.Font = new System.Drawing.Font("Segoe UI Semilight", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbContact.Location = new System.Drawing.Point(65, 329);
-            this.lbContact.Name = "lbContact";
-            this.lbContact.Size = new System.Drawing.Size(206, 13);
-            this.lbContact.TabIndex = 7;
-            this.lbContact.Text = "Bạn đang gặp phải vấn đề khi đăng nhập?";
-            this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbContact.Click += new System.EventHandler(this.lbContact_Click);
             // 
             // SignInForm
             // 

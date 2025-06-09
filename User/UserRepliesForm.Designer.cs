@@ -45,6 +45,7 @@ namespace Library
             this.rEPLYBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userRepliesDataSet = new librun.userRepliesDataSet();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSendReply = new System.Windows.Forms.Button();
             this.cbPl = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbTt = new System.Windows.Forms.ComboBox();
@@ -52,7 +53,6 @@ namespace Library
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.rEPLYTableAdapter = new librun.userRepliesDataSetTableAdapters.REPLYTableAdapter();
-            this.btnSendReply = new System.Windows.Forms.Button();
             this.userSidenav1 = new Library.UserSidenav();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReplies)).BeginInit();
@@ -195,6 +195,17 @@ namespace Library
             this.panel1.Size = new System.Drawing.Size(837, 40);
             this.panel1.TabIndex = 3;
             // 
+            // btnSendReply
+            // 
+            this.btnSendReply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSendReply.Location = new System.Drawing.Point(710, 6);
+            this.btnSendReply.Name = "btnSendReply";
+            this.btnSendReply.Size = new System.Drawing.Size(115, 31);
+            this.btnSendReply.TabIndex = 6;
+            this.btnSendReply.Text = "Liên hệ";
+            this.btnSendReply.UseVisualStyleBackColor = true;
+            this.btnSendReply.Click += new System.EventHandler(this.lbReply_Click);
+            // 
             // cbPl
             // 
             this.cbPl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -268,16 +279,6 @@ namespace Library
             // rEPLYTableAdapter
             // 
             this.rEPLYTableAdapter.ClearBeforeFill = true;
-            // 
-            // btnSendReply
-            // 
-            this.btnSendReply.Location = new System.Drawing.Point(710, 6);
-            this.btnSendReply.Name = "btnSendReply";
-            this.btnSendReply.Size = new System.Drawing.Size(115, 31);
-            this.btnSendReply.TabIndex = 6;
-            this.btnSendReply.Text = "Gửi phản hồi";
-            this.btnSendReply.UseVisualStyleBackColor = true;
-            this.btnSendReply.Click += new System.EventHandler(this.lbReply_Click);
             // 
             // userSidenav1
             // 

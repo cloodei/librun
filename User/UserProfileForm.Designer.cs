@@ -142,11 +142,12 @@ namespace Library
             this.lbCanhBao.AutoSize = true;
             this.lbCanhBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCanhBao.ForeColor = System.Drawing.Color.Red;
-            this.lbCanhBao.Location = new System.Drawing.Point(35, 197);
+            this.lbCanhBao.Location = new System.Drawing.Point(85, 186);
             this.lbCanhBao.Name = "lbCanhBao";
-            this.lbCanhBao.Size = new System.Drawing.Size(467, 16);
+            this.lbCanhBao.Size = new System.Drawing.Size(404, 32);
             this.lbCanhBao.TabIndex = 31;
-            this.lbCanhBao.Text = "*Bạn đang bị khoá mõm! Liên hệ với admin ngay để được tháo xích!";
+            this.lbCanhBao.Text = "*Tài khoản của bạn hiện đang bị hạn chế! Hãy vui lòng trả\r\nnhững đầu sách quá hạn" +
+    " để gỡ hạn chế!";
             // 
             // txtSoSach
             // 
