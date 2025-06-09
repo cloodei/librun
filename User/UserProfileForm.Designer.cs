@@ -46,6 +46,7 @@ namespace Library
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panelSuaThongTin = new System.Windows.Forms.Panel();
             this.txtPasswordMoi = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPasswordCu = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace Library
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.libDataSet1 = new librun.libDataSet();
@@ -175,6 +175,7 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPassword.Location = new System.Drawing.Point(137, 108);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.ReadOnly = true;
             this.txtPassword.Size = new System.Drawing.Size(365, 20);
             this.txtPassword.TabIndex = 28;
@@ -299,6 +300,17 @@ namespace Library
             this.txtPasswordMoi.Size = new System.Drawing.Size(353, 20);
             this.txtPasswordMoi.TabIndex = 35;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label9.Location = new System.Drawing.Point(146, 11);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(245, 24);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Chỉnh sửa thông tin cá nhân";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -316,6 +328,7 @@ namespace Library
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPasswordCu.Location = new System.Drawing.Point(119, 147);
             this.txtPasswordCu.Name = "txtPasswordCu";
+            this.txtPasswordCu.PasswordChar = '●';
             this.txtPasswordCu.Size = new System.Drawing.Size(353, 20);
             this.txtPasswordCu.TabIndex = 33;
             // 
@@ -405,17 +418,6 @@ namespace Library
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label9.Location = new System.Drawing.Point(146, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(245, 24);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Chỉnh sửa thông tin cá nhân";
             // 
             // panelContentHeader
             // 

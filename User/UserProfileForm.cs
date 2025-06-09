@@ -1,30 +1,27 @@
 using System;
+using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
 
 namespace Library
 {
-    public partial class UserProfileForm : Form
+    public partial class UserProfileForm : Form, IFData
     {
+        SqlConnection conn;
         SqlDataAdapter da;
-        DataTable dt = new DataTable();
+        DataTable dt;
+
+        string countBooks;
+
         public UserProfileForm()
         {
             InitializeComponent();
+            lbCanhBao.Visible = global.locked;
+            global.SetActiveButton(userSidenav1.panel1.Controls, null);
         }
 
-        private void UserBooks_Load(object sender, EventArgs e)
+        public void InitForm()
         {
-            global.SetActiveButton(userSidenav1.panel1.Controls, null);
-            global.booksUF = new UserBooks();
-
-            da = new SqlDataAdapter(
-                "SELECT * FROM USERS WHERE id = " + global.user_id,
-                librun.Properties.Settings.Default.mainConnectionString
-            );
             dt.Clear();
             da.Fill(dt);
 
@@ -33,29 +30,48 @@ namespace Library
                 DataRow row = dt.Rows[0];
                 txtName.Text = row["ten"].ToString();
                 txtEmail.Text = row["email"].ToString();
-                txtPassword.Text = new string('*', dt.Rows[0]["mat_khau"].ToString().Length);
-                int sosachdangmuon = global.booksUF.GetBorrowedBooksCount(global.user_id);
-                txtSoSach.Text = sosachdangmuon.ToString();
+                txtPassword.Text = row["mat_khau"].ToString();
+                txtSoSach.Text = countBooks;
             }
             else
             {
                 MessageBox.Show("Không tìm thấy thông tin người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
-            if (global.locked) 
-                lbCanhBao.Visible = true;
-            else
-                lbCanhBao.Visible = false;
+        SqlDataAdapter dac;
+        DataTable dtc;
+
+        private void UserBooks_Load(object sender, EventArgs e)
+        {
+            conn = new SqlConnection(global.connectionString);
+            conn.Open();
+
+            dt = new DataTable();
+            da = new SqlDataAdapter(
+                "SELECT * FROM USERS WHERE id = " + global.user_id,
+                conn
+            );
+
+            dtc = new DataTable();
+            dac = new SqlDataAdapter(
+                "SELECT COUNT(*) FROM BORROW WHERE user_id = " + global.user_id + " GROUP BY user_id",
+                conn
+            );
+            dac.Fill(dtc);
+            countBooks = dtc.Rows[0][0].ToString();
+
+            InitForm();
         }
 
         private void HienPass(object sender, EventArgs e)
         {
-            txtPassword.Text = dt.Rows[0]["mat_khau"].ToString();
+            txtPassword.PasswordChar = (char)0;
         }
 
         private void AnPass(object sender, EventArgs e)
         {
-            txtPassword.Text = new string('*', dt.Rows[0]["mat_khau"].ToString().Length);
+            txtPassword.PasswordChar = '●';
         }
 
         private void btnSuaTT_Click(object sender, EventArgs e)
@@ -67,46 +83,45 @@ namespace Library
         {
             txtSuaName.Text = txtName.Text;
             txtSuaEmail.Text = txtEmail.Text;
-            txtPasswordCu.Text = new string('*', dt.Rows[0]["mat_khau"].ToString().Length);
+            txtPasswordCu.Text = dt.Rows[0]["mat_khau"].ToString();
             txtPasswordMoi.ResetText();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            foreach(TextBox textBox in panelSuaThongTin.Controls.OfType<TextBox>())
+            foreach(Control tb in panelSuaThongTin.Controls)
             {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
+                if (tb is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
                 {
                     MessageBox.Show("Vui lòng điền đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
+
             if (txtPasswordCu.Text != dt.Rows[0]["mat_khau"].ToString())
             {
                 MessageBox.Show("Mật khẩu cũ không đúng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             var result = MessageBox.Show("Bạn đã chắc chắn với thông tin vừa chỉnh sửa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
                 try
                 {
-                    using (SqlConnection conn = new SqlConnection(librun.Properties.Settings.Default.mainConnectionString))
+                    string query = "UPDATE USERS SET ten = @ten, email = @email, mat_khau = @mat_khau WHERE id = @id";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        conn.Open();
-                        string query = "UPDATE USERS SET ten = @ten, email = @email, mat_khau = @mat_khau WHERE id = @id";
-                        using (SqlCommand cmd = new SqlCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@ten", txtSuaName.Text);
-                            cmd.Parameters.AddWithValue("@email", txtSuaEmail.Text);
-                            cmd.Parameters.AddWithValue("@mat_khau", txtPasswordMoi.Text);
-                            cmd.Parameters.AddWithValue("@id", global.user_id);
-                            cmd.ExecuteNonQuery();
-                        }
+                        cmd.Parameters.AddWithValue("@ten", txtSuaName.Text);
+                        cmd.Parameters.AddWithValue("@email", txtSuaEmail.Text);
+                        cmd.Parameters.AddWithValue("@mat_khau", txtPasswordMoi.Text);
+                        cmd.Parameters.AddWithValue("@id", global.user_id);
+                        cmd.ExecuteNonQuery();
                     }
+
                     MessageBox.Show("Cập nhật thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     panelSuaTT.Visible = false;
-                    UserBooks_Load(sender, e);
+                    InitForm();
                 }
                 catch (Exception ex)
                 {
@@ -121,16 +136,8 @@ namespace Library
             if (luachon == DialogResult.Yes)
             {
                 panelSuaTT.Visible = false;
-                UserBooks_Load(sender, e);
+                InitForm();
             }
-        }
-    }
-    public partial class UserBooks : Form
-    {
-        // Add a public method to expose the count of borrowed books
-        public int GetBorrowedBooksCount(long userId)
-        {
-            return bORROWTableAdapter.GetData(userId).Rows.Count;
         }
     }
 }
