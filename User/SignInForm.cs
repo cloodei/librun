@@ -46,7 +46,8 @@ namespace Library
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi không xác định: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 if (dt.Rows.Count == 0)

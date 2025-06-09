@@ -75,7 +75,7 @@ namespace Library
             {
                 if (global.locked)
                 {
-                    MessageBox.Show("Bạn chưa được đọc sách do tài khoản của bạn đã bị khóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Bạn chưa được đọc sách do tài khoản của bạn đang bị hạn chế! Vui lòng trả những đầu sách quá hạn để tiếp tục.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 

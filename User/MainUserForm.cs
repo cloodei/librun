@@ -25,9 +25,7 @@ namespace Library
             dgvBooks.ClearSelection();
 
             da = new SqlDataAdapter(
-                "SELECT book_id " +
-                "FROM BORROW " +
-                "WHERE user_id = " + global.user_id,
+                "SELECT book_id FROM BORROW WHERE user_id = " + global.user_id,
                 global.connectionString
             );
 
@@ -69,9 +67,7 @@ namespace Library
                 var row = dgvBooks.Rows[e.RowIndex];
 
                 if (row.DefaultCellStyle.BackColor == Color.LightGray)
-                {
                     return;
-                }
 
                 if (row.DefaultCellStyle.BackColor == Color.LightBlue)
                 {
@@ -91,13 +87,11 @@ namespace Library
         private void button1_Click(object sender, EventArgs e)
         {
             if (so_sach_da_chon == 0)
-            {
                 return;
-            }
 
             if (global.locked)
             {
-                MessageBox.Show("Bạn chưa được mượn sách do tài khoản của bạn đã bị khóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Bạn chưa được mượn sách do tài khoản của bạn đã bị hạn chế!Vui lòng trả những đầu sách quá hạn để tiếp tục.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
