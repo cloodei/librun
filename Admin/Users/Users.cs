@@ -20,14 +20,8 @@ namespace Library
         {
             try
             {
-                conn = new SqlConnection(chuoiketnoi);
-                conn.Open();
-
-                string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id from USERS";
-                daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
                 dtQuanLyNguoiDung = new DataTable();
                 dtQLND_Goc = new DataTable();
-
                 daQuanLyNguoiDung.Fill(dtQuanLyNguoiDung);
                 daQuanLyNguoiDung.Fill(dtQLND_Goc);
 
@@ -60,6 +54,9 @@ namespace Library
             txt_tim_kiem.ResetText();
             cbb_loc.ResetText();
             cbb_trang_thai.ResetText();
+
+            email_current = "";
+            row_befor = null;
         }
 
         string chuoiketnoi = global.connectionString;
@@ -70,6 +67,12 @@ namespace Library
 
         private void Users_Load(object sender, EventArgs e)
         {
+            conn = new SqlConnection(chuoiketnoi);
+            conn.Open();
+
+            string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id from USERS";
+            daQuanLyNguoiDung = new SqlDataAdapter(sql, conn);
+
             InitForm();
         }
 
@@ -135,10 +138,10 @@ namespace Library
                 MessageBox.Show("Email không đúng đinh dạng", "Thêm người dùng lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+
             if (email_current == txt_email.Text && funtion_Edit)
-            {
                 return true;
-            }
+
             int len = dtQLND_Goc.Select("email = '" + txt_email.Text + "'").Length;
             
             if (len != 0)
@@ -173,9 +176,8 @@ namespace Library
         private void dgv_quan_ly_nguoi_dung_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(row_befor != null)
-            {
                 row_befor.DefaultCellStyle.BackColor = Color.White;
-            }
+
             txt_ten.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[1].Value.ToString();
             txt_email.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[2].Value.ToString();
             txt_mat_khau.Text = dgv_quan_ly_nguoi_dung.CurrentRow.Cells[3].Value.ToString();
@@ -214,14 +216,11 @@ namespace Library
             string sql = "select ROW_NUMBER() OVER(ORDER BY id) as STT, ten, email, mat_khau, trang_thai, id " +
                 "from USERS " +
                 "where (ten like N'%"+txt_tim_kiem.Text+"%' or email like N'%"+txt_tim_kiem.Text+"%')";
+            
             if (cbb_loc.Text == "Hoạt động")
-            {
                 sql += " and trang_thai = N'Hoạt động'";
-            }
             else if(cbb_loc.Text == "Khóa")
-            {
                 sql += " and trang_thai = N'Khóa'";
-            }
 
             daTimKiem = new SqlDataAdapter(sql, conn);
             dtQuanLyNguoiDung.Clear();
@@ -268,7 +267,6 @@ namespace Library
                     txt_tim_kiem_TextChanged(sender, e);
                     MessageBox.Show("Bạn đã xóa thành công", "Thông báo");
                 }
-                
             }
             else
             {
@@ -284,10 +282,9 @@ namespace Library
         private void dgv_quan_ly_nguoi_dung_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRow row = dgv_quan_ly_nguoi_dung.Rows[e.RowIndex];
+
             if (row.Cells[4].Value.ToString() == "Khóa")
-            {
                 row.DefaultCellStyle.BackColor = Color.LightPink;
-            }
         }
 
         private void Users_FormClosed(object sender, FormClosedEventArgs e)

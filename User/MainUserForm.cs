@@ -35,6 +35,7 @@ namespace Library
         public void ResetFields()
         {
             tbTimSach.ResetText();
+            so_sach_da_chon = 0;
         }
 
         void handleBooks()

@@ -32,7 +32,10 @@ namespace Library
 
             if (!string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                da = new SqlDataAdapter("SELECT * FROM USERS WHERE email = N'" + txtEmail.Text + "'", conn);
+                da = new SqlDataAdapter(
+                    "SELECT id, mat_khau, trang_thai FROM USERS WHERE email = N'" + txtEmail.Text + "'",
+                    conn
+                );
 
                 try
                 {
@@ -56,46 +59,42 @@ namespace Library
                     return;
                 }
 
-                var email = dt.Rows[0]["email"].ToString();
                 var password = dt.Rows[0]["mat_khau"].ToString();
-                var lck = dt.Rows[0]["trang_thai"].ToString() == "Khóa";
-
-                if (email == txtEmail.Text)
+                if (password  == txtPassword.Text)
                 {
-                    if (password  == txtPassword.Text)
+                    var lck = dt.Rows[0]["trang_thai"].ToString() == "Khóa";
+                    if (lck)
                     {
-                        if (lck)
-                        {
-                            MessageBox.Show("Bạn không thể đăng nhập do tài khoản của bạn hiện đang bị khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            return;
-                        }
-
-                        global.user_id = Convert.ToInt64(dt.Rows[0]["id"]);
-
-                        var some = new SqlDataAdapter("SELECT ngay_muon FROM BORROW WHERE user_id = " + global.user_id, conn);
-                        var thing = new DataTable();
-                        some.Fill(thing);
-
-                        var ck = false;
-                        for (int i = 0; i < thing.Rows.Count; ++i)
-                        {
-                            var ngay = Convert.ToDateTime(thing.Rows[i][0]);
-                            if (ngay.AddDays(14) < DateTime.Now)
-                            {
-                                ck = true;
-                                break;
-                            }
-                        }
-
-                        global.locked = ck;
-                        global.mainUF = global.swapForm(global.mainUF, this);
-
+                        MessageBox.Show("Bạn không thể đăng nhập do tài khoản của bạn hiện đang bị khóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         return;
                     }
 
-                    MessageBox.Show("Sai mật khẩu.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    global.user_id = Convert.ToInt64(dt.Rows[0]["id"]);
+                    global.locked = false;
+
+                    var some = new SqlDataAdapter(
+                        "SELECT ngay_muon FROM BORROW WHERE user_id = " + global.user_id,
+                        conn
+                    );
+                    var thing = new DataTable();
+                    some.Fill(thing);
+
+                    for (int i = 0; i < thing.Rows.Count; ++i)
+                    {
+                        var ngay = Convert.ToDateTime(thing.Rows[i][0]);
+                        if (ngay.AddDays(14) < DateTime.Now)
+                        {
+                            global.locked = true;
+                            break;
+                        }
+                    }
+
+                    global.mainUF = global.swapForm(global.mainUF, this);
                     return;
                 }
+
+                MessageBox.Show("Sai mật khẩu.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);

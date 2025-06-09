@@ -15,15 +15,16 @@ namespace Library
         public void InitForm()
         {
             fillDgvBorrowedBooks();
+            cbFilter.Text = "Tất cả";
         }
 
         public void ResetFields()
         {
             dtpBorrowDate.ResetText();
             dtpBorrowDate.Refresh();
-            cbFilter.ResetText();
             tbBookName.ResetText();
             tbUsername.ResetText();
+            cbFilter.Text = "Tất cả";
         }
 
         private void BorrowRequests_Load(object sender, EventArgs e)
@@ -33,43 +34,44 @@ namespace Library
 
         void fillDgvBorrowedBooks()
         {
-            try
+            this.bORROWTableAdapter.Fill(this.adminBorrowDataSet.BORROW);
+            for (int i = 0; i < dgvBorrowedBooks.Rows.Count; ++i)
             {
-                this.bORROWTableAdapter.Fill(this.adminBorrowDataSet.BORROW);
-                for (int i = 0; i < dgvBorrowedBooks.Rows.Count; ++i)
-                {
-                    DateTime borrowDate = DateTime.Parse(dgvBorrowedBooks.Rows[i].Cells["ngay_muon"].Value.ToString());
-                    if (borrowDate.AddDays(14) < DateTime.Now)
-                        dgvBorrowedBooks.Rows[i].DefaultCellStyle.BackColor = Color.LightPink;
-                }
+                DateTime borrowDate = DateTime.Parse(dgvBorrowedBooks.Rows[i].Cells["ngay_muon"].Value.ToString());
+                if (borrowDate.AddDays(14) < DateTime.Now)
+                    dgvBorrowedBooks.Rows[i].DefaultCellStyle.BackColor = Color.LightPink;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            dgvBorrowedBooks.ClearSelection();
         }
 
         private void dgvBorrowedBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                dtpBorrowDate.Value = DateTime.Parse(dgvBorrowedBooks.CurrentRow.Cells[4].Value.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi lấy ngày mượn sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            dtpBorrowDate.Value = DateTime.Parse(dgvBorrowedBooks.CurrentRow.Cells[4].Value.ToString());
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (dgvBorrowedBooks.CurrentRow != null)
             {
-                long uid = long.Parse(dgvBorrowedBooks.CurrentRow.Cells[1].Value.ToString());
-                long bid = long.Parse(dgvBorrowedBooks.CurrentRow.Cells[3].Value.ToString());
+                if (Convert.ToDateTime(dgvBorrowedBooks.CurrentRow.Cells["ngay_muon"].Value) == dtpBorrowDate.Value)
+                    return;
+
+                long uid = Convert.ToInt64(dgvBorrowedBooks.CurrentRow.Cells[1].Value);
+                long bid = Convert.ToInt64(dgvBorrowedBooks.CurrentRow.Cells[3].Value);
+                var bname = dgvBorrowedBooks.CurrentRow.Cells["ten_sach"].Value.ToString();
+                var uname = dgvBorrowedBooks.CurrentRow.Cells["ten_user"].Value.ToString();
 
                 this.bORROWTableAdapter.Update(dtpBorrowDate.Text, uid, bid, bid, uid);
-                fillDgvBorrowedBooks();
+                cbFilter_SelectedIndexChanged(sender, e);
+
+                MessageBox.Show(
+                    "Sửa ngày mượn sách [ " + bname + " ] của user [ " + uname + " ] thành công",
+                    "Sửa",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                dgvBorrowedBooks.ClearSelection();
             }
             else
             {
@@ -79,10 +81,10 @@ namespace Library
 
         bool checkAddRow(string finduname, string findbname, string uname, string bname)
         {
-            uname = uname.Trim().ToLower();
-            bname = bname.Trim().ToLower();
-            finduname = finduname.Trim().ToLower();
-            findbname = findbname.Trim().ToLower();
+            uname = uname.ToLower();
+            bname = bname.ToLower();
+            finduname = finduname.ToLower();
+            findbname = findbname.ToLower();
 
             if (uname == "")
             {
@@ -101,7 +103,6 @@ namespace Library
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillDgvBorrowedBooks();
-            dgvBorrowedBooks.ClearSelection();
 
             CurrencyManager cm = (CurrencyManager)BindingContext[dgvBorrowedBooks.DataSource];
             cm.SuspendBinding();
