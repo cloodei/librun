@@ -6,6 +6,7 @@ namespace Library
     public interface IFData
     {
         void InitForm();
+        void ResetFields();
     }
 
     public static class global
@@ -49,6 +50,9 @@ namespace Library
 
             open.Show();
             close.Hide();
+
+            if (close is IFData reset)
+                reset.ResetFields();
 
             if (!isnew && open is IFData reloadable)
                 reloadable.InitForm();

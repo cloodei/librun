@@ -197,6 +197,7 @@ namespace Library
             this.Name = "Books";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Books_FormClosed);
             this.Load += new System.EventHandler(this.Books_Load);
             this.EnabledChanged += new System.EventHandler(this.button1_EnabledChanged);
             this.panelContent.ResumeLayout(false);

@@ -18,6 +18,11 @@ namespace Library
             fillBooks();
         }
 
+        public void ResetFields()
+        {
+            tbTimSach.ResetText();
+        }
+
         void fillBooks()
         {
             bORROWTableAdapter.Fill(this.userBorrowedBooks.BORROW, global.user_id);
@@ -109,6 +114,11 @@ namespace Library
             {
                 r.DefaultCellStyle.BackColor = Color.LightPink;
             }
+        }
+
+        private void UserBooks_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

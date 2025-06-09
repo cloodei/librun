@@ -17,6 +17,15 @@ namespace Library
             fillDgvBorrowedBooks();
         }
 
+        public void ResetFields()
+        {
+            dtpBorrowDate.ResetText();
+            dtpBorrowDate.Refresh();
+            cbFilter.ResetText();
+            tbBookName.ResetText();
+            tbUsername.ResetText();
+        }
+
         private void BorrowRequests_Load(object sender, EventArgs e)
         {
             fillDgvBorrowedBooks();
@@ -165,6 +174,11 @@ namespace Library
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
             cbFilter_SelectedIndexChanged(sender, e);
+        }
+
+        private void BorrowRequests_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -7,21 +7,19 @@ using librun.Admin.Replies;
 
 namespace Library
 {
-    public partial class Replies : Form
+    public partial class Replies : Form, IFData
     {
         public Replies()
         {
             InitializeComponent();
-            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnTtMuonSach);
+            global.SetActiveButton(adminSidenav1.panel1.Controls, adminSidenav1.btnQuanLyPhanHoi);
         }
-        string chuoiketnoi = global.connectionString;
-        SqlConnection conn;
-        SqlDataAdapter daPhanHoi;
-        DataTable dtPhanHoi;
-        private void BorrowRequests_Load(object sender, EventArgs e)
+
+        public void InitForm()
         {
             conn = new SqlConnection(chuoiketnoi);
             conn.Open();
+
             string sql = "select ROW_NUMBER() Over(order by REPLY.id) as STT ,ten, email , noi_dung, REPLY.trang_thai,muc_do,ngay_gui, hoi_dap,user_id from USERS " +
                 "join REPLY on USERS.id = REPLY.user_id;";
             daPhanHoi = new SqlDataAdapter(sql, conn);
@@ -38,6 +36,23 @@ namespace Library
             dgv_phan_hoi.Columns["user_id"].Visible = false;
             dgv_phan_hoi.Columns["hoi_dap"].Visible = false;
         }
+
+        public void ResetFields()
+        {
+            cbb_loc_muc_do.ResetText();
+            cbb_loc_trang_thai.ResetText();
+        }
+
+        string chuoiketnoi = global.connectionString;
+        SqlConnection conn;
+        SqlDataAdapter daPhanHoi;
+        DataTable dtPhanHoi;
+
+        private void BorrowRequests_Load(object sender, EventArgs e)
+        {
+            InitForm();
+        }
+
         SqlCommand cmd;
         private void dgv_phan_hoi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -106,6 +121,11 @@ namespace Library
         private void cbb_loc_muc_do_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbb_loc_trang_thai_SelectedIndexChanged(sender, e);
+        }
+
+        private void Replies_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -52,6 +52,16 @@ namespace Library
             }
         }
 
+        public void ResetFields()
+        {
+            txt_email.ResetText();
+            txt_mat_khau.ResetText();
+            txt_ten.ResetText();
+            txt_tim_kiem.ResetText();
+            cbb_loc.ResetText();
+            cbb_trang_thai.ResetText();
+        }
+
         string chuoiketnoi = global.connectionString;
         SqlConnection conn;
         SqlDataAdapter daQuanLyNguoiDung;
@@ -278,6 +288,11 @@ namespace Library
             {
                 row.DefaultCellStyle.BackColor = Color.LightPink;
             }
+        }
+
+        private void Users_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

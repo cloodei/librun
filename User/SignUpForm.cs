@@ -34,6 +34,14 @@ namespace Library
             );
         }
 
+        public void ResetFields()
+        {
+            txtConfirmPassword.ResetText();
+            txtEmail.ResetText();
+            txtPassword.ResetText();
+            txtUsername.ResetText();
+        }
+
         private void btnSignUp_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) || string.IsNullOrWhiteSpace(txtEmail.Text))
@@ -154,6 +162,11 @@ namespace Library
                     MessageBox.Show("Phản hồi của bạn đã không được gửi thành công", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void SignUpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -70,6 +70,11 @@ namespace Library
             }
         }
 
+        public void ResetFields()
+        {
+            textBox1.ResetText();
+        }
+
         private void Books_Load(object sender, EventArgs e)
         {
             InitForm();
@@ -105,7 +110,7 @@ namespace Library
                 {
                     long id = Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                     BorrowBookForm bookForm = new BorrowBookForm(this, da, dt, id);
-                    bookForm.Show();
+                    bookForm.ShowDialog();
                     this.Enabled = false;
                     bookForm.button3.Enabled = true;
                     bookForm.button3.Visible = true;
@@ -148,7 +153,7 @@ namespace Library
                 else
                 {
                     UserBooksBorrow ub = new UserBooksBorrow(Convert.ToInt64(dataGridView1.Rows[e.RowIndex].Cells[0].Value));
-                    ub.Show();
+                    ub.ShowDialog();
                 }
             }
         }
@@ -219,6 +224,11 @@ namespace Library
                 dataGridView1.Rows[e.RowIndex].Cells[4].Style.BackColor = Color.White;
                 dataGridView1.Rows[e.RowIndex].Cells[5].Style.BackColor = Color.White;
             }
+        }
+
+        private void Books_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

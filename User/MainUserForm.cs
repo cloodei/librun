@@ -34,6 +34,11 @@ namespace Library
             handleBooks();
         }
 
+        public void ResetFields()
+        {
+            tbTimSach.ResetText();
+        }
+
         void handleBooks()
         {
             dt.Clear();
@@ -128,6 +133,11 @@ namespace Library
                 bOOKSBindingSource2.Filter = $"tieu_de LIKE '%{safeSearch}%'";
 
             handleBooks();
+        }
+
+        private void MainUserForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

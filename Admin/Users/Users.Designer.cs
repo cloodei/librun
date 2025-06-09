@@ -57,7 +57,7 @@ namespace Library
             this.cbb_loc = new System.Windows.Forms.ComboBox();
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
-            this.adminSidenav1 = new AdminSidenav();
+            this.adminSidenav1 = new Library.AdminSidenav();
             this.panelContent.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -166,7 +166,7 @@ namespace Library
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.69843F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.30157F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel5, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 2, 0);
@@ -190,7 +190,7 @@ namespace Library
             this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(298, 165);
+            this.panel3.Size = new System.Drawing.Size(297, 165);
             this.panel3.TabIndex = 0;
             // 
             // txt_email
@@ -201,7 +201,7 @@ namespace Library
             this.txt_email.Location = new System.Drawing.Point(82, 80);
             this.txt_email.Margin = new System.Windows.Forms.Padding(2);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(203, 23);
+            this.txt_email.Size = new System.Drawing.Size(202, 23);
             this.txt_email.TabIndex = 3;
             // 
             // txt_ten
@@ -212,7 +212,7 @@ namespace Library
             this.txt_ten.Location = new System.Drawing.Point(82, 29);
             this.txt_ten.Margin = new System.Windows.Forms.Padding(2);
             this.txt_ten.Name = "txt_ten";
-            this.txt_ten.Size = new System.Drawing.Size(203, 23);
+            this.txt_ten.Size = new System.Drawing.Size(202, 23);
             this.txt_ten.TabIndex = 2;
             // 
             // lbl_email
@@ -245,10 +245,10 @@ namespace Library
             this.panel5.Controls.Add(this.lbl_trang_thai);
             this.panel5.Controls.Add(this.lbl_mat_khau);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(304, 2);
+            this.panel5.Location = new System.Drawing.Point(303, 2);
             this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(301, 165);
+            this.panel5.Size = new System.Drawing.Size(300, 165);
             this.panel5.TabIndex = 1;
             // 
             // cbb_trang_thai
@@ -263,7 +263,7 @@ namespace Library
             this.cbb_trang_thai.Location = new System.Drawing.Point(98, 82);
             this.cbb_trang_thai.Margin = new System.Windows.Forms.Padding(2);
             this.cbb_trang_thai.Name = "cbb_trang_thai";
-            this.cbb_trang_thai.Size = new System.Drawing.Size(201, 25);
+            this.cbb_trang_thai.Size = new System.Drawing.Size(200, 25);
             this.cbb_trang_thai.TabIndex = 5;
             // 
             // txt_mat_khau
@@ -274,7 +274,7 @@ namespace Library
             this.txt_mat_khau.Location = new System.Drawing.Point(97, 29);
             this.txt_mat_khau.Margin = new System.Windows.Forms.Padding(2);
             this.txt_mat_khau.Name = "txt_mat_khau";
-            this.txt_mat_khau.Size = new System.Drawing.Size(201, 23);
+            this.txt_mat_khau.Size = new System.Drawing.Size(200, 23);
             this.txt_mat_khau.TabIndex = 4;
             // 
             // lbl_trang_thai
@@ -306,10 +306,10 @@ namespace Library
             this.panel6.Controls.Add(this.btn_sua);
             this.panel6.Controls.Add(this.btn_them);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(609, 2);
+            this.panel6.Location = new System.Drawing.Point(607, 2);
             this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(225, 165);
+            this.panel6.Size = new System.Drawing.Size(227, 165);
             this.panel6.TabIndex = 2;
             // 
             // btn_xoa
@@ -430,12 +430,12 @@ namespace Library
             // 
             this.lbl_loc_trang_thai.AutoSize = true;
             this.lbl_loc_trang_thai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_loc_trang_thai.Location = new System.Drawing.Point(52, 17);
+            this.lbl_loc_trang_thai.Location = new System.Drawing.Point(28, 16);
             this.lbl_loc_trang_thai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_loc_trang_thai.Name = "lbl_loc_trang_thai";
-            this.lbl_loc_trang_thai.Size = new System.Drawing.Size(77, 18);
+            this.lbl_loc_trang_thai.Size = new System.Drawing.Size(101, 18);
             this.lbl_loc_trang_thai.TabIndex = 10;
-            this.lbl_loc_trang_thai.Text = "Trạng thái:";
+            this.lbl_loc_trang_thai.Text = "Lọc trạng thái:";
             // 
             // cbb_loc
             // 
@@ -496,6 +496,7 @@ namespace Library
             this.Name = "Users";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý người dùng";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Users_FormClosed);
             this.Load += new System.EventHandler(this.Users_Load);
             this.panelContent.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

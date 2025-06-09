@@ -22,6 +22,12 @@ namespace Library
             InitForm();
         }
 
+        public void ResetFields()
+        {
+            cbPl.ResetText();
+            cbPl.ResetText();
+        }
+
         string checkFilter()
         {
             bool alltt = (cbTt.Text == "") || (cbTt.Text == "Tất cả");
@@ -98,6 +104,11 @@ namespace Library
         private void cbPl_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillData();
+        }
+
+        private void UserRepliesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

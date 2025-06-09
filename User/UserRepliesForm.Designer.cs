@@ -50,9 +50,9 @@ namespace Library
             this.cbTt = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelContentHeader = new System.Windows.Forms.Panel();
-            this.lbReply = new System.Windows.Forms.Label();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.rEPLYTableAdapter = new librun.userRepliesDataSetTableAdapters.REPLYTableAdapter();
+            this.btnSendReply = new System.Windows.Forms.Button();
             this.userSidenav1 = new Library.UserSidenav();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReplies)).BeginInit();
@@ -184,6 +184,7 @@ namespace Library
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnSendReply);
             this.panel1.Controls.Add(this.cbPl);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbTt);
@@ -203,7 +204,7 @@ namespace Library
             "Phản hồi",
             "Khiếu nại",
             "Yêu cầu"});
-            this.cbPl.Location = new System.Drawing.Point(621, 12);
+            this.cbPl.Location = new System.Drawing.Point(495, 12);
             this.cbPl.Name = "cbPl";
             this.cbPl.Size = new System.Drawing.Size(186, 21);
             this.cbPl.TabIndex = 5;
@@ -213,7 +214,7 @@ namespace Library
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(485, 13);
+            this.label2.Location = new System.Drawing.Point(359, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 16);
             this.label2.TabIndex = 4;
@@ -246,26 +247,12 @@ namespace Library
             // panelContentHeader
             // 
             this.panelContentHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.panelContentHeader.Controls.Add(this.lbReply);
             this.panelContentHeader.Controls.Add(this.lblContentHeader);
             this.panelContentHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelContentHeader.Location = new System.Drawing.Point(0, 0);
             this.panelContentHeader.Name = "panelContentHeader";
             this.panelContentHeader.Size = new System.Drawing.Size(837, 52);
             this.panelContentHeader.TabIndex = 0;
-            // 
-            // lbReply
-            // 
-            this.lbReply.AutoSize = true;
-            this.lbReply.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbReply.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lbReply.ForeColor = System.Drawing.Color.White;
-            this.lbReply.Location = new System.Drawing.Point(748, 28);
-            this.lbReply.Name = "lbReply";
-            this.lbReply.Size = new System.Drawing.Size(77, 15);
-            this.lbReply.TabIndex = 1;
-            this.lbReply.Text = "Gửi phản hồi";
-            this.lbReply.Click += new System.EventHandler(this.lbReply_Click);
             // 
             // lblContentHeader
             // 
@@ -281,6 +268,16 @@ namespace Library
             // rEPLYTableAdapter
             // 
             this.rEPLYTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnSendReply
+            // 
+            this.btnSendReply.Location = new System.Drawing.Point(710, 6);
+            this.btnSendReply.Name = "btnSendReply";
+            this.btnSendReply.Size = new System.Drawing.Size(115, 31);
+            this.btnSendReply.TabIndex = 6;
+            this.btnSendReply.Text = "Gửi phản hồi";
+            this.btnSendReply.UseVisualStyleBackColor = true;
+            this.btnSendReply.Click += new System.EventHandler(this.lbReply_Click);
             // 
             // userSidenav1
             // 
@@ -302,6 +299,7 @@ namespace Library
             this.Name = "UserRepliesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserRepliesForm_FormClosed);
             this.Load += new System.EventHandler(this.UserBooks_Load);
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReplies)).EndInit();
@@ -321,7 +319,6 @@ namespace Library
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private UserSidenav userSidenav1;
         private DataGridView dgvReplies;
-        private Label lbReply;
         private librun.userRepliesDataSet userRepliesDataSet;
         private BindingSource rEPLYBindingSource;
         private librun.userRepliesDataSetTableAdapters.REPLYTableAdapter rEPLYTableAdapter;
@@ -337,5 +334,6 @@ namespace Library
         private DataGridViewTextBoxColumn tt;
         private DataGridViewTextBoxColumn pl;
         private DataGridViewTextBoxColumn ng;
+        private Button btnSendReply;
     }
 }

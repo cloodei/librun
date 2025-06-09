@@ -48,8 +48,8 @@ namespace Library
             this.btnSwitchToSignIn = new System.Windows.Forms.Button();
             this.pictureBoxRight = new System.Windows.Forms.PictureBox();
             this.panelLeft = new System.Windows.Forms.Panel();
-            this.panelContainer = new System.Windows.Forms.Panel();
             this.lbContact = new System.Windows.Forms.Label();
+            this.panelContainer = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).BeginInit();
             this.panelLeft.SuspendLayout();
             this.panelContainer.SuspendLayout();
@@ -208,16 +208,6 @@ namespace Library
             this.panelLeft.Size = new System.Drawing.Size(334, 457);
             this.panelLeft.TabIndex = 0;
             // 
-            // panelContainer
-            // 
-            this.panelContainer.Controls.Add(this.panelLeft);
-            this.panelContainer.Controls.Add(this.pictureBoxRight);
-            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContainer.Location = new System.Drawing.Point(0, 0);
-            this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(668, 457);
-            this.panelContainer.TabIndex = 0;
-            // 
             // lbContact
             // 
             this.lbContact.AutoSize = true;
@@ -230,6 +220,16 @@ namespace Library
             this.lbContact.Text = "Bạn đang gặp phải vấn đề khi đăng ký?";
             this.lbContact.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbContact.Click += new System.EventHandler(this.lbContact_Click);
+            // 
+            // panelContainer
+            // 
+            this.panelContainer.Controls.Add(this.panelLeft);
+            this.panelContainer.Controls.Add(this.pictureBoxRight);
+            this.panelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContainer.Location = new System.Drawing.Point(0, 0);
+            this.panelContainer.Name = "panelContainer";
+            this.panelContainer.Size = new System.Drawing.Size(668, 457);
+            this.panelContainer.TabIndex = 0;
             // 
             // SignUpForm
             // 
@@ -246,6 +246,7 @@ namespace Library
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng ký";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SignUpForm_FormClosed);
             this.Load += new System.EventHandler(this.SignUpForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRight)).EndInit();
             this.panelLeft.ResumeLayout(false);

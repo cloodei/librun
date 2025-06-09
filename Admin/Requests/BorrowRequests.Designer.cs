@@ -52,7 +52,7 @@ namespace Library
             this.panelContentHeader = new System.Windows.Forms.Panel();
             this.lblContentHeader = new System.Windows.Forms.Label();
             this.bORROWTableAdapter = new librun.adminBorrowDataSetTableAdapters.BORROWTableAdapter();
-            this.adminSidenav1 = new AdminSidenav();
+            this.adminSidenav1 = new Library.AdminSidenav();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDetails)).BeginInit();
             this.splitContainerDetails.Panel1.SuspendLayout();
@@ -367,6 +367,7 @@ namespace Library
             this.Name = "BorrowRequests";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BorrowRequests_FormClosed);
             this.Load += new System.EventHandler(this.BorrowRequests_Load);
             this.panelContent.ResumeLayout(false);
             this.splitContainerDetails.Panel1.ResumeLayout(false);

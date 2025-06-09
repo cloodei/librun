@@ -12,9 +12,7 @@ namespace Library
 
         private void btnYeuCauMuonSach_Click(object sender, EventArgs e)
         {
-            var f = this.FindForm();
-            //MessageBox.Show(f.ToString() + "\n" + global.borrowAF.ToString(), "" + (f == global.borrowAF));
-            global.borrowAF = global.swapForm(global.borrowAF, f);
+            global.borrowAF = global.swapForm(global.borrowAF, this.FindForm());
         }
 
         private void btnQuanLySach_Click(object sender, EventArgs e)

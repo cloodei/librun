@@ -295,6 +295,7 @@ namespace Library
             this.Name = "MainUserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberate";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainUserForm_FormClosed);
             this.Load += new System.EventHandler(this.MainUserForm_Load);
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).EndInit();

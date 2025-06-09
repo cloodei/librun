@@ -22,8 +22,20 @@ namespace Library
 
         public void InitForm()
         {
+            dac = new SqlDataAdapter(
+                "SELECT COUNT(*) FROM BORROW WHERE user_id = " + global.user_id + " GROUP BY user_id",
+                conn
+            );
+            da = new SqlDataAdapter(
+                "SELECT * FROM USERS WHERE id = " + global.user_id,
+                conn
+            );
+
             dt.Clear();
             da.Fill(dt);
+            dtc.Clear();
+            dac.Fill(dtc);
+            countBooks = dtc.Rows[0][0].ToString();
 
             if (dt.Rows.Count > 0)
             {
@@ -39,6 +51,11 @@ namespace Library
             }
         }
 
+        public void ResetFields()
+        {
+            panelSuaTT.Visible = false;
+        }
+
         SqlDataAdapter dac;
         DataTable dtc;
 
@@ -48,18 +65,7 @@ namespace Library
             conn.Open();
 
             dt = new DataTable();
-            da = new SqlDataAdapter(
-                "SELECT * FROM USERS WHERE id = " + global.user_id,
-                conn
-            );
-
             dtc = new DataTable();
-            dac = new SqlDataAdapter(
-                "SELECT COUNT(*) FROM BORROW WHERE user_id = " + global.user_id + " GROUP BY user_id",
-                conn
-            );
-            dac.Fill(dtc);
-            countBooks = dtc.Rows[0][0].ToString();
 
             InitForm();
         }
@@ -138,6 +144,11 @@ namespace Library
                 panelSuaTT.Visible = false;
                 InitForm();
             }
+        }
+
+        private void UserProfileForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
