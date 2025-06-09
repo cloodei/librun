@@ -63,8 +63,7 @@ namespace Library
                         "where user_id = "+user_id;
                     cmd = new SqlCommand(sql,conn);
                     cmd.ExecuteNonQuery();
-                    dtPhanHoi.Clear();
-                    daPhanHoi.Fill(dtPhanHoi);
+                    cbb_loc_trang_thai_SelectedIndexChanged(sender, e);
                 }
             }
         }
